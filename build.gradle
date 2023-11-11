@@ -1,238 +1,236 @@
-buildscript {
-    repositories {
-        jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots"
-        }
+import org.jetbrains.gradle.ext.Gradle
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.7'
+    id 'eclipse'
+    id 'com.gtnewhorizons.retrofuturagradle' version '1.3.16'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+}
+
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
+
+// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
+        vendor.set(org.gradle.jvm.toolchain.JvmVendorSpec.AZUL)
     }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-    }
-}
-apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-
-apply plugin: 'scala'
-apply plugin: 'idea'
-
-ext.configFile = file "build.properties"
-configFile.withReader {
-	def prop = new Properties()
-	prop.load(it)
-	project.ext.config = new ConfigSlurper().parse prop
+    // Generate sources and javadocs jars when building and publishing
+    withSourcesJar()
+    // withJavadocJar()
 }
 
-version = config.mod_ver
-group = config.mod_group 
-archivesBaseName = config.mod_name
-if(System.getenv()['BRANCH']!=null && System.getenv()['BRANCH']!='master')
-{
-    archivesBaseName+=("-"+System.getenv()['BRANCH'])
-    ext.subver=System.getenv()['TRAVIS_COMMIT'][0..6]
-    version+=('-'+ext.subver)
-}
-ext.usr = "$System.env.USR"
-ext.pswd = "$System.env.PSWD"
-
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
 
-compileJava.options.encoding = "UTF-8"
-compileScala.options.encoding = "UTF-8"
+configurations {
+    embed
+    implementation.extendsFrom(embed)
+}
 
 minecraft {
-    version = "1.12.2-14.23.4.2705"
-    runDir = "run"
+    mcVersion = '1.12.2'
 
-    // the mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   snapshot are built nightly.
-    // stable_#            stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20180814"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    // MCP Mappings
+    mcpMappingChannel = 'snapshot'
+    mcpMappingVersion = '20180814'
 
-    // Replacing stuff in the source
-    // Currently stale, see mySourcesJava task
-	replace "@VERSION@", config.mod_ver
-    replace "@LAMBDA_LIB_VERSION@", config.lambdalib_ver
-    replace "@MC_VERSION@", config.mc_ver
+    // Set username here, the UUID will be looked up automatically
+    username = 'Developer'
 
+    // Add any additional tweaker classes here
+    // extraTweakClasses.add('org.spongepowered.asm.launch.MixinTweaker')
+
+    // Add various JVM arguments here for runtime
+    def args = ["-ea:${project.group}"]
+    if (project.use_coremod.toBoolean()) {
+        args << '-Dfml.coreMods.load=' + coremod_plugin_class_name
+    }
+    if (project.use_mixins.toBoolean()) {
+        args << '-Dmixin.hotSwap=true'
+        args << '-Dmixin.checks.interfaces=true'
+        args << '-Dmixin.debug.export=true'
+    }
+    extraRunJvmArguments.addAll(args)
+
+    // Include and use dependencies' Access Transformer files
+    useDependencyAccessTransformers = true
+
+    // Add any properties you want to swap out for a dynamic value at build time here
+    // Any properties here will be added to a class at build time, the name can be configured below
+    // Example:
+    // injectedTags.put('VERSION', project.version)
+    // injectedTags.put('MOD_ID', project.archives_base_name)
+}
+
+// Generate a group.archives_base_name.Tags class
+tasks.injectTags.configure {
+    // Change Tags class' name here:
+    outputClassName.set("${project.group}.${project.archives_base_name}.Tags")
 }
 
 repositories {
     mavenCentral()
-    mavenLocal()
     maven {
-        name = "chickenbones"
-        url = "http://chickenbones.net/maven"
+        name 'CleanroomMC Maven'
+        url 'https://maven.cleanroommc.com'
     }
     maven {
-        name = "private"
-        //url = "http://139.199.206.70:8081/nexus/content/groups/public"
-        url = "http://git.project-gearbox.net:9010/content/repositories/thirdparty"
+        name 'SpongePowered Maven'
+        url 'https://repo.spongepowered.org/maven'
     }
     maven {
-        name = "ic2"
-        url = "http://maven.ic2.player.to"
+        name 'CurseMaven'
+        url 'https://cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
     }
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
-        url = "http://dvs1.progwml6.com/files/maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "chickenbones"
+        url = "https://chickenbones.net/maven"
+    }
+    maven {
+        name = "ic2"
+        url = "https://maven.ic2.player.to"
+    }
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven"
     }
     maven {
         name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
+        url = "https://maven.covers1624.net"
     }
     maven {
         // The main host of CraftTweaker related libs
         name = "jared"
-        url = "http://maven.blamejared.com"
+        url = "https://maven.blamejared.com"
     }
+    mavenLocal()
 }
-
-configurations {
-    provided
-    shade
-    deobfCompile.extendsFrom shade
-}
-
-// sourceSets.main.compileClasspath += [configurations.provided]
-
-idea {
-    module{
-        scopes.PROVIDED.plus += [configurations.provided]
-    }
-}
-
 
 dependencies {
+    if (project.use_assetmover.toBoolean()) {
+        implementation 'com.cleanroommc:assetmover:2.5'
+    }
+    if (project.use_mixins.toBoolean()) {
+        implementation 'zone.rong:mixinbooter:7.1'
+    }
+
+    // Example of deobfuscating a dependency
+    // implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+
+    if (project.use_mixins.toBoolean()) {
+        // Change your mixin refmap name here:
+        String mixin = modUtils.enableMixins('org.spongepowered:mixin:0.8.3', "mixins.${project.archives_base_name}.refmap.json")
+        api (mixin) {
+            transitive = false
+        }
+        annotationProcessor 'org.ow2.asm:asm-debug-all:5.2'
+        annotationProcessor 'com.google.guava:guava:24.1.1-jre'
+        annotationProcessor 'com.google.code.gson:gson:2.8.6'
+        annotationProcessor (mixin) {
+            transitive = false
+        }
+    }
     // Shade dependencies
-    shade "cn.lambdalib2:LambdaLib2:${config.lambdalib_ver}"
+    compileOnly rfg.deobf(files('lib/LambdaLib2-0.2.0.jar'))
 
     // Optional dependencies
-    deobfCompile "codechicken:CodeChickenLib:1.12.2-${config.ccl_ver}:universal"
-    deobfCompile "mezz.jei:jei_1.12.2:4.8.0.119"
+    compileOnly rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")
+    compileOnly rfg.deobf("mezz.jei:jei_1.12.2:4.8.0.119")
     //deobfCompile "codechicken:NotEnoughItems:1.12.2-${config.nei_ver}:universal"
-    deobfCompile "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.9.6"
-    deobfCompile "CraftTweaker2:CraftTweaker2-API:4.1.9.6"
-    deobfCompile "CraftTweaker2:ZenScript:4.1.9.6"
-    deobfCompile "net.industrial-craft:industrialcraft-2:2.8.90-ex112"
-
-    // shade "org.apache.httpcomponents:httpclient:4.3.3"
-    // shade "org.apache.httpcomponents:httpcore:4.3.2" // dependency of httpclient
-    // shade "commons-logging:commons-logging:1.1.3" // dependency of httpclient
-    // shade "commons-codec:commons-codec:1.6" // dependency of commons-logging
+    compileOnly rfg.deobf("cofh:RedstoneFlux:1.12-2.0.0.1:universal")
+    implementation rfg.deobf('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.17.536')
+    compileOnly rfg.deobf("net.industrial-craft:industrialcraft-2:2.8.90-ex112")
 }
 
 //sourceSets.main.compileClasspath += [configurations.provided]
 
-sourceSets.main {
-    java.srcDirs = []
-    scala.srcDirs = ['src/main/scala', 'build/tempSourcesJava']
-}
-
-idea {
-    module{
-        scopes.PROVIDED.plus += [configurations.provided]
-        sourceDirs = [file('src/main/java'), file('src/main/scala')]
-    }
-}
-
 processResources {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+    // This will ensure that this task is redone when the versions change
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+    // Replace various properties in mcmod.info and pack.mcmeta if applicable
+    filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
+        // Replace version and mcversion
+        fcd.expand (
+                'version': project.version,
+                'mcversion': project.minecraft.version
+        )
     }
 
-    // copy everything else except the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
-
-compileJava.options.encoding = "UTF-8"
-compileScala.options.encoding = "UTF-8"
-
-task deobfJar(type: Jar, dependsOn: 'jar') {
-    classifier 'dev'
-    from sourceSets.main.output
-    manifest {
-        attributes 'FMLCorePluginContainsFMLMod' : 'true'
-        attributes 'FMLCorePlugin' : 'cn.lambdalib2.CorePlugin'
+    if (project.use_access_transformer.toBoolean()) {
+        rename '(.+_at.cfg)', 'META-INF/$1' // Make sure Access Transformer files are in META-INF folder
     }
 }
 
 jar {
-    configurations.shade.each { dep ->
-        from(project.zipTree(dep)){
-            exclude 'META-INF', 'META-INF/**'
-            exclude 'mcmod.info'
-            exclude 'pack.mcmeta'
-        }
-    }
     manifest {
-        attributes 'FMLCorePluginContainsFMLMod' : 'true'
-        attributes 'FMLCorePlugin' : 'cn.lambdalib2.CorePlugin'
+        def attribute_map = [:]
+        if (project.use_coremod.toBoolean()) {
+            attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
+            if (project.include_mod.toBoolean()) {
+                attribute_map['FMLCorePluginContainsFMLMod'] = true
+                attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == "build"
+            }
+        }
+        if (project.use_access_transformer.toBoolean()) {
+            attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
+        }
+        attributes(attribute_map)
     }
+    // Add all embedded dependencies into the jar
+    from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
 }
 
-// http://www.minecraftforge.net/forum/topic/36791-trying-to-shade-dependencies-into-jar/
-reobf {
-    jar {
-        // WARN: You can't shade apache httplib for several reasons
-        // 1. it introduces some transitive dependencies, including logging, which is no good
-        // 2. logging exploits a bug for srg (all .class calls' package names aren't transformed at all)
-
-        // extraLines "PK: org/apache/commons/codec cn/academy/shade/org/apache/commons/codec"
-        // extraLines "PK: org/apache/http cn/academy/shade/org/apache/http"
-        // extraLines "PK: org/apache/commons/logging cn/academy/shade/org/apache/commons/logging"
+idea {
+    module {
+        inheritOutputDirs = true
     }
-}
-
-import org.apache.tools.ant.filters.ReplaceTokens
-
-// see: https://stackoverflow.com/questions/30038540/replace-token-in-file-before-building-but-keep-token-in-sources
-// Currently scala compilation task doesn't respect minecraft.replace options. We have to manually replace the tokens by ourselves.
-// That also mean currently minecraft { replace ... } are all useless, but they are kept for future reference.
-task mySourcesJava(type: Copy) {
-    from 'src/main/java'
-    into 'build/tempSourcesJava'
-    filteringCharset = 'UTF-8'
-    filter(ReplaceTokens, tokens: [VERSION: config.mod_ver])
-    filter(ReplaceTokens, tokens: [LAMBDA_LIB_VERSION: "[" + config.lambdalib_ver + "]"])
-    filter(ReplaceTokens, tokens: [MC_VERSION: config.mc_ver])
-}
-
-compileScala.dependsOn mySourcesJava
-retromapReplacedMain.dependsOn compileScala
-extractRangemapReplacedMain.dependsOn compileScala
-
-artifacts {
-    archives deobfJar
-}
-
-uploadArchives {
-    repositories {
-        maven {
-            url "http://git.project-gearbox.net:9010/content/repositories/thirdparty"
-            credentials {
-                username usr
-                password pswd
+    project {
+        settings {
+            runConfigurations {
+                "1. Run Client"(Gradle) {
+                    taskNames = ["runClient"]
+                }
+                "2. Run Server"(Gradle) {
+                    taskNames = ["runServer"]
+                }
+                "3. Run Obfuscated Client"(Gradle) {
+                    taskNames = ["runObfClient"]
+                }
+                "4. Run Obfuscated Server"(Gradle) {
+                    taskNames = ["runObfServer"]
+                }
+            }
+            compiler.javac {
+                afterEvaluate {
+                    javacAdditionalOptions = "-encoding utf8"
+                    moduleJavacAdditionalOptions = [
+                            (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
+                    ]
+                }
             }
         }
     }
+}
+
+tasks.named("processIdeaSettings").configure {
+    dependsOn("injectTags")
 }
