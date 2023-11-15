@@ -93,24 +93,21 @@ repositories {
             includeGroup 'curse.maven'
         }
     }
-    maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
+
     maven {
         name = "chickenbones"
         url = "https://chickenbones.net/maven"
     }
+
+    /*
+
     maven {
         name = "ic2"
         url = "https://maven.ic2.player.to"
     }
-    maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven"
-    }
+
+     */
+
     maven {
         name = "CoFH Maven"
         url = "https://maven.covers1624.net"
@@ -120,6 +117,7 @@ repositories {
         name = "jared"
         url = "https://maven.blamejared.com"
     }
+
     mavenLocal()
 }
 
@@ -149,14 +147,15 @@ dependencies {
     }
     // Shade dependencies
     compileOnly rfg.deobf(files('lib/LambdaLib2-0.2.0.jar'))
+    compileOnly rfg.deobf(files('lib/industrialcraft-2-2.8.170-ex112.jar'))
 
     // Optional dependencies
     compileOnly rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")
-    compileOnly rfg.deobf("mezz.jei:jei_1.12.2:4.8.0.119")
+    implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
     //deobfCompile "codechicken:NotEnoughItems:1.12.2-${config.nei_ver}:universal"
-    compileOnly rfg.deobf("cofh:RedstoneFlux:1.12-2.0.0.1:universal")
+    //compileOnly rfg.deobf("cofh:RedstoneFlux:1.12-2.0.0.1:universal")
     implementation rfg.deobf('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.17.536')
-    compileOnly rfg.deobf("net.industrial-craft:industrialcraft-2:2.8.90-ex112")
+    //compileOnly rfg.deobf("net.industrial-craft:industrialcraft-2:2.8.90-ex112")
 }
 
 //sourceSets.main.compileClasspath += [configurations.provided]
