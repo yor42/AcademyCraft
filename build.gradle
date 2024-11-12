@@ -2,6 +2,7 @@ import org.jetbrains.gradle.ext.Gradle
 
 plugins {
     id 'java'
+    id 'scala'
     id 'java-library'
     id 'maven-publish'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.7'
@@ -14,16 +15,12 @@ version = project.mod_version
 group = project.maven_group
 archivesBaseName = project.archives_base_name
 
-// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
-        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
         vendor.set(org.gradle.jvm.toolchain.JvmVendorSpec.AZUL)
     }
-    // Generate sources and javadocs jars when building and publishing
     withSourcesJar()
-    // withJavadocJar()
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -68,6 +65,48 @@ minecraft {
     // Example:
     // injectedTags.put('VERSION', project.version)
     // injectedTags.put('MOD_ID', project.archives_base_name)
+}
+
+// Replace the two sourceSet configurations with this single one
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala']
+        }
+        java {
+            srcDirs = ['src/main/java']
+        }
+        output.classesDirs.from(files(
+                "$buildDir/classes/scala/main",
+                "$buildDir/classes/java/main"
+        ))
+    }
+}
+
+tasks.named('compileScala') {
+    scalaCompileOptions.additionalParameters = ["-feature", "-language:implicitConversions"]
+    scalaCompileOptions.force = true
+
+    configure(scalaCompileOptions.forkOptions) {
+        memoryMaximumSize = '4g'
+    }
+}
+
+// Make Java compilation explicitly depend on Scala compilation
+tasks.named('compileJava') {
+    dependsOn tasks.named('compileScala')
+    classpath = sourceSets.main.compileClasspath + files("$buildDir/classes/scala/main")
+}
+
+// Ensure proper task ordering
+tasks.named('classes') {
+    dependsOn tasks.named('compileJava')
+}
+
+gradle.taskGraph.whenReady { graph ->
+    tasks.named("compileJava").configure {
+        mustRunAfter tasks.named('compileScala')
+    }
 }
 
 // Generate a group.archives_base_name.Tags class
@@ -149,6 +188,9 @@ dependencies {
     compileOnly rfg.deobf(files('lib/LambdaLib2-0.2.0.jar'))
     compileOnly rfg.deobf(files('lib/industrialcraft-2-2.8.170-ex112.jar'))
 
+    implementation 'org.scala-lang:scala-library:2.12.18'  // Changed from Scala 3
+    implementation 'org.scala-lang:scala-compiler:2.12.18' // Changed from Scala 3
+
     // Optional dependencies
     compileOnly rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
@@ -157,8 +199,6 @@ dependencies {
     implementation rfg.deobf('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.17.536')
     //compileOnly rfg.deobf("net.industrial-craft:industrialcraft-2:2.8.90-ex112")
 }
-
-//sourceSets.main.compileClasspath += [configurations.provided]
 
 processResources {
     // This will ensure that this task is redone when the versions change
@@ -201,6 +241,8 @@ jar {
 idea {
     module {
         inheritOutputDirs = true
+        sourceDirs += file('src/main/scala')
+        testSourceDirs += file('src/test/scala')
     }
     project {
         settings {
