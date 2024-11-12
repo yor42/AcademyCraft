@@ -83,30 +83,15 @@ sourceSets {
     }
 }
 
-tasks.named('compileScala') {
-    scalaCompileOptions.additionalParameters = ["-feature", "-language:implicitConversions"]
-    scalaCompileOptions.force = true
-
-    configure(scalaCompileOptions.forkOptions) {
-        memoryMaximumSize = '4g'
-    }
-}
-
-// Make Java compilation explicitly depend on Scala compilation
 tasks.named('compileJava') {
-    dependsOn tasks.named('compileScala')
-    classpath = sourceSets.main.compileClasspath + files("$buildDir/classes/scala/main")
+    // Remove the circular dependency
+    classpath += files("$buildDir/classes/scala/main")
 }
 
 // Ensure proper task ordering
 tasks.named('classes') {
+    dependsOn tasks.named('compileScala')
     dependsOn tasks.named('compileJava')
-}
-
-gradle.taskGraph.whenReady { graph ->
-    tasks.named("compileJava").configure {
-        mustRunAfter tasks.named('compileScala')
-    }
 }
 
 // Generate a group.archives_base_name.Tags class
