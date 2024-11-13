@@ -40,10 +40,7 @@ object Railgun extends Skill("railgun", 4) {
 
   private var hitEntity = false;
 
-  private val acceptedItems: java.util.Set[Item] = {
-  import scala.collection.JavaConverters._
-  Set(Items.IRON_INGOT, Item.getItemFromBlock(Blocks.IRON_BLOCK)).asJava
-  }
+  private val acceptedItems: java.util.Set[Item] = Set(Items.IRON_INGOT, Item.getItemFromBlock(Blocks.IRON_BLOCK))
 
   def isAccepted(stack: ItemStack): Boolean = {
     stack != null && acceptedItems.contains(stack.getItem)

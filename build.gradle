@@ -156,7 +156,7 @@ dependencies {
         }
     }
     // Shade dependencies
-    implementation rfg.deobf(files('lib/LambdaLib2-0.2.0.jar'))
+    implementation rfg.deobf(files('lib/LambdaLib2-PluginLoader.jar'))
     compileOnly rfg.deobf(files('lib/industrialcraft-2-2.8.170-ex112.jar'))
 
     implementation 'org.scala-lang:scala-library:2.11.1'  // Changed from Scala 3

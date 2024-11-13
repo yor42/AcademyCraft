@@ -1,8 +1,8 @@
 package cn.academy.ability.vanilla.electromaster;
 
-import cn.academy.AcademyCraft;
 import cn.academy.ability.Category;
 import cn.academy.ability.Skill;
+import cn.academy.AcademyCraft;
 import cn.academy.ability.vanilla.VanillaCategories;
 import cn.academy.ability.vanilla.electromaster.skill.*;
 import cn.lambdalib2.registry.StateEventCallback;

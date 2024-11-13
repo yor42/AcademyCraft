@@ -4,6 +4,7 @@ import cn.academy.analytic.AnalyticDataListener;
 import cn.lambdalib2.crafting.CustomMappingHelper;
 import cn.lambdalib2.crafting.RecipeRegistry;
 import cn.lambdalib2.registry.RegistryMod;
+import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.util.Debug;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -67,7 +68,7 @@ public class AcademyCraft {
         }
     };
 
-    @EventHandler
+    @StateEventCallback(priority = 1)
     private static void preInit(FMLPreInitializationEvent event) {
         log.info("Starting AcademyCraft");
         log.info("Copyright (c) Lambda Innovation, 2013-2018");

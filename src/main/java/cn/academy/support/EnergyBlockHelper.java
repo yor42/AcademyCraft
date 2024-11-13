@@ -11,7 +11,7 @@ import java.util.List;
 public class EnergyBlockHelper {
 
 
-    private static final List<IEnergyBlockManager> handlers = new ArrayList<>();
+    private static List<IEnergyBlockManager> handlers = new ArrayList<>();
 
     public static void register(IEnergyBlockManager handler) {
         handlers.add(handler);
