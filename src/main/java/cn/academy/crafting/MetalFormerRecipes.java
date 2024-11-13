@@ -47,6 +47,18 @@ public enum MetalFormerRecipes {
         add.id = objects.size();
         objects.add(add);
     }
+
+    public void remove(RecipeObject recipe) {
+        objects.remove(recipe);
+    }
+
+    public void add(RecipeObject recipe) {
+        objects.add(recipe);
+    }
+
+    public void removebyInput(ItemStack stack) {
+        objects.removeIf((recipe)->recipe.input.getItem() == stack.getItem());
+    }
     
     public RecipeObject getRecipe(ItemStack input, Mode mode) {
         for(RecipeObject recipe : objects) {

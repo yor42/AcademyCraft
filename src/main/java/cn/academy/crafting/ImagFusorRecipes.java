@@ -19,11 +19,11 @@ public class ImagFusorRecipes {
     
     private List<IFRecipe> recipeList = new ArrayList<>();
     
-    public void addRecipe(ItemStack consume, int liquid, ItemStack output) {
-        addRecipe(new IFRecipe(consume, liquid, output));
+    public IFRecipe addRecipe(ItemStack consume, int liquid, ItemStack output) {
+        return addRecipe(new IFRecipe(consume, liquid, output));
     }
     
-    public void addRecipe(IFRecipe recipe) {
+    public IFRecipe addRecipe(IFRecipe recipe) {
         for(IFRecipe r : recipeList) {
             if(r.matches(recipe.consumeType)) {
                 throw new RuntimeException("Can't register multiple recipes for same item " + recipe.consumeType.getItem() + 
@@ -33,6 +33,11 @@ public class ImagFusorRecipes {
         
         recipeList.add(recipe);
         recipe.id = recipeList.size() - 1;
+        return recipe;
+    }
+
+    public void removeRecipe(IFRecipe recipe) {
+        recipeList.removeIf(r -> r.matches(recipe.consumeType));
     }
     
     public IFRecipe getRecipe(ItemStack input) {
