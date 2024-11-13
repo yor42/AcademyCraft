@@ -38,7 +38,7 @@ public abstract class BlockConverterBase extends ACBlockContainer {
         }
 
         @SideOnly(Side.CLIENT)
-        public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean idk) {
+        public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean idk) {
             list.add(I18n.format("ac.converter.desc_template", converter.from,
                     converter.to));
         }
@@ -62,7 +62,7 @@ public abstract class BlockConverterBase extends ACBlockContainer {
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
                                     EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity te = world.getTileEntity(pos);
-        if (te != null && tileType.isInstance(te)) {
+        if (tileType.isInstance(te)) {
             if (te instanceof IWirelessUser && !player.isSneaking()) {
                 if (world.isRemote) {
                     displayGui((IWirelessUser) te);

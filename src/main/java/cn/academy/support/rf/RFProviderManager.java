@@ -2,15 +2,12 @@ package cn.academy.support.rf;
 
 import cn.academy.support.EnergyBlockHelper.IEnergyBlockManager;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.energy.IEnergyStorage;
 
 /**
  * @author WeAthFolD
  */
 public class RFProviderManager implements IEnergyBlockManager {
-    
-    static final EnumFacing dir = EnumFacing.UP;
 
     @Override
     public boolean isSupported(TileEntity tile) {

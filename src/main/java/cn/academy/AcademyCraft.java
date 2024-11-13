@@ -78,7 +78,7 @@ public class AcademyCraft {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
-        OreDictionary.registerOre("plateIron", ACItems.reinforced_iron_plate);
+        ACOreDict.InitOredicts();
     }
 
     @EventHandler

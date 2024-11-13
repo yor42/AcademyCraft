@@ -106,7 +106,7 @@ repositories {
 
     maven {
         name = "chickenbones"
-        url = "https://chickenbones.net/maven"
+        url = "https://maven.covers1624.net"
     }
 
     /*
@@ -162,11 +162,14 @@ dependencies {
     implementation 'org.scala-lang:scala-library:2.11.1'  // Changed from Scala 3
     implementation 'org.scala-lang:scala-compiler:2.11.1' // Changed from Scala 3
 
+    implementation rfg.deobf("curse.maven:mekanism-ce-399904:5351260")
+    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022")
+
     // Optional dependencies
-    compileOnly rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")
+    implementation rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
     compileOnly rfg.deobf("curse.maven:groovyscript-687577:5789690")
-    implementation rfg.deobf('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.17.536')
+    compileOnly rfg.deobf('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.17.536')
     //compileOnly rfg.deobf("net.industrial-craft:industrialcraft-2:2.8.90-ex112")
 }
 

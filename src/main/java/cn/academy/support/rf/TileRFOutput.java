@@ -6,14 +6,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.common.Optional;
+
+import javax.annotation.Nullable;
 
 import static cn.academy.support.rf.RFSupport.if2rf;
 import static cn.academy.support.rf.RFSupport.rf2if;
 
 @RegTileEntity
-@Optional.Interface(modid = "redstoneflux", iface = "cofh.redstoneflux.api.IEnergyProvider")
 public class TileRFOutput extends TileReceiverBase implements IEnergyStorage
 {
 
@@ -39,6 +42,22 @@ public class TileRFOutput extends TileReceiverBase implements IEnergyStorage
                 }
             }
         }
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+        return capability == CapabilityEnergy.ENERGY;
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+
+        if(capability == CapabilityEnergy.ENERGY){
+            return (T) this;
+        }
+
+        return super.getCapability(capability, facing);
     }
 
     @Override

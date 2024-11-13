@@ -40,7 +40,7 @@ public enum MetalFormerRecipes {
         }
     }
     
-    List<RecipeObject> objects = new ArrayList<>();
+    final List<RecipeObject> objects = new ArrayList<>();
     
     public void add(ItemStack in, ItemStack out, Mode mode) {
         RecipeObject add = new RecipeObject(in, out, mode);

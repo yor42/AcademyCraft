@@ -49,7 +49,6 @@ public class RFSupport {
     }
 
     @StateEventCallback
-    @Optional.Method(modid = "redstoneflux")
     private static void init(FMLInitializationEvent event) {
         EnergyBlockHelper.register(new RFProviderManager());
         EnergyBlockHelper.register(new RFReceiverManager());
@@ -71,7 +70,6 @@ public class RFSupport {
     }
     
     @StateEventCallback
-    @Optional.Method(modid = "redstoneflux")
     private static void postInit(FMLPostInitializationEvent ev) {
         // Craft tutorial for energy bridge
         TutorialInit.defnTut("energy_bridge")
@@ -82,7 +80,6 @@ public class RFSupport {
     }
 
     @RegistryCallback
-    @Optional.Method(modid = "redstoneflux")
     private static void registerBlocks(RegistryEvent.Register<Block> event) {
 
         rfInput.setRegistryName("academy:ac_rf_input");
@@ -96,7 +93,6 @@ public class RFSupport {
     }
 
     @RegistryCallback
-    @Optional.Method(modid = "redstoneflux")
     private static void registerItems(RegistryEvent.Register<Item> event){
         item_rfInput.setRegistryName(rfInput.getRegistryName());
         item_rfInput.setTranslationKey(rfInput.getTranslationKey());

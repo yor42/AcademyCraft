@@ -51,6 +51,17 @@ public class MFIFRecipes {
         addDefaultOreDictRefineRecipe("Iridium");
         addDefaultOreDictRefineRecipe("Mithril");
 
+        addDefaultOreDictPlateRecipe("Copper");
+        addDefaultOreDictPlateRecipe("Tin");
+        addDefaultOreDictPlateRecipe("Silver");
+        addDefaultOreDictPlateRecipe("Lead");
+        addDefaultOreDictPlateRecipe("Aluminum");
+        addDefaultOreDictPlateRecipe("Nickel");
+        addDefaultOreDictPlateRecipe("Platinum");
+        addDefaultOreDictPlateRecipe("Iridium");
+        addDefaultOreDictPlateRecipe("Mithril");
+        addDefaultOreDictPlateRecipe("Uranium");
+
     }
 
     private static void addOreDictRefineRecipe(String orename,ItemStack output)
@@ -61,12 +72,22 @@ public class MFIFRecipes {
 
     private static void addOreDictRefineRecipe(String orename, String outputname)
     {
+        addOreDictRecipe(orename, outputname, Mode.REFINE);
+    }
+
+    private static void addOreDictPlateRecipe(String orename, String outputname)
+    {
+        addOreDictRecipe(orename, outputname, Mode.PLATE);
+    }
+
+    private static void addOreDictRecipe(String orename, String outputname, Mode mode)
+    {
         List<ItemStack> outputList = OreDictionary.getOres(outputname);
-        if (outputList == null || outputList.size() == 0)
+        if (outputList == null || outputList.isEmpty())
             return;
         ItemStack output = outputList.get(0).copy();
         List<ItemStack> oreList = OreDictionary.getOres(orename);
-        if (oreList == null || oreList.size() == 0)
+        if (oreList == null || oreList.isEmpty())
             return;
         ItemStack stack = FurnaceRecipes.instance().getSmeltingResult(oreList.get(0));
         if (stack.isEmpty())
@@ -76,12 +97,17 @@ public class MFIFRecipes {
         output.setCount(outputsize);
         for(ItemStack ore : oreList)
         {
-            MetalFormerRecipes.INSTANCE.add(ore, output, Mode.REFINE);
+            MetalFormerRecipes.INSTANCE.add(ore, output, mode);
         }
     }
 
     private static void addDefaultOreDictRefineRecipe(String orename)
     {
         addOreDictRefineRecipe("ore"+orename,"ingot"+orename);
+    }
+
+    private static void addDefaultOreDictPlateRecipe(String orename)
+    {
+        addOreDictPlateRecipe("ingot"+orename,"plate"+orename);
     }
 }
