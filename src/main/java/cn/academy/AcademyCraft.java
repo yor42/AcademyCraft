@@ -1,6 +1,5 @@
 package cn.academy;
 
-import cn.academy.analytic.AnalyticDataListener;
 import cn.lambdalib2.crafting.CustomMappingHelper;
 import cn.lambdalib2.crafting.RecipeRegistry;
 import cn.lambdalib2.registry.RegistryMod;
@@ -59,8 +58,6 @@ public class AcademyCraft {
 
     public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel("academy-network");
 
-    public static AnalyticDataListener analyticDataListener;
-
     public static CreativeTabs cct = new CreativeTabs("AcademyCraft") {
         @Override
         public ItemStack createIcon() {
@@ -76,10 +73,6 @@ public class AcademyCraft {
         recipes = new RecipeRegistry();
 
         config = new Configuration(event.getSuggestedConfigurationFile());
-        Boolean analyticFlag = config.getBoolean("analysis","generic",true,"switch for analytic system");
-        if(analyticFlag){
-            analyticDataListener = AnalyticDataListener.instance;
-        }
     }
 
     @EventHandler

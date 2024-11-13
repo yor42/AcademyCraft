@@ -18,6 +18,7 @@ This UNOFFICIAL fork aims to keep the mod build-able with RetroFuturaGradle whil
 ## Changes I have Made
 - Merged LambdaLib2 into the source
 - Migrated the outdated gradle into RetroFuturaGradle(RFG) to keep the mod compilable
+- Remove Analytics as Server no longer functions
 
 ## Roadmap
 - Migrate RF library to forge energy
@@ -62,7 +63,7 @@ credits for the translator will be given in the next version's release. Note tha
 Misc
 ====
 
-### Original Description
+## Donation
 
 You can support developement of AcademyCraft by donating. This will secure us more time to make the mod more intriguing! 
 
@@ -77,6 +78,8 @@ You would also be able to be in our donator list, both on website and in-game :b
 * Alipay: ![](https://raw.githubusercontent.com/LambdaInnovation/AcademyCraft/master/blob/qr.jpg)
 
 ## License
+
+### AcademyCraft
 
 All versions of AcademyCraft are licensed under [GPLv3](http://www.gnu.org/licenses/gpl.html).   
 
@@ -101,6 +104,22 @@ AcademyCraft 会在游戏中收集玩家对 mod 的使用 (升级，使用技能
 LambdaInnovation对于AcademyCraft的著作权、署名权、拥有权、版权等无视一切协议而保留，任何要求这些权利或其中一部分的条款均视为无效。  
 
 LambdaInnovation保留最终解释权，并保留否定一切协议撤销一切授权的权利。  
+
+### LambdaLib2
+
+LambdaLib2 is Licensed under MIT License.
+
+```chatinput
+The MIT License (MIT)
+
+Copyright (c) 2020 LambdaInnovation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
 
 ## Modpack permission
 
