@@ -2,12 +2,11 @@ package cn.academy.support.rf;
 
 import cn.academy.block.tileentity.TileReceiverBase;
 import cn.lambdalib2.registry.mc.RegTileEntity;
-import cofh.redstoneflux.api.IEnergyProvider;
-import cofh.redstoneflux.api.IEnergyReceiver;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.common.Optional;
 
 import static cn.academy.support.rf.RFSupport.if2rf;
@@ -15,7 +14,7 @@ import static cn.academy.support.rf.RFSupport.rf2if;
 
 @RegTileEntity
 @Optional.Interface(modid = "redstoneflux", iface = "cofh.redstoneflux.api.IEnergyProvider")
-public class TileRFOutput extends TileReceiverBase implements IEnergyProvider
+public class TileRFOutput extends TileReceiverBase implements IEnergyStorage
 {
 
     public TileRFOutput() {
@@ -30,13 +29,12 @@ public class TileRFOutput extends TileReceiverBase implements IEnergyProvider
             for(EnumFacing dir : EnumFacing.VALUES) {
                 BlockPos pos = this.pos.add(dir.getDirectionVec());
                 TileEntity te = world.getTileEntity(pos);
-                if(te instanceof IEnergyReceiver && energy > 0) {
-                    IEnergyReceiver receiver = (IEnergyReceiver) te;
-                    EnumFacing rev = dir.getOpposite();
-                    if(receiver.canConnectEnergy(rev)) {
-                        int req = receiver.getMaxEnergyStored(rev) - receiver.getEnergyStored(rev);
+                if(te instanceof IEnergyStorage && energy > 0) {
+                    IEnergyStorage receiver = (IEnergyStorage) te;
+                    if(receiver.canReceive()) {
+                        int req = receiver.getMaxEnergyStored() - receiver.getEnergyStored();
                         req = Math.min(if2rf(energy), req);
-                        energy -= rf2if(receiver.receiveEnergy(rev, req, false));
+                        energy -= rf2if(receiver.receiveEnergy(req, false));
                     }
                 }
             }
@@ -44,12 +42,22 @@ public class TileRFOutput extends TileReceiverBase implements IEnergyProvider
     }
 
     @Override
-    public boolean canConnectEnergy(EnumFacing from) {
+    public boolean canReceive() {
+        return false;
+    }
+
+    @Override
+    public int receiveEnergy(int maxReceive, boolean simulate) {
+        return 0;
+    }
+
+    @Override
+    public boolean canExtract() {
         return true;
     }
 
     @Override
-    public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
+    public int extractEnergy(int maxExtract, boolean simulate) {
         int e = (int) energy;
         if(!simulate) {
             energy -= rf2if(maxExtract);
@@ -59,12 +67,12 @@ public class TileRFOutput extends TileReceiverBase implements IEnergyProvider
     }
 
     @Override
-    public int getEnergyStored(EnumFacing from) {
+    public int getEnergyStored() {
         return if2rf(energy);
     }
 
     @Override
-    public int getMaxEnergyStored(EnumFacing from) {
+    public int getMaxEnergyStored() {
         return if2rf(2000);
     }
 

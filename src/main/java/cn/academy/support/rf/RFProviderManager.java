@@ -1,9 +1,10 @@
 package cn.academy.support.rf;
 
 import cn.academy.support.EnergyBlockHelper.IEnergyBlockManager;
-import cofh.redstoneflux.api.IEnergyProvider;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.energy.IEnergyStorage;
+
 /**
  * @author WeAthFolD
  */
@@ -16,14 +17,14 @@ public class RFProviderManager implements IEnergyBlockManager {
         return asProvider(tile) != null;
     }
     
-    private IEnergyProvider asProvider(TileEntity te) {
-        return te instanceof IEnergyProvider ? (IEnergyProvider) te : null;
+    private IEnergyStorage asProvider(TileEntity te) {
+        return te instanceof IEnergyStorage ? (IEnergyStorage) te : null;
     }
 
     @Override
     public double getEnergy(TileEntity tile) {
-        IEnergyProvider provider = asProvider(tile);
-        return provider.getEnergyStored(dir) * RFSupport.CONV_RATE;
+        IEnergyStorage provider = asProvider(tile);
+        return provider.getEnergyStored() * RFSupport.CONV_RATE;
     }
 
     @Override
@@ -39,8 +40,8 @@ public class RFProviderManager implements IEnergyBlockManager {
 
     @Override
     public double pull(TileEntity tile, double amt, boolean ignoreBandwidth) {
-        IEnergyProvider provider = asProvider(tile);
-        return provider == null ? 0 : RFSupport.CONV_RATE * provider.extractEnergy(dir, (int) (amt / RFSupport.CONV_RATE), false);
+        IEnergyStorage provider = asProvider(tile);
+        return provider == null ? 0 : RFSupport.CONV_RATE * provider.extractEnergy((int) (amt / RFSupport.CONV_RATE), false);
     }
 
 }

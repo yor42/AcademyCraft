@@ -1,9 +1,9 @@
 package cn.academy.support.rf;
 
 import cn.academy.support.EnergyBlockHelper.IEnergyBlockManager;
-import cofh.redstoneflux.api.IEnergyReceiver;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.energy.IEnergyStorage;
 
 /**
  * @author WeAthFolD
@@ -17,14 +17,14 @@ public class RFReceiverManager implements IEnergyBlockManager {
         return asReceiver(tile) != null;
     }
     
-    private IEnergyReceiver asReceiver(TileEntity tile) {
-        return tile instanceof IEnergyReceiver ? (IEnergyReceiver) tile : null;
+    private IEnergyStorage asReceiver(TileEntity tile) {
+        return tile instanceof IEnergyStorage ? (IEnergyStorage) tile : null;
     }
     
     @Override
     public double getEnergy(TileEntity tile) {
-        IEnergyReceiver rec = asReceiver(tile);
-        return rec == null ? 0 : rec.getEnergyStored(DEFAULT_DIR) * RFSupport.CONV_RATE;
+        IEnergyStorage rec = asReceiver(tile);
+        return rec == null ? 0 : rec.getEnergyStored() * RFSupport.CONV_RATE;
     }
 
     @Override
@@ -34,8 +34,8 @@ public class RFReceiverManager implements IEnergyBlockManager {
 
     @Override
     public double charge(TileEntity tile, double amt, boolean ignoreBandwidth) {
-        IEnergyReceiver rec = asReceiver(tile);
-        return rec == null ? amt : amt - rec.receiveEnergy(DEFAULT_DIR, (int) amt, false);
+        IEnergyStorage rec = asReceiver(tile);
+        return rec == null ? amt : amt - rec.receiveEnergy((int) amt, false);
     }
 
     @Override
