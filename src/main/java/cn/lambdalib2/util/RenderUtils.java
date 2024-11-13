@@ -8,7 +8,6 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import static org.lwjgl.opengl.GL11.glTexCoord2d;
@@ -58,46 +57,15 @@ public class RenderUtils {
         glTexCoord2d(u, v);
         glVertex3d(x, y, z);
     }
-    
-    public static void glVertex(Vec3d vertex) {
-        glVertex3d(vertex.x, vertex.y, vertex.z);
-    }
-    
+
     public static void glTranslate(Vec3d v) {
         GL11.glTranslated(v.x, v.y, v.z);
     }
-    
-    public static void glScale(Vec3d v) {
-        GL11.glScaled(v.x, v.y, v.z);
-    }
-    
-    public static void glRotate(double angle, Vec3d axis) {
-        GL11.glRotated(angle, axis.x, axis.y, axis.z);
-    }
-    
+
     public static void loadTexture(ResourceLocation src) {
         Minecraft.getMinecraft().renderEngine.bindTexture(src);
     }
 
-    public static void drawEquippedItem(ItemStack stackToRender, double width) {
-        Debug.TODO();
-//        IIcon icon = stackToRender.getIconIndex();
-//
-//        Minecraft mc = Minecraft.getMinecraft();
-//        mc.renderEngine.bindTexture(mc.renderEngine.getResourceLocation(stackToRender.getItemSpriteNumber()));
-//        ResourceLocation tex = mc.renderEngine.getResourceLocation(stackToRender.getItemSpriteNumber());
-//
-//        drawEquippedItem(width, tex, tex, icon.getMinU(), icon.getMinV(), icon.getMaxU(), icon.getMaxV(), false);
-    }
-    
-    public static void drawEquippedItem(double width, ResourceLocation texture) {
-        drawEquippedItem(width, texture, texture);
-    }
-    
-    public static void drawEquippedItemOverlay(double width, ResourceLocation texture) {
-        drawEquippedItem(width, texture, texture, 0, 0, 1, 1, true);
-    }
-    
     public static void drawEquippedItem(double width, ResourceLocation front, ResourceLocation back) {
         drawEquippedItem(width, front, back, 0, 0, 1, 1, false);
     }
@@ -186,8 +154,8 @@ public class RenderUtils {
     static final String _shadersClassName = "shadersmodcore.client.Shaders";
     static boolean smcSupportInit = false;
     static boolean smcPresent = false;
-    static Field fIsShadowPass, fisRenderingDfb, fIsRenderingSky;
-    
+    static Field fIsShadowPass;
+
     /**
      * Judge whether the current rendering context is in shadow pass.
      * @return If in vanilla Minecraft: always false; If ShaderMod is installed: as mentioned above.
