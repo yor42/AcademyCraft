@@ -2,7 +2,6 @@ package cn.lambdalib2.util;
 
 import java.lang.reflect.Field;
 
-import cn.lambdalib2.LambdaLib2;
 import cn.lambdalib2.render.legacy.Tessellator;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
@@ -177,117 +176,11 @@ public class RenderUtils {
         Tessellator t = Tessellator.instance;
         t.addVertexWithUV(vec.x, vec.y, vec.z, u, v);
     }
-    
-    public static void renderOverlayEquip(ResourceLocation src) {
-        Debug.TODO();
-//        //Setup
-//        GL11.glDepthFunc(GL11.GL_EQUAL);
-//        GL11.glDisable(GL11.GL_LIGHTING);
-//        loadTexture(src);
-//        GL11.glEnable(GL11.GL_BLEND);
-//        GL11.glBlendFunc(GL11.GL_SRC_COLOR, GL11.GL_ONE);
-//        float f7 = 0.76F;
-//        GL11.glMatrixMode(GL11.GL_TEXTURE);
-//        //Push texture mat
-//        GL11.glPushMatrix();
-//        float f8 = 0.125F;
-//        GL11.glScalef(f8, f8, f8);
-//        float f9 = GameTimer.getAbsTime() % 3000L / 3000.0F * 8.0F;
-//        GL11.glTranslatef(f9, 0.0F, 0.0F); //xOffset loops between 0.0 and 8.0
-//        GL11.glRotatef(-50.0F, 0.0F, 0.0F, 1.0F);
-//        ItemRenderer.renderItemIn2D(t, 0.0F, 0.0F, 1.0F, 1.0F, 256, 256, 0.0625F);
-//        GL11.glPopMatrix();
-//
-//        //Second pass
-//        GL11.glPushMatrix();
-//        GL11.glScalef(f8, f8, f8);
-//        f9 = GameTimer.getAbsTime() % 4873L / 4873.0F * 8.0F; //Loop between 0 and 8, longer loop
-//        GL11.glTranslatef(-f9, 0.0F, 0.0F); //Still xOffset
-//        GL11.glRotatef(10.0F, 0.0F, 0.0F, 1.0F); //However, different rotation!
-//        ItemRenderer.renderItemIn2D(t, 0.0F, 0.0F, 1.0F, 1.0F, 256, 256, 0.0625F);
-//        GL11.glPopMatrix();
-//        //Pop texture mat
-//        GL11.glMatrixMode(GL11.GL_MODELVIEW);
-//        GL11.glDisable(GL11.GL_BLEND);
-//        GL11.glEnable(GL11.GL_LIGHTING);
-//        GL11.glDepthFunc(GL11.GL_LEQUAL);
-    }
-    
-//    public static void renderEnchantGlintEquip() {
-//        GL11.glColor3f(0.301F, 0.78F, 1.0F);
-//        renderOverlayEquip(src_glint);
-//    }
-    
-    public static void renderOverlayInv(ResourceLocation src) {
-        Debug.TODO();
-//        GL11.glDepthFunc(GL11.GL_EQUAL);
-//        GL11.glDisable(GL11.GL_LIGHTING);
-//        loadTexture(src);
-//        GL11.glEnable(GL11.GL_BLEND);
-//        GL11.glBlendFunc(GL11.GL_SRC_COLOR, GL11.GL_ONE);
-//        float f7 = 0.76F;
-//        //GL11.glColor4f(0.5F * f7, 0.25F * f7, 0.8F * f7, 1.0F);
-//        GL11.glMatrixMode(GL11.GL_TEXTURE);
-//        GL11.glPushMatrix();
-//        float f8 = 0.125F;
-//        GL11.glScalef(f8, f8, f8);
-//        float f9 = GameTimer.getAbsTime() % 3000L / 3000.0F * 8.0F;
-//        GL11.glTranslatef(f9, 0.0F, 0.0F);
-//        GL11.glRotatef(-50.0F, 0.0F, 0.0F, 1.0F);
-//        t.startDrawingQuads();
-//        t.addVertexWithUV(0.0, 0.0, 0.0, 0.0, 0.0);
-//        t.addVertexWithUV(0.0, 16.0, 0.0, 0.0, 1.0);
-//        t.addVertexWithUV(16.0, 16.0, 0.0, 1.0, 1.0);
-//        t.addVertexWithUV(16.0, 0.0, 0.0, 1.0, 0.0);
-//        t.draw();
-//        GL11.glPopMatrix();
-//        GL11.glPushMatrix();
-//        GL11.glScalef(f8, f8, f8);
-//        f9 = GameTimer.getAbsTime() % 4873L / 4873.0F * 8.0F;
-//        GL11.glTranslatef(-f9, 0.0F, 0.0F);
-//        GL11.glRotatef(10.0F, 0.0F, 0.0F, 1.0F);
-//        t.startDrawingQuads();
-//        t.addVertexWithUV(0.0, 0.0, 0.0, 0.0, 0.0);
-//        t.addVertexWithUV(0.0, 16.0, 0.0, 0.0, 1.0);
-//        t.addVertexWithUV(16.0, 16.0, 0.0, 1.0, 1.0);
-//        t.addVertexWithUV(16.0, 0.0, 0.0, 1.0, 0.0);
-//        t.draw();
-//        GL11.glPopMatrix();
-//        GL11.glMatrixMode(GL11.GL_MODELVIEW);
-//        GL11.glDisable(GL11.GL_BLEND);
-//        GL11.glEnable(GL11.GL_LIGHTING);
-//        GL11.glDepthFunc(GL11.GL_LEQUAL);
-    }
 
     public static void addVertexLegacy(Vec3d vertex, double u, double v) {
         GL11.glTexCoord2d(u, v);
         GL11.glVertex3d(vertex.x, vertex.y, vertex.z);
     }
-    
-    /**
-     * 直接在物品栏渲染物品icon。确认你已经绑定好贴图。
-     * @param item
-     */
-    public static void renderItemInventory(ItemStack item) {
-        Debug.TODO();
-//        IIcon icon = item.getIconIndex();
-//        renderItemInventory(icon);
-    }
-
-    /**
-     * 直接在物品栏渲染物品icon。确认你已经绑定好贴图。
-     */
-//    public static void renderItemInventory(IIcon icon) {
-//        Debug.TODO();
-////        if(icon != null) {
-////            t.startDrawingQuads();
-////            t.addVertexWithUV(0.0, 0.0, 0.0, icon.getMinU(), icon.getMinV());
-////            t.addVertexWithUV(0.0, 16.0, 0.0, icon.getMinU(), icon.getMaxV());
-////            t.addVertexWithUV(16.0, 16.0, 0.0, icon.getMaxU(), icon.getMaxV());
-////            t.addVertexWithUV(16.0, 0.0, 0.0, icon.getMaxU(), icon.getMinV());
-////            t.draw();
-////        }
-//    }
 
     //--- SMC Support
     static final String _shadersClassName = "shadersmodcore.client.Shaders";
