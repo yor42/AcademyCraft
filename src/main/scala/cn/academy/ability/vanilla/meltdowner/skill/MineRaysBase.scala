@@ -199,7 +199,7 @@ abstract class MRContextC(par: MRContext) extends ClientContext(par) {
         ranged(-.06, .06), ranged(-.06, .06)))
       if (skill.asInstanceOf[MineRaysBase].particleTexture != null) p.texture = skill.asInstanceOf[MineRaysBase].particleTexture
       p.needRigidbody = false
-      val rb: Rigidbody = new Rigidbody
+      val rb: Rigidbody = new Rigidbody()
       rb.gravity = 0.01
       rb.entitySel = null
       rb.blockFil = null

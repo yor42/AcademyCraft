@@ -11,6 +11,9 @@ plugins {
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
+compileJava.options.encoding = "UTF-8"
+compileScala.options.encoding = "UTF-8"
+
 version = project.mod_version
 group = project.maven_group
 archivesBaseName = project.archives_base_name
@@ -71,33 +74,16 @@ minecraft {
 sourceSets {
     main {
         scala {
-            srcDirs = ['src/main/scala']
+            srcDirs = ['src/main/scala', 'src/main/java']
         }
         java {
-            srcDirs = ['src/main/java']
+            srcDirs = []
         }
         output.classesDirs.from(files(
                 "$buildDir/classes/scala/main",
                 "$buildDir/classes/java/main"
         ))
     }
-}
-
-tasks.named('compileJava') {
-    // Remove the circular dependency
-    classpath += files("$buildDir/classes/scala/main")
-}
-
-// Ensure proper task ordering
-tasks.named('classes') {
-    dependsOn tasks.named('compileScala')
-    dependsOn tasks.named('compileJava')
-}
-
-// Generate a group.archives_base_name.Tags class
-tasks.injectTags.configure {
-    // Change Tags class' name here:
-    outputClassName.set("${project.group}.${project.archives_base_name}.Tags")
 }
 
 repositories {
@@ -170,17 +156,17 @@ dependencies {
         }
     }
     // Shade dependencies
-    compileOnly rfg.deobf(files('lib/LambdaLib2-0.2.0.jar'))
+    implementation rfg.deobf(files('lib/LambdaLib2-0.2.0.jar'))
     compileOnly rfg.deobf(files('lib/industrialcraft-2-2.8.170-ex112.jar'))
 
-    implementation 'org.scala-lang:scala-library:2.12.18'  // Changed from Scala 3
-    implementation 'org.scala-lang:scala-compiler:2.12.18' // Changed from Scala 3
+    implementation 'org.scala-lang:scala-library:2.11.1'  // Changed from Scala 3
+    implementation 'org.scala-lang:scala-compiler:2.11.1' // Changed from Scala 3
 
     // Optional dependencies
     compileOnly rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
     //deobfCompile "codechicken:NotEnoughItems:1.12.2-${config.nei_ver}:universal"
-    //compileOnly rfg.deobf("cofh:RedstoneFlux:1.12-2.0.0.1:universal")
+    compileOnly rfg.deobf("cofh:RedstoneFlux:1.12-2.0.0.1:universal")
     implementation rfg.deobf('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.17.536')
     //compileOnly rfg.deobf("net.industrial-craft:industrialcraft-2:2.8.90-ex112")
 }
@@ -197,6 +183,18 @@ processResources {
                 'version': project.version,
                 'mcversion': project.minecraft.version
         )
+    }
+
+    inputs.property "version", project.version
+    inputs.property "lambdalib_ver", project.lambdalib_ver
+    inputs.property "mc_version", project.minecraft.version
+
+    filesMatching('**/*.java') {
+        filter(ReplaceTokens, tokens: [
+                'VERSION': project.version,
+                'LAMBDA_LIB_VERSION': "[${project.lambdalib_ver}]",
+                'MC_VERSION': project.minecraft.version
+        ])
     }
 
     if (project.use_access_transformer.toBoolean()) {
@@ -228,6 +226,7 @@ idea {
         inheritOutputDirs = true
         sourceDirs += file('src/main/scala')
         testSourceDirs += file('src/test/scala')
+        sourceDirs = [file('src/main/java'), file('src/main/scala')]
     }
     project {
         settings {

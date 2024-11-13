@@ -1,6 +1,5 @@
 package cn.academy.block.tileentity;
 
-import cn.academy.AcademyCraft;
 import cn.academy.ability.client.ui.DeveloperUI;
 import cn.academy.ability.develop.DeveloperType;
 import cn.academy.ability.develop.IDeveloper;

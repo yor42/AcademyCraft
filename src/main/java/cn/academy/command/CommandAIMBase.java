@@ -12,7 +12,6 @@ import cn.lambdalib2.registry.mc.RegCommand;
 import cn.lambdalib2.s11n.network.NetworkS11nType;
 import cn.lambdalib2.datapart.PlayerDataTag;
 import cn.lambdalib2.util.PlayerUtils;
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.PlayerNotFoundException;
 import net.minecraft.entity.player.EntityPlayer;

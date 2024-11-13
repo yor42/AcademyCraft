@@ -4,7 +4,11 @@ import cn.academy.block.tileentity.TileGeneratorBase;
 import cn.lambdalib2.registry.mc.RegTileEntity;
 import cofh.redstoneflux.api.IEnergyReceiver;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.common.Optional;
+
+import javax.annotation.Nullable;
 
 import static cn.academy.support.rf.RFSupport.if2rf;
 import static cn.academy.support.rf.RFSupport.rf2if;
@@ -44,5 +48,5 @@ public class TileRFInput extends TileGeneratorBase implements IEnergyReceiver
     public double getGeneration(double required) {
         return 0;
     }
-    
+
 }

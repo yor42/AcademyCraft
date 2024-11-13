@@ -1,14 +1,12 @@
 package cn.academy.ability.vanilla.teleporter.skill;
 
 import cn.academy.ACItems;
-import cn.academy.AcademyCraft;
 import cn.academy.ability.Skill;
 import cn.academy.ability.context.ClientContext;
 import cn.academy.ability.context.ClientRuntime;
 import cn.academy.ability.context.Context;
 import cn.academy.ability.context.RegClientContext;
 import cn.academy.ability.vanilla.teleporter.util.TPSkillHelper;
-import cn.academy.advancements.ACAdvancements;
 import cn.academy.client.render.misc.TPParticleFactory;
 import cn.academy.client.sound.ACSounds;
 import cn.academy.entity.EntityMarker;
