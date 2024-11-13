@@ -1,15 +1,36 @@
-![](https://raw.githubusercontent.com/LambdaInnovation/AcademyCraft/master/blob/logo.png)  
+# AcademyCraft: Unofficial Extended Support
 
-[![Build Status](https://travis-ci.org/LambdaInnovation/AcademyCraft.svg?branch=master)](https://travis-ci.org/LambdaInnovation/AcademyCraft)
+-------
+![](https://raw.githubusercontent.com/LambdaInnovation/AcademyCraft/master/blob/logo.png)
+
 
 A Minecraft mod about superability. The inspiration of AcademyCraft comes from [A Certain Scientific Railgun (とある科学の超電磁砲)](https://en.wikipedia.org/wiki/A_Certain_Scientific_Railgun) but the mod content is not limited of the background.
 
-Visit [AcademyCraft's Website](https://ac.li-dev.cn/) to get the latest release and know more about it.
+~~Visit [AcademyCraft's Website](https://ac.li-dev.cn/) to get the latest release and know more about it.~~(Website no longer works)
 
-Issue(Idea, Bug) Submission
+## Intention of the fork
+
+The update of Academycraft has been discontinued as [Author of the project, weathfold, has sadly passed away in summer of 2021.](https://www.curseforge.com/minecraft/mc-mods/academycraft/comments)
+
+
+This UNOFFICIAL fork aims to keep the mod build-able with RetroFuturaGradle while try and fixing remaining incompatibilities and bugs.
+
+## Changes I have Made
+- Merged LambdaLib2 into the source
+- Migrated the outdated gradle into RetroFuturaGradle(RFG) to keep the mod compilable
+
+## Roadmap
+- Migrate RF library to forge energy
+- Port mod to Scala 3
+- Fix mod compatibility
+- Add proper capabilities
+
+Issue(Bug) Submission
 ============
 
 Please go to [Issues](https://github.com/LambdaInnovation/AcademyCraft/issues) and submit a new ticket.
+
+Due to the nature of this port, New feature will not be implemented. not because I don't want to, but because I am not skilled enough.
 
 Developement
 ===========
@@ -41,7 +62,7 @@ credits for the translator will be given in the next version's release. Note tha
 Misc
 ====
 
-## Donation
+### Original Description
 
 You can support developement of AcademyCraft by donating. This will secure us more time to make the mod more intriguing! 
 
