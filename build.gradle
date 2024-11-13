@@ -165,7 +165,7 @@ dependencies {
     // Optional dependencies
     compileOnly rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
-    implementation rfg.deobf("curse.maven:groovyscript-687577:5789690")
+    compileOnly rfg.deobf("curse.maven:groovyscript-687577:5789690")
     implementation rfg.deobf('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.17.536')
     //compileOnly rfg.deobf("net.industrial-craft:industrialcraft-2:2.8.90-ex112")
 }
