@@ -16,6 +16,9 @@ import cn.lambdalib2.s11n.network.NetworkMessage;
 import cn.lambdalib2.s11n.network.TargetPoints;
 import cn.lambdalib2.util.StackUtils;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
@@ -25,6 +28,10 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.*;
+import net.minecraftforge.items.IItemHandler;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author WeAthFolD
@@ -74,7 +81,23 @@ public class TileImagFusor extends TileReceiverBase implements IFluidHandler, IS
         }
         return tank.fill(resource, doFill);
     }
-    
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+        return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+
+        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY){
+            return (T) this;
+        }
+
+        return super.getCapability(capability, facing);
+    }
+
     public int getTankSize() {
         return tank.getCapacity();
     }

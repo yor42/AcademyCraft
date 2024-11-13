@@ -31,11 +31,6 @@ public class TileGTEUOutput extends TileReceiverBase implements IEnergyContainer
         super("ac_gteu_input", 0, 2000, 100);
     }
 
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability == GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER;
-    }
-
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {

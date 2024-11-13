@@ -44,11 +44,6 @@ public class TileRFOutput extends TileReceiverBase implements IEnergyStorage
         }
     }
 
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability == CapabilityEnergy.ENERGY;
-    }
-
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {

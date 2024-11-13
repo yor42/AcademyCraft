@@ -8,6 +8,9 @@ import cn.academy.energy.IFConstants;
 import cn.lambdalib2.registry.mc.RegTileEntity;
 import cn.lambdalib2.s11n.network.NetworkMessage;
 import cn.lambdalib2.s11n.network.TargetPoints;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
@@ -15,6 +18,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.*;
 import net.minecraftforge.fml.relauncher.Side;
+
+import javax.annotation.Nullable;
 
 /**
  * @author WeAthFolD
@@ -40,6 +45,21 @@ public class TilePhaseGen extends TileGeneratorBase implements IFluidHandler {
 
     public TilePhaseGen() {
         super("phase_gen", 3, 6000, IFConstants.LATENCY_MK1);
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+        return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+
+        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY){
+            return (T) this;
+        }
+        return super.getCapability(capability, facing);
     }
 
     @Override

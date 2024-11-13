@@ -19,12 +19,13 @@ This UNOFFICIAL fork aims to keep the mod build-able with RetroFuturaGradle whil
 - Merged LambdaLib2 into the source
 - Migrated the outdated gradle into RetroFuturaGradle(RFG) to keep the mod compilable
 - Remove Analytics as Server no longer functions
+- Added Groovyscript support
+- Migrated RF library to forge energy
+- Add proper capabilities
 
 ## Roadmap
-- Migrate RF library to forge energy
 - Port mod to Scala 3
 - Fix mod compatibility
-- Add proper capabilities
 
 Issue(Bug) Submission
 ============

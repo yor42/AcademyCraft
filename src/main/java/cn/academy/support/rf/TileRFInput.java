@@ -21,11 +21,6 @@ public class TileRFInput extends TileGeneratorBase implements IEnergyStorage
         super("ac_rf_input", 0, 2000, 100);
     }
 
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability == CapabilityEnergy.ENERGY;
-    }
-
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {

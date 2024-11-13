@@ -3,7 +3,6 @@ package cn.academy.block.tileentity;
 import cn.academy.ACBlocks;
 import cn.academy.ACItems;
 import cn.academy.block.WindGeneratorConsts;
-import cn.academy.client.render.block.RenderWindGenMain;
 import cn.lambdalib2.multiblock.BlockMulti;
 import cn.lambdalib2.multiblock.BlockMulti.SubBlockPos;
 import cn.lambdalib2.multiblock.IMultiTile;
@@ -13,7 +12,6 @@ import cn.lambdalib2.s11n.network.TargetPoints;
 import cn.lambdalib2.s11n.network.NetworkMessage;
 import cn.lambdalib2.s11n.network.NetworkMessage.Listener;
 import cn.lambdalib2.s11n.network.NetworkMessage.NullablePar;
-import net.minecraft.init.Items;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -37,7 +35,7 @@ public class TileWindGenMain extends TileInventory implements IMultiTile, ITicka
     
     static List<SubBlockPos>[] checkAreas = new ArrayList[6];
     static {
-        List<SubBlockPos> checkArea = new ArrayList();
+        List<SubBlockPos> checkArea = new ArrayList<>();
         for(int i = -7; i <= 7; ++i) {
             for(int j = -7; j <= 7; ++j) {
                 if(i != 0 || j != 0)
@@ -46,7 +44,7 @@ public class TileWindGenMain extends TileInventory implements IMultiTile, ITicka
         }
         
         for(int i = 2; i < 6; ++i) {
-            List list = (checkAreas[i] = new ArrayList());
+            List<SubBlockPos> list = (checkAreas[i] = new ArrayList<>());
             for(SubBlockPos pos : checkArea) {
                 list.add(BlockMulti.rotate(pos, EnumFacing.values()[i]));
             }
@@ -150,16 +148,14 @@ public class TileWindGenMain extends TileInventory implements IMultiTile, ITicka
         
         for(; state < 2; --y) {
             Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
-            if(state == 1) {
-                if(block == ACBlocks.windgen_pillar) {
-                    ++pillars;
-                    if(pillars > WindGeneratorConsts.MAX_PILLARS)
-                        break;
-                } else if(block == ACBlocks.windgen_base){
-                    state = 2;
-                } else {
-                    state = 3;
-                }
+            if (block == ACBlocks.windgen_pillar) {
+                ++pillars;
+                if (pillars > WindGeneratorConsts.MAX_PILLARS)
+                    break;
+            } else if (block == ACBlocks.windgen_base) {
+                state = 2;
+            } else {
+                state = 3;
             }
         }
         return state == 2 && pillars >= WindGeneratorConsts.MIN_PILLARS;
