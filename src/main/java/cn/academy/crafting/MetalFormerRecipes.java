@@ -9,8 +9,10 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author WeAthFolD
@@ -25,7 +27,7 @@ public enum MetalFormerRecipes {
         public final ItemStack input;
         public final ItemStack output;
         
-        private RecipeObject(ItemStack _input, ItemStack _output, Mode _mode) {
+        public RecipeObject(ItemStack _input, ItemStack _output, Mode _mode) {
             input = _input;
             output = _output;
             mode = _mode;
@@ -53,11 +55,19 @@ public enum MetalFormerRecipes {
     }
 
     public void add(RecipeObject recipe) {
+        recipe.id = objects.size();
         objects.add(recipe);
     }
 
-    public void removebyInput(ItemStack stack) {
-        objects.removeIf((recipe)->recipe.input.getItem() == stack.getItem());
+    @Nullable
+    public RecipeObject removebyInput(ItemStack stack, Mode mode) {
+        for(RecipeObject recipe: objects){
+            if(recipe.accepts(stack, mode)){
+                objects.remove(recipe);
+                return recipe;
+            }
+        }
+        return null;
     }
     
     public RecipeObject getRecipe(ItemStack input, Mode mode) {

@@ -25,11 +25,11 @@ public class ImagFusor extends VirtualizedRegistry<ImagFusorRecipes.IFRecipe> {
 
     public void addRecipe(ImagFusorRecipes.IFRecipe recipe){
         ImagFusorRecipes.INSTANCE.addRecipe(recipe);
+        this.addScripted(recipe);
     }
 
     public void removeRecipe(ImagFusorRecipes.IFRecipe recipe){
         ImagFusorRecipes.INSTANCE.removeRecipe(recipe);
+        this.addBackup(recipe);
     }
-
-
 }
