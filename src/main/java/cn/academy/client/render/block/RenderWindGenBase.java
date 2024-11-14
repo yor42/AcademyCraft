@@ -13,11 +13,11 @@ public class RenderWindGenBase extends RenderBlockMulti<TileWindGenBase> {
     @RegTileEntityRender(TileWindGenBase.class)
     public static RenderWindGenBase renderer = new RenderWindGenBase();
 
-    private ObjLegacyRender mdl = Resources.getModel("windgen_base");
+    private final ObjLegacyRender mdl = Resources.getModel("windgen_base");
 
-    private ResourceLocation
-        TEX_NORMAL = Resources.getTexture("models/windgen_base"),
-        TEX_DISABLED = Resources.getTexture("models/windgen_base_disabled");
+    private final ResourceLocation
+        TEX_NORMAL = Resources.getTexture("models/windgen_base");
+    private final ResourceLocation TEX_DISABLED = Resources.getTexture("models/windgen_base_disabled");
 
     @Override
     public void drawAtOrigin(TileWindGenBase te) {

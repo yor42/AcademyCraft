@@ -30,15 +30,15 @@ import java.lang.reflect.Method;
 public class RenderImagPhaseLiquid extends TileEntitySpecialRenderer {
 
     @RegTileEntityRender(TileImagPhase.class)
-    private static RenderImagPhaseLiquid instance = new RenderImagPhaseLiquid();
+    private static final RenderImagPhaseLiquid instance = new RenderImagPhaseLiquid();
 
-    private ResourceLocation[] layers;
+    private final ResourceLocation[] layers;
 
-    private Tessellator t;
+    private final Tessellator t;
 
-    private BlockFluidRenderer _fluidRender = new BlockFluidRenderer(new BlockColors());
+    private final BlockFluidRenderer _fluidRender = new BlockFluidRenderer(new BlockColors());
 
-    private Method _mGetFluidHeight;
+    private final Method _mGetFluidHeight;
     
     public RenderImagPhaseLiquid() {
         t = Tessellator.instance;

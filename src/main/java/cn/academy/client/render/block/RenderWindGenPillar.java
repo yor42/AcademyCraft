@@ -14,9 +14,9 @@ public class RenderWindGenPillar extends TileEntitySpecialRenderer<TileWindGenPi
     @RegTileEntityRender(TileWindGenPillar.class)
     public static final RenderWindGenPillar instance = new RenderWindGenPillar();
 
-    private ObjLegacyRender mdl = Resources.getModel("windgen_pillar");
+    private final ObjLegacyRender mdl = Resources.getModel("windgen_pillar");
 
-    private ResourceLocation texture = Resources.getTexture("models/windgen_pillar");
+    private final ResourceLocation texture = Resources.getTexture("models/windgen_pillar");
 
     @Override
     public void render(TileWindGenPillar te, double x, double y, double z, float partialTicks,

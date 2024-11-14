@@ -14,8 +14,8 @@ public class RenderDeveloperAdvanced extends RenderBlockMulti<TileDeveloper> {
     @RegTileEntityRender(TileDeveloper.Advanced.class)
     public static final RenderDeveloperAdvanced instance = new RenderDeveloperAdvanced();
 
-    private ResourceLocation texture = Resources.getTexture("models/developer_advanced");
-    private ObjLegacyRender mdl = Resources.getModel("developer_advanced");
+    private final ResourceLocation texture = Resources.getTexture("models/developer_advanced");
+    private final ObjLegacyRender mdl = Resources.getModel("developer_advanced");
 
     @Override
     public void drawAtOrigin(TileDeveloper te) {

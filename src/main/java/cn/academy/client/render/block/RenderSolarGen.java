@@ -17,15 +17,14 @@ public class RenderSolarGen extends RenderBlockMulti<TileSolarGen> {
     @RegTileEntityRender(TileSolarGen.class)
     public static RenderSolarGen instance = new RenderSolarGen();
 
-    private final float SCALE = 0.014f;
+    private final ObjLegacyRender _mdl = Resources.getModel("solar");
 
-    private ObjLegacyRender _mdl = Resources.getModel("solar");
-
-    private ResourceLocation _texture = Resources.getTexture("models/solar");
+    private final ResourceLocation _texture = Resources.getTexture("models/solar");
 
     @Override
     public void drawAtOrigin(TileSolarGen te) {
         GL11.glRotated(90, 0, 1, 0);
+        float SCALE = 0.014f;
         GL11.glScaled(SCALE, SCALE, SCALE);
         RenderUtils.loadTexture(_texture);
         _mdl.renderAll();

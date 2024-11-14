@@ -17,8 +17,8 @@ public class RenderDeveloperNormal extends RenderBlockMulti<TileDeveloper> {
     @RegTileEntityRender(TileDeveloper.Normal.class)
     public static final RenderDeveloperNormal instance = new RenderDeveloperNormal();
 
-    private ResourceLocation texture = Resources.getTexture("models/developer_normal");
-    private ObjLegacyRender mdl = Resources.getModel("developer_normal");
+    private final ResourceLocation texture = Resources.getTexture("models/developer_normal");
+    private final ObjLegacyRender mdl = Resources.getModel("developer_normal");
 
     @Override
     public void drawAtOrigin(TileDeveloper te) {

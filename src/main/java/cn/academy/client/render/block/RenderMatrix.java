@@ -20,8 +20,8 @@ public class RenderMatrix extends RenderBlockMulti {
     @RegTileEntityRender(TileMatrix.class)
     public static final RenderMatrix instance = new RenderMatrix();
 
-    ObjLegacyRender model;
-    ResourceLocation texture;
+    private final ObjLegacyRender model;
+    private final ResourceLocation texture;
     
     public RenderMatrix() {
         model = Resources.getModel("matrix");

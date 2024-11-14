@@ -18,8 +18,8 @@ public class RenderPhaseGen extends TileEntitySpecialRenderer<TilePhaseGen> {
     @RegTileEntityRender(TilePhaseGen.class)
     public static final RenderPhaseGen instance = new RenderPhaseGen();
     
-    ObjLegacyRender model;
-    ResourceLocation[] textures;
+    private final ObjLegacyRender model;
+    private final ResourceLocation[] textures;
     
     public RenderPhaseGen() {
         model = Resources.getModel("ip_gen");

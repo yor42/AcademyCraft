@@ -16,7 +16,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderWindGenMain extends RenderBlockMulti {
     @RegTileEntityRender(TileWindGenMain.class)
-    private static RenderWindGenMain instance = new RenderWindGenMain();
+    private static final RenderWindGenMain instance = new RenderWindGenMain();
 
     ObjLegacyRender
         mdlBody = Resources.getModel("windgen_main"),
