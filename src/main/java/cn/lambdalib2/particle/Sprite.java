@@ -1,17 +1,16 @@
 package cn.lambdalib2.particle;
 
-import static org.lwjgl.opengl.GL11.*;
-
 import cn.lambdalib2.render.legacy.ShaderSimple;
 import cn.lambdalib2.render.legacy.Tessellator;
 import cn.lambdalib2.util.Colors;
 import cn.lambdalib2.util.RenderUtils;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL20;
-
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.util.Color;
+
+import static org.lwjgl.opengl.GL11.*;
 
 /**
  * Represents a drawable sprite in origin. Always face (0, 0, -1).

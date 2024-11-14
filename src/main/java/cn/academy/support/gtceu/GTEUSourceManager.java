@@ -3,7 +3,6 @@ package cn.academy.support.gtceu;
 import cn.academy.support.EnergyBlockHelper.IEnergyBlockManager;
 import cn.academy.support.ic2.IC2Support;
 import gregtech.api.capability.IEnergyContainer;
-import ic2.api.energy.tile.IEnergySource;
 import net.minecraft.tileentity.TileEntity;
 
 /**

@@ -1,6 +1,5 @@
 package cn.academy.support.groovyscript;
 
-import cn.academy.AcademyCraft;
 import cn.academy.support.groovyscript.modules.ImagFusor;
 import cn.academy.support.groovyscript.modules.MetalFormer;
 import com.cleanroommc.groovyscript.api.GroovyPlugin;

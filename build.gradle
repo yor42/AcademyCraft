@@ -155,15 +155,13 @@ dependencies {
             transitive = false
         }
     }
-    // Shade dependencies
-    implementation rfg.deobf(files('lib/LambdaLib2-PluginLoader.jar'))
-    compileOnly rfg.deobf(files('lib/industrialcraft-2-2.8.170-ex112.jar'))
+    compileOnly rfg.deobf("curse.maven:industrial-craft-242638:2746892")
 
     implementation 'org.scala-lang:scala-library:2.11.1'  // Changed from Scala 3
     implementation 'org.scala-lang:scala-compiler:2.11.1' // Changed from Scala 3
 
     implementation rfg.deobf("curse.maven:mekanism-ce-399904:5351260")
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022")
+    compileOnly rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022")
 
     // Optional dependencies
     implementation rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")

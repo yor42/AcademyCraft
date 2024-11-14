@@ -1,11 +1,5 @@
 package cn.lambdalib2.crafting;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import cn.lambdalib2.LambdaLib2;
 import cn.lambdalib2.util.Debug;
 import cn.lambdalib2.util.ResourceUtils;
 import net.minecraft.block.Block;
@@ -18,8 +12,12 @@ import net.minecraftforge.fml.common.InjectedModContainer;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.oredict.OreDictionary;
-
 import org.apache.commons.io.IOUtils;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author EAirPeter, WeAthFolD

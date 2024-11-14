@@ -6,14 +6,12 @@
  */
 package cn.lambdalib2.util;
 
-import cn.lambdalib2.s11n.network.NetworkMessage;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializer;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraftforge.fml.relauncher.Side;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

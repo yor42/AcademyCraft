@@ -1,12 +1,11 @@
 package cn.academy.ability.context;
 
+import cn.academy.Main;
 import cn.academy.ability.AbilityContext;
 import cn.academy.ability.Skill;
-import cn.academy.AcademyCraft;
 import cn.lambdalib2.s11n.network.NetworkMessage;
 import cn.lambdalib2.s11n.network.NetworkMessage.IMessageDelegate;
 import cn.lambdalib2.util.Debug;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
@@ -156,7 +155,7 @@ public class Context<TSkill extends Skill> implements IMessageDelegate {
     }
 
     private void messageDebug(String s) {
-        if (AcademyCraft.DEBUG_MODE && DEBUG_MSG) {
+        if (Main.DEBUG_MODE && DEBUG_MSG) {
             Debug.log("[Context]" + (isRemote() ? "[C] " : "[S] " ) +getClass().getSimpleName() + ": " + s);
         }
     }
@@ -175,7 +174,7 @@ public class Context<TSkill extends Skill> implements IMessageDelegate {
     }
 
     protected void debug(Object message) {
-        AcademyCraft.log.info("[CTX]" + message);
+        Main.log.info("[CTX]" + message);
     }
     //
 

@@ -1,25 +1,23 @@
 package cn.lambdalib2.cgui.component;
 
-import cn.lambdalib2.cgui.annotation.CGuiEditorComponent;
-import cn.lambdalib2.util.ClientUtils;
-import net.minecraft.client.resources.I18n;
-
 import cn.lambdalib2.cgui.Widget;
-import cn.lambdalib2.s11n.SerializeIncluded;
-import cn.lambdalib2.util.GameTimer;
-import cn.lambdalib2.render.font.Fonts;
-import cn.lambdalib2.render.font.IFont;
-import cn.lambdalib2.render.font.IFont.FontOption;
+import cn.lambdalib2.cgui.annotation.CGuiEditorComponent;
 import cn.lambdalib2.cgui.component.Transform.HeightAlign;
-import org.apache.commons.lang3.StringUtils;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
 import cn.lambdalib2.cgui.event.FrameEvent;
 import cn.lambdalib2.cgui.event.GuiEvent;
 import cn.lambdalib2.cgui.event.KeyEvent;
 import cn.lambdalib2.cgui.event.LeftClickEvent;
+import cn.lambdalib2.render.font.Fonts;
+import cn.lambdalib2.render.font.IFont;
+import cn.lambdalib2.render.font.IFont.FontOption;
+import cn.lambdalib2.s11n.SerializeIncluded;
+import cn.lambdalib2.util.ClientUtils;
+import cn.lambdalib2.util.GameTimer;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ChatAllowedCharacters;
+import org.apache.commons.lang3.StringUtils;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 
 /**

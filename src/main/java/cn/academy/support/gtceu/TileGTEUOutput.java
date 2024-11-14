@@ -1,6 +1,5 @@
 package cn.academy.support.gtceu;
 
-import cn.academy.block.tileentity.TileGeneratorBase;
 import cn.academy.block.tileentity.TileReceiverBase;
 import cn.lambdalib2.registry.mc.RegTileEntity;
 import gregtech.api.GTValues;
@@ -16,10 +15,7 @@ import net.minecraftforge.fml.common.Optional;
 
 import javax.annotation.Nullable;
 
-import static cn.academy.support.gtceu.GTEUSupport.GTCEU_IFACE;
-import static cn.academy.support.gtceu.GTEUSupport.GTCEU_MODID;
-import static cn.academy.support.gtceu.GTEUSupport.eu2if;
-import static cn.academy.support.gtceu.GTEUSupport.if2eu;
+import static cn.academy.support.gtceu.GTEUSupport.*;
 @RegTileEntity
 @Optional.Interface(modid = GTCEU_MODID, iface = GTCEU_IFACE)
 public class TileGTEUOutput extends TileReceiverBase implements IEnergyContainer {

@@ -1,9 +1,5 @@
 package cn.lambdalib2.particle;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import cn.lambdalib2.registry.mc.RegEventHandler;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -11,6 +7,10 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author WeAthFolD

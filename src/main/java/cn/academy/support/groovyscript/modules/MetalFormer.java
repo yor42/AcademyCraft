@@ -1,7 +1,6 @@
 package cn.academy.support.groovyscript.modules;
 
 import cn.academy.block.tileentity.TileMetalFormer;
-import cn.academy.crafting.ImagFusorRecipes;
 import cn.academy.crafting.MetalFormerRecipes;
 import com.cleanroommc.groovyscript.api.IIngredient;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;

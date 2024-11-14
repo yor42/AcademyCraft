@@ -1,6 +1,6 @@
 package cn.academy.energy.impl;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.energy.api.block.IWirelessGenerator;
 import cn.academy.energy.api.block.IWirelessNode;
 import cn.academy.energy.api.block.IWirelessReceiver;
@@ -189,7 +189,7 @@ public class NodeConn {
                             double amt = igen.getProvidedEnergy(required);
 
                             if(amt > required) {
-                                AcademyCraft.log.warn("Energy input overflow for generator " + igen);
+                                Main.log.warn("Energy input overflow for generator " + igen);
                                 amt = required;
                             }
 
@@ -258,8 +258,8 @@ public class NodeConn {
     }
     
     private void log(String str) {
-        if(AcademyCraft.DEBUG_MODE)
-            AcademyCraft.log.info("[NodeConn] " + str);
+        if(Main.DEBUG_MODE)
+            Main.log.info("[NodeConn] " + str);
     }
     
 }

@@ -1,6 +1,5 @@
 package cn.academy.entity;
 
-import cn.academy.client.render.util.ACRenderingHelper;
 import cn.academy.Resources;
 import cn.lambdalib2.registry.mc.RegEntity;
 import cn.lambdalib2.registry.mc.RegEntityRender;

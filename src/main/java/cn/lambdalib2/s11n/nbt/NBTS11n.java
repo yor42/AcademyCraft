@@ -1,6 +1,5 @@
 package cn.lambdalib2.s11n.nbt;
 
-import cn.lambdalib2.LambdaLib2;
 import cn.lambdalib2.s11n.SerializationHelper;
 import cn.lambdalib2.s11n.SerializeDynamic;
 import cn.lambdalib2.util.Debug;

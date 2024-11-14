@@ -1,7 +1,7 @@
 package cn.academy.client.gui;
 
-import cn.academy.client.auxgui.ACHud;
 import cn.academy.Resources;
+import cn.academy.client.auxgui.ACHud;
 import cn.academy.event.TutorialActivatedEvent;
 import cn.lambdalib2.cgui.Widget;
 import cn.lambdalib2.cgui.event.FrameEvent;

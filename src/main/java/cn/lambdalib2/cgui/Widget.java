@@ -6,8 +6,6 @@
 */
 package cn.lambdalib2.cgui;
 
-import java.util.*;
-
 import cn.lambdalib2.cgui.component.Component;
 import cn.lambdalib2.cgui.component.Transform;
 import cn.lambdalib2.cgui.component.Transform.HeightAlign;
@@ -15,6 +13,10 @@ import cn.lambdalib2.cgui.component.Transform.WidthAlign;
 import cn.lambdalib2.cgui.event.GuiEvent;
 import cn.lambdalib2.cgui.event.GuiEventBus;
 import cn.lambdalib2.cgui.event.IGuiEventHandler;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**

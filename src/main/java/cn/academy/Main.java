@@ -23,7 +23,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,13 +34,12 @@ import java.util.Map.Entry;
  * @author acaly, WeathFolD, KS
  *
  */
-@Mod(modid = "academy", name = "AcademyCraft", version = AcademyCraft.VERSION,
-     dependencies = "required-after:lambdalib2@@LAMBDA_LIB_VERSION@")
+@Mod(modid = "academy", name = "AcademyCraft", version = Main.VERSION, dependencies = "required-after:lambdalib2@@LAMBDA_LIB_VERSION@")
 @RegistryMod(rootPackage = "cn.academy.", resourceDomain = "academy")
-public class AcademyCraft {
+public class Main {
 
     @Instance("academy-craft")
-    public static AcademyCraft INSTANCE;
+    public static Main INSTANCE;
 
     public static final String VERSION = "@VERSION@";
 

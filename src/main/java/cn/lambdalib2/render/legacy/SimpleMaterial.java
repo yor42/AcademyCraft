@@ -3,9 +3,7 @@ package cn.lambdalib2.render.legacy;
 import cn.lambdalib2.util.Colors;
 import cn.lambdalib2.util.RenderUtils;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 

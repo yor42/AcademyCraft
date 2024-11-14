@@ -13,8 +13,8 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.DataBufferInt;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -52,7 +52,7 @@ public class TrueTypeFont implements IFont {
     }
 
     public static TrueTypeFont defaultFont = withFallback(Font.PLAIN, 32,
-            "Microsoft YaHei", "Adobe Heiti Std R", "STHeiti",
+            "맑은 고딕", "Microsoft YaHei", "Adobe Heiti Std R", "STHeiti",
             "SimHei", "微软雅黑", "黑体",
             "Consolas", "Monospace", "Arial");
 

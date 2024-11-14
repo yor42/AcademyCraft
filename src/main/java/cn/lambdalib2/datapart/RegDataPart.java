@@ -1,10 +1,8 @@
 package cn.lambdalib2.datapart;
 
 import cn.lambdalib2.registry.StateEventCallback;
-import cn.lambdalib2.util.Debug;
 import cn.lambdalib2.util.ReflectionUtils;
 import net.minecraft.entity.Entity;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 

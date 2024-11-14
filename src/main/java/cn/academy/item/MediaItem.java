@@ -1,8 +1,6 @@
 package cn.academy.item;
 
-import cn.academy.AcademyCraft;
-import cn.academy.ability.Category;
-import cn.academy.ability.CategoryManager;
+import cn.academy.Main;
 import cn.academy.misc.media.Media;
 import cn.academy.misc.media.MediaAcquireData;
 import cn.academy.misc.media.MediaApp$;
@@ -81,7 +79,7 @@ public class MediaItem extends Item
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-        if (tab == AcademyCraft.cct) {
+        if (tab == Main.cct) {
             List<Media> medias = scala.collection.JavaConversions.seqAsJavaList(MediaManager.internalMedias());
             for(int i=0;i<medias.size();i++)
             {

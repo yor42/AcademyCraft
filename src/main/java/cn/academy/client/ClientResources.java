@@ -1,6 +1,6 @@
 package cn.academy.client;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.Resources;
 import cn.lambdalib2.cgui.component.TextBox;
 import cn.lambdalib2.registry.StateEventCallback;
@@ -155,16 +155,17 @@ public class ClientResources {
         if (!fontsInit) {
             fontsInit = true;
 
-            Configuration config = AcademyCraft.config;
+            Configuration config = Main.config;
             String userSpecified = config.getString("font", "gui", "Microsoft YaHei",
                     "The font to be used. If not found in the system, default fonts will be used.");
 
             font = TrueTypeFont.withFallback(
                 Font.PLAIN, 24, userSpecified,
-                "微软雅黑",
-                "Microsoft YaHei",
-                "SimHei",
-                "Adobe Heiti Std R"
+                    "맑은 고딕",
+                    "微软雅黑",
+                    "Microsoft YaHei",
+                    "SimHei",
+                    "Adobe Heiti Std R"
             );
             fontBold = new TrueTypeFont(font.font.deriveFont(Font.BOLD));
             fontItalic = new TrueTypeFont(font.font.deriveFont(Font.ITALIC));

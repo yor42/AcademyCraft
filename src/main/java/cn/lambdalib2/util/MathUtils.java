@@ -6,8 +6,6 @@
 */
 package cn.lambdalib2.util;
 
-import net.minecraft.util.math.Vec3d;
-
 /**
  * @author WeAthFolD
  *

@@ -1,7 +1,6 @@
 package cn.lambdalib2.util.entityx;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 /**

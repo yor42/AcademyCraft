@@ -6,9 +6,9 @@
 */
 package cn.lambdalib2.render.font;
 
-import cn.lambdalib2.util.Colors;
 import cn.lambdalib2.render.font.TextSplitter.IFontSizeProvider;
 import cn.lambdalib2.s11n.SerializeType;
+import cn.lambdalib2.util.Colors;
 import org.lwjgl.util.Color;
 
 import java.util.List;

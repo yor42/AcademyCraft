@@ -1,6 +1,6 @@
 package cn.academy.energy.impl;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.energy.api.block.*;
 import cn.academy.energy.impl.VBlocks.*;
 import cn.lambdalib2.util.IBlockSelector;
@@ -13,7 +13,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldSavedData;
-//import net.minecraft.world.WorldSavedData;
 
 import java.util.*;
 
@@ -307,7 +306,7 @@ public class WiWorldData extends WorldSavedData {
     }
     
     private void debug(Object msg) {
-        AcademyCraft.log.info("WiWorldData: " + msg);
+        Main.log.info("WiWorldData: " + msg);
     }
 
 }

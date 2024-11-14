@@ -1,9 +1,7 @@
 package cn.lambdalib2.render;
 
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
-import static org.lwjgl.opengl.GL20.GL_FLOAT_VEC2;
-import static org.lwjgl.opengl.GL20.GL_FLOAT_VEC3;
-import static org.lwjgl.opengl.GL20.GL_FLOAT_VEC4;
+import static org.lwjgl.opengl.GL20.*;
 
 public enum GLPropertyType {
     Float(1), FloatVec2(2), FloatVec3(3), FloatVec4(4);

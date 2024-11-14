@@ -3,8 +3,6 @@ package cn.academy.terminal.app;
 import cn.academy.Resources;
 import cn.academy.terminal.App;
 import cn.academy.terminal.AppEnvironment;
-import cn.academy.terminal.DonatorList;
-import cn.academy.terminal.DonatorList.DonatorListRefreshEvent;
 import cn.academy.terminal.RegApp;
 import cn.lambdalib2.cgui.CGuiScreen;
 import cn.lambdalib2.cgui.Widget;
@@ -29,7 +27,6 @@ import com.typesafe.config.ConfigValue;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Mouse;
@@ -39,14 +36,12 @@ import org.lwjgl.util.Color;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map.Entry;
 
 public class AppAbout extends App {
 
@@ -233,7 +228,7 @@ public class AppAbout extends App {
             });
 
             onTabTypeChanged(TabType.Credits);
-            DonatorList.Instance.tryRequest();
+//            DonatorList.Instance.tryRequest();
             MinecraftForge.EVENT_BUS.register(this);
         }
 
@@ -288,8 +283,10 @@ public class AppAbout extends App {
 
                 y += 1.5f * FontSize;
 
-                List<String> donators = DonatorList.Instance.isLoaded() ?
-                    DonatorList.Instance.getList() : root.getStringList("donators");
+                // Original donator list server (li-dev.cn) was taken offline following the project's discontinuation.
+                // To honor the project's donors while preventing connection attempts to a defunct server,
+                // this now uses the local fallback list exclusively.
+                List<String> donators = root.getStringList("donators");
                 Collections.shuffle(donators); // Randomize the list
                 for (int i = 0; i < donators.size(); ++i) {
                     float tw = 150, margin = 30;
@@ -320,8 +317,7 @@ public class AppAbout extends App {
 
                 float y = 100;
                 float x = -280;
-                for (int i = 0; i < l.size(); ++i) {
-                    String s = l.get(i);
+                for (String s : l) {
                     if (s.startsWith("!!")) {
                         int ix = s.indexOf('|');
                         String url = s.substring(ix + 1);
@@ -329,8 +325,8 @@ public class AppAbout extends App {
 
                         y += 10;
                         DonateTexts.add(
-                            new LinkItem(x, y, text, url, FontAlign.LEFT)
-                                .setFontSize(40)
+                                new LinkItem(x, y, text, url, FontAlign.LEFT)
+                                        .setFontSize(40)
                         );
                         y += 50;
                     } else {
@@ -340,9 +336,9 @@ public class AppAbout extends App {
                             s = s.substring(1);
                         }
                         DonateTexts.add(
-                            rightAlign ?
-                                new TextItem(-x, y, s, FontAlign.RIGHT) :
-                                new TextItem(x, y, s, FontAlign.LEFT)
+                                rightAlign ?
+                                        new TextItem(-x, y, s, FontAlign.RIGHT) :
+                                        new TextItem(x, y, s, FontAlign.LEFT)
                         );
                         y += 30;
                     }
@@ -359,11 +355,6 @@ public class AppAbout extends App {
                 float progress = _dragBar.getProgress() - dwheel * 0.001f * 0.2f;
                 _dragBar.setProgress(MathUtils.clamp01(progress));
             }
-        }
-
-        @SubscribeEvent
-        public void onDonatorListRefresh(DonatorListRefreshEvent e) {
-            initTexts();
         }
 
         private void onTabTypeChanged(TabType type) {

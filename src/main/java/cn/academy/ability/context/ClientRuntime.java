@@ -1,5 +1,6 @@
 package cn.academy.ability.context;
 
+import cn.academy.Main;
 import cn.academy.ability.Controllable;
 import cn.academy.ability.context.Context.Status;
 import cn.academy.datapart.CooldownData;
@@ -8,7 +9,6 @@ import cn.academy.datapart.CPData;
 import cn.academy.datapart.PresetData;
 import cn.academy.datapart.PresetData.Preset;
 import cn.academy.util.ACKeyManager;
-import cn.academy.AcademyCraft;
 import cn.academy.client.auxgui.TerminalUI;
 import cn.academy.event.ability.*;
 import cn.lambdalib2.auxgui.AuxGuiHandler;
@@ -25,8 +25,6 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
@@ -107,13 +105,7 @@ public class ClientRuntime extends DataPart<EntityPlayer> {
 
         // Remove dead keys
         {
-            Iterator<Entry<Integer, KeyState>> iter = keyStates.entrySet().iterator();
-            while (iter.hasNext()) {
-                Entry<Integer, KeyState> ent = iter.next();
-                if (!ent.getValue().realState && !delegates.containsKey(ent.getKey())) {
-                    iter.remove();
-                }
-            }
+            keyStates.entrySet().removeIf(ent -> !ent.getValue().realState && !delegates.containsKey(ent.getKey()));
         }
 
         // Update override
@@ -299,7 +291,7 @@ public class ClientRuntime extends DataPart<EntityPlayer> {
     }
 
     private void rebuildOverrides() {
-        AcademyCraft.debug("RebuildOverrides");
+        Main.debug("RebuildOverrides");
         CPData cpData = CPData.get(getEntity());
 
         ctrlDirty = false;

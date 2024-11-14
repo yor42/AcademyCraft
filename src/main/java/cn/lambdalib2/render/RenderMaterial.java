@@ -8,7 +8,6 @@ import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
 import java.nio.FloatBuffer;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 

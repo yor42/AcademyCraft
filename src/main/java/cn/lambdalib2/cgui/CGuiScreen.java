@@ -7,7 +7,6 @@
 package cn.lambdalib2.cgui;
 
 import net.minecraft.client.gui.GuiScreen;
-
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;

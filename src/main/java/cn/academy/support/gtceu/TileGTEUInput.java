@@ -1,18 +1,11 @@
 package cn.academy.support.gtceu;
 
 import cn.academy.block.tileentity.TileGeneratorBase;
-import cn.academy.support.ic2.IC2Support;
 import cn.lambdalib2.registry.mc.RegTileEntity;
 import gregtech.api.GTValues;
-import gregtech.api.capability.FeCompat;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.EUToFEProvider;
-import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
-import gregtech.common.metatileentities.converter.ConverterTrait;
-import ic2.api.energy.event.EnergyTileLoadEvent;
-import ic2.api.energy.event.EnergyTileUnloadEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;

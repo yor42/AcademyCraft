@@ -9,7 +9,6 @@ package cn.lambdalib2.cgui;
 import cn.lambdalib2.cgui.component.TextBox;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
-
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 

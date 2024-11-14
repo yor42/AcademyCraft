@@ -1,7 +1,6 @@
 package cn.academy.support.gtceu;
 
 import cn.academy.support.BlockConverterBase;
-import cn.academy.support.ic2.TileEUOutput;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 

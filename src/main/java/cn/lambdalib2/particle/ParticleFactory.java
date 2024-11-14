@@ -1,11 +1,11 @@
 package cn.lambdalib2.particle;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cn.lambdalib2.particle.decorators.ParticleDecorator;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TODO Completely redesign the particle system

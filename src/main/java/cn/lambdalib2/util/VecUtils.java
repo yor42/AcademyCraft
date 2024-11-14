@@ -1,7 +1,5 @@
 package cn.lambdalib2.util;
 
-import java.util.Random;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -9,6 +7,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 /**
  * Some commonly used vector calculation & generations.

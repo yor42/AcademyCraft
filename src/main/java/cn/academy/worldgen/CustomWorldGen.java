@@ -14,10 +14,10 @@ import java.util.Random;
 public class CustomWorldGen {
 
     private WorldGenerator gen;
-    
-    int yLimit;
-    int densityPerChunk;
-    Biome[] biomeIds;
+
+    private final int yLimit;
+    private final int densityPerChunk;
+    private final Biome[] biomeIds;
     
     public CustomWorldGen(WorldGenerator _gen, int _yLimit, int _density, Biome... _biomeIds) {
         gen = _gen;

@@ -1,37 +1,36 @@
 package cn.academy.client.auxgui;
 
+import cn.academy.Main;
+import cn.academy.Resources;
 import cn.academy.ability.Category;
 import cn.academy.ability.context.ClientRuntime;
 import cn.academy.ability.context.ContextManager;
 import cn.academy.ability.context.IConsumptionProvider;
+import cn.academy.client.render.util.ACRenderingHelper;
 import cn.academy.datapart.AbilityData;
 import cn.academy.datapart.CPData;
 import cn.academy.datapart.PresetData;
 import cn.academy.event.ability.PresetSwitchEvent;
-import cn.academy.AcademyCraft;
-import cn.academy.client.render.util.ACRenderingHelper;
-import cn.academy.Resources;
 import cn.lambdalib2.cgui.Widget;
 import cn.lambdalib2.cgui.component.DrawTexture;
 import cn.lambdalib2.cgui.component.Transform.WidthAlign;
 import cn.lambdalib2.cgui.event.FrameEvent;
 import cn.lambdalib2.registry.StateEventCallback;
-import cn.lambdalib2.render.legacy.LegacyShaderProgram;
-import cn.lambdalib2.util.*;
 import cn.lambdalib2.render.font.IFont;
 import cn.lambdalib2.render.font.IFont.FontAlign;
 import cn.lambdalib2.render.font.IFont.FontOption;
-//import cn.lambdalib2.util.Color;
+import cn.lambdalib2.render.legacy.LegacyShaderProgram;
+import cn.lambdalib2.render.legacy.Tessellator;
+import cn.lambdalib2.util.*;
 import cn.lambdalib2.vis.curve.CubicCurve;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
-import cn.lambdalib2.render.legacy.Tessellator;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
@@ -166,7 +165,7 @@ public class CPBar extends Widget {
             this.shaderOverloaded = new ShaderOverloaded();
             shaderLoaded = true;
         } catch(Exception e) {
-            AcademyCraft.log.error("Errow while loading CPBar shader", e);
+            Main.log.error("Errow while loading CPBar shader", e);
         }
         
         transform.setSize(WIDTH, HEIGHT);

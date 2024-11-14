@@ -1,10 +1,8 @@
 package cn.academy.entity;
 
 import cn.academy.ACItems;
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.event.ConfigModifyEvent;
-import cn.academy.ability.vanilla.VanillaCategories;
-import cn.academy.client.render.entity.RendererCoinThrowing;
 import cn.academy.item.ItemCoin;
 import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.registry.mc.RegEntity;
@@ -26,8 +24,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * 
@@ -200,14 +196,14 @@ public class EntityCoinThrowing extends EntityAdvanced
 
         @StateEventCallback
         private static void init(FMLInitializationEvent event) {
-            PLAY_HEADS_OR_TAILS = AcademyCraft.config.getBoolean("headsOrTails",
+            PLAY_HEADS_OR_TAILS = Main.config.getBoolean("headsOrTails",
                 "generic", false, "Show heads or tails after throwing a coin.");
             MinecraftForge.EVENT_BUS.register(instance);
         }
 
         @SubscribeEvent
         public void onConfigModified(ConfigModifyEvent e) {
-            PLAY_HEADS_OR_TAILS = AcademyCraft.config.getBoolean("headsOrTails",
+            PLAY_HEADS_OR_TAILS = Main.config.getBoolean("headsOrTails",
                 "generic", false, "Show heads or tails after throwing a coin.");
         }
     }

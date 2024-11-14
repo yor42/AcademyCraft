@@ -1,8 +1,8 @@
 package cn.academy.client.gui;
 
-import cn.academy.AcademyCraft;
-import cn.academy.client.render.util.ACRenderingHelper;
+import cn.academy.Main;
 import cn.academy.Resources;
+import cn.academy.client.render.util.ACRenderingHelper;
 import cn.academy.tutorial.ACTutorial;
 import cn.academy.tutorial.TutorialRegistry;
 import cn.academy.tutorial.ViewGroup;
@@ -17,22 +17,21 @@ import cn.lambdalib2.cgui.event.GuiEvent;
 import cn.lambdalib2.cgui.event.LeftClickEvent;
 import cn.lambdalib2.cgui.loader.CGUIDocument;
 import cn.lambdalib2.registry.StateEventCallback;
-import cn.lambdalib2.util.Colors;
-import cn.lambdalib2.util.HudUtils;
 import cn.lambdalib2.render.font.IFont;
 import cn.lambdalib2.render.font.IFont.FontOption;
-import cn.lambdalib2.util.MathUtils;
-//import cn.lambdalib2.util.Color;
+import cn.lambdalib2.util.Colors;
 import cn.lambdalib2.util.GameTimer;
+import cn.lambdalib2.util.HudUtils;
+import cn.lambdalib2.util.MathUtils;
 import cn.lambdalib2.util.markdown.GLMarkdownRenderer;
 import cn.lambdalib2.util.markdown.MarkdownParser;
 import com.google.common.base.Preconditions;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.tuple.Pair;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.Color;
@@ -600,7 +599,7 @@ public class GuiTutorial extends CGuiScreen {
     }
 
     private void debug(Object msg) {
-        AcademyCraft.log.info("[Tut] " + msg);
+        Main.log.info("[Tut] " + msg);
     }
 
     public class ViewRenderEvent implements GuiEvent {

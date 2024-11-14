@@ -1,8 +1,5 @@
 package cn.lambdalib2.cgui.component;
 
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL20.glUseProgram;
-
 import cn.lambdalib2.cgui.Widget;
 import cn.lambdalib2.cgui.annotation.CGuiEditorComponent;
 import cn.lambdalib2.cgui.event.FrameEvent;
@@ -11,6 +8,9 @@ import cn.lambdalib2.util.HudUtils;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.Color;
+
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL20.glUseProgram;
 
 /**
  * Draws a squared texture that fills the area of the given widget.

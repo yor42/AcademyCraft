@@ -1,14 +1,13 @@
 package cn.lambdalib2.util;
 
-import java.lang.reflect.Field;
-
 import cn.lambdalib2.render.legacy.Tessellator;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
+import java.lang.reflect.Field;
 
 import static org.lwjgl.opengl.GL11.glTexCoord2d;
 import static org.lwjgl.opengl.GL11.glVertex3d;

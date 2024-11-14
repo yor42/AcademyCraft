@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author WeAthFolD

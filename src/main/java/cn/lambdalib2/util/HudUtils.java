@@ -6,19 +6,18 @@
 */
 package cn.lambdalib2.util;
 
-import java.util.Iterator;
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.lwjgl.opengl.GL11.*;
 

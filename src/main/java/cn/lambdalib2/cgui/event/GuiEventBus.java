@@ -6,12 +6,12 @@
 */
 package cn.lambdalib2.cgui.event;
 
-import java.util.*;
-import java.util.Map.Entry;
-
 import cn.lambdalib2.cgui.Widget;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 @SideOnly(Side.CLIENT)
 public final class GuiEventBus {

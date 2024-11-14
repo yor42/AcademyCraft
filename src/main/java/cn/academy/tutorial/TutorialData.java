@@ -1,25 +1,25 @@
 package cn.academy.tutorial;
 
 import cn.academy.ACItems;
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.event.TutorialActivatedEvent;
+import cn.lambdalib2.datapart.DataPart;
+import cn.lambdalib2.datapart.EntityData;
+import cn.lambdalib2.datapart.RegDataPart;
 import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.s11n.SerializeIncluded;
 import cn.lambdalib2.s11n.nbt.NBTS11n;
 import cn.lambdalib2.s11n.network.NetworkMessage.Listener;
-import cn.lambdalib2.datapart.DataPart;
-import cn.lambdalib2.datapart.EntityData;
-import cn.lambdalib2.datapart.RegDataPart;
 import cn.lambdalib2.util.RandUtils;
 import cn.lambdalib2.util.TickScheduler;
 import com.google.common.base.Preconditions;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.BitSet;
 import java.util.HashSet;
@@ -134,7 +134,7 @@ public class TutorialData extends DataPart<EntityPlayer> {
     }
 
     private static boolean canAcquireTutorial() {
-        return AcademyCraft.config.getBoolean("giveCloudTerminal", "generic", true,
+        return Main.config.getBoolean("giveCloudTerminal", "generic", true,
                 "Whether the player will be given MisakaCloud Terminal on first spawn.");
     }
 

@@ -2,12 +2,11 @@ package cn.academy.client.auxgui;
 
 import cn.academy.Resources;
 import cn.academy.client.sound.ACSounds;
-import cn.academy.terminal.DonatorList;
-import cn.academy.util.RegACKeyHandler;
+import cn.academy.event.AppInstalledEvent;
 import cn.academy.terminal.App;
 import cn.academy.terminal.AppEnvironment;
 import cn.academy.terminal.TerminalData;
-import cn.academy.event.AppInstalledEvent;
+import cn.academy.util.RegACKeyHandler;
 import cn.lambdalib2.auxgui.AuxGui;
 import cn.lambdalib2.auxgui.AuxGuiHandler;
 import cn.lambdalib2.cgui.CGui;
@@ -26,7 +25,9 @@ import com.google.common.base.Preconditions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.*;
+import net.minecraft.util.MouseHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.translation.I18n;
@@ -106,10 +107,10 @@ public class TerminalUI extends AuxGui {
 
         KeyManager.dynamic.addKeyHandler("terminal_click",KeyManager.MOUSE_LEFT, clickHandler = new LeftClickHandler());
         ControlOverrider.override(OVERRIDE_GROUP, KeyManager.MOUSE_LEFT);
-
-        // There is a chance that About App will be opened
-        //   to improve user experience we request that ahead of time
-        DonatorList.Instance.tryRequest();
+//
+//        // There is a chance that About App will be opened
+//        //   to improve user experience we request that ahead of time
+//        DonatorList.Instance.tryRequest();
     }
     
     @Override

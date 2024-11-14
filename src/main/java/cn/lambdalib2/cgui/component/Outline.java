@@ -7,11 +7,10 @@
 package cn.lambdalib2.cgui.component;
 
 import cn.lambdalib2.cgui.annotation.CGuiEditorComponent;
+import cn.lambdalib2.cgui.event.FrameEvent;
 import cn.lambdalib2.util.Colors;
 import cn.lambdalib2.util.HudUtils;
 import org.lwjgl.opengl.GL11;
-
-import cn.lambdalib2.cgui.event.FrameEvent;
 import org.lwjgl.util.Color;
 
 /**

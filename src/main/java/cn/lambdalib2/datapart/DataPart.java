@@ -1,9 +1,9 @@
 package cn.lambdalib2.datapart;
 
-import cn.lambdalib2.s11n.network.TargetPoints;
 import cn.lambdalib2.s11n.network.NetworkMessage;
 import cn.lambdalib2.s11n.network.NetworkMessage.Listener;
 import cn.lambdalib2.s11n.network.NetworkS11n;
+import cn.lambdalib2.s11n.network.TargetPoints;
 import cn.lambdalib2.util.Debug;
 import cn.lambdalib2.util.SideUtils;
 import io.netty.buffer.ByteBuf;

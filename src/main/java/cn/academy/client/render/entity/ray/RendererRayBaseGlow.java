@@ -1,13 +1,13 @@
 package cn.academy.client.render.entity.ray;
 
 import cn.academy.entity.IRay;
+import cn.lambdalib2.render.legacy.Tessellator;
 import cn.lambdalib2.util.MathUtils;
 import cn.lambdalib2.util.RenderUtils;
 import cn.lambdalib2.util.VecUtils;
 import cn.lambdalib2.util.ViewOptimize;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
-import cn.lambdalib2.render.legacy.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;

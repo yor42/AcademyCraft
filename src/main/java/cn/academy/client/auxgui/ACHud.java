@@ -1,6 +1,6 @@
 package cn.academy.client.auxgui;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.lambdalib2.auxgui.AuxGui;
 import cn.lambdalib2.cgui.CGui;
 import cn.lambdalib2.cgui.Widget;
@@ -105,7 +105,7 @@ public class ACHud extends AuxGui {
         }
 
         private Configuration conf() {
-            return AcademyCraft.config;
+            return Main.config;
         }
     }
 

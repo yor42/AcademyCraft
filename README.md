@@ -1,142 +1,187 @@
 # AcademyCraft: Unofficial Extended Support
 
--------
-![](https://raw.githubusercontent.com/LambdaInnovation/AcademyCraft/master/blob/logo.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/LambdaInnovation/AcademyCraft/master/blob/logo.png" alt="Project Logo">
+  <p><em>A Minecraft mod about superability, inspired by <a href="https://en.wikipedia.org/wiki/A_Certain_Scientific_Railgun">A Certain Scientific Railgun (とある科学の超電磁砲)</a></em></p>
+</div>
 
+---
 
-A Minecraft mod about superability. The inspiration of AcademyCraft comes from [A Certain Scientific Railgun (とある科学の超電磁砲)](https://en.wikipedia.org/wiki/A_Certain_Scientific_Railgun) but the mod content is not limited of the background.
+## 📋 Table of Contents
+- [📢 Project Status](#-project-status)
+- [🔄 Changes & Updates](#-changes--updates)
+- [💻 Development](#-development)
+- [🌐 Localization](#-localization)
+- [⚠️ Donations & Project Status](#️-donations--project-status)
+- [📜 Licensing](#-licensing)
+- [📚 Additional Information](#-additional-information)
 
-~~Visit [AcademyCraft's Website](https://ac.li-dev.cn/) to get the latest release and know more about it.~~(Website no longer works)
+---
 
-## Intention of the fork
+## 📢 Project Status
 
-The update of Academycraft has been discontinued as [Author of the project, weathfold, has sadly passed away in summer of 2021.](https://www.curseforge.com/minecraft/mc-mods/academycraft/comments)
+### Memorial Notice & Project Maintenance
+This project is now **community-maintained** in memory of [WeAthFoLD](https://github.com/WeAthFoLD).  
+While we strive to keep it functional, **major updates are limited**. Contributors are encouraged to help maintain this legacy mod.
 
+**This UNOFFICIAL fork** aims to:
+- Keep the mod compatible with RetroFuturaGradle (RFG)
+- Fix incompatibilities and bugs
 
-This UNOFFICIAL fork aims to keep the mod build-able with RetroFuturaGradle while try and fixing remaining incompatibilities and bugs.
+---
 
-## Changes I have Made
-- Merged LambdaLib2 into the source
-- Migrated the outdated gradle into RetroFuturaGradle(RFG) to keep the mod compilable
-- Remove Analytics as Server no longer functions
-- Added Groovyscript support
-- Migrated RF library to forge energy
-- Add proper capabilities
+## 🔄 Changes & Updates
 
-## Roadmap
-- Port mod to Scala 3
-- Fix mod compatibility
+### Recent Improvements
+- ✅ Merged LambdaLib2 into the source
+- ✅ Migrated to RetroFuturaGradle (RFG)
+- ✅ Removed defunct server connectivity
+- ✅ Added Groovyscript support
+- ✅ Migrated RF library to Forge Energy
+- ✅ Implemented proper capabilities
 
-Issue(Bug) Submission
-============
+### Roadmap
+- 🎯 Port mod to **Java 21/Scala 3**
 
-Please go to [Issues](https://github.com/LambdaInnovation/AcademyCraft/issues) and submit a new ticket.
+---
 
-Due to the nature of this port, New feature will not be implemented. not because I don't want to, but because I am not skilled enough.
+## 💻 Development
 
-Developement
-===========
+### Building
 
-## Build
+To build the project, run:
 
-Simply use `gradlew build`. If you encounter `Unknown constant: 18` error, `gradlew build` again and it should be fine.
+```bash
+./gradlew build
+```
+`gradlew build` will build the project and put the compiled jar in `build/libs`.  
+If you encounter the Unknown constant: 18 error, simply run the command again.
 
-## Workspace
+## Recommended Development Environment
+- **IDE**: IntelliJ IDEA
+- **Scala Plugin**: Required
+- **Eclipse**: Untested and unsupported
 
-We recommend use Intellij IDEA. Eclipse is untested and unsupported.
-
-You must have scala plugin installed.
-
-To setup a Intellij IDEA workspace:
-
+Then, open the .ipr project file to start developing.
 ```
 ./gradlew setupDecompWorkspace idea
 ```
 then you can open the `.ipr` project file and start developing.
 
-Localization
+🌐 Localization
 ============
 
-Any localization help is greatly appreciated! Please submit the PR to `dev` branch. Proper
-credits for the translator will be given in the next version's release. Note that contents include
-[Lang files][langdir] and [Tutorial texts][tutdir].
+**Localization contributions are highly appreciated!**
+Submit your translations via a PR to the `main` branch.
 
-Misc
-====
+Localized content includes:
+- [Lang files][langdir]
+- [Tutorial texts][tutdir]
 
-## Donation
+Proper credits will be given in the next release.
 
-You can support developement of AcademyCraft by donating. This will secure us more time to make the mod more intriguing! 
+## ⚠️ Donations & Project Status
+While we appreciate the community's support, **monetary contributions cannot be guaranteed to reach the developer's family.** Instead, we encourage you to:
 
-You would also be able to be in our donator list, both on website and in-game :beer:
+- ⭐ Star this repository to honor the developer's work
+- 💻 Contribute to the codebase if you find it valuable
 
-### Continuous
+## Historical Information & Memorial Archive
 
-* [Patreon][patreon]
+The following section is preserved in memory of the original developer, **who passed away in Summer 2021**.
 
-### One-Time
+### Original Donation Information (Historical)
 
-* Alipay: ![](https://raw.githubusercontent.com/LambdaInnovation/AcademyCraft/master/blob/qr.jpg)
+> ⚠️ Note: These links are preserved for archival purposes only and are no longer active.
 
-## License
+* [Development Blog & Project History (Patreon)][patreon]
+* Historical Alipay QR Code:
+
+![][alipay]
+
+## 📜 Licensing
 
 ### AcademyCraft
+AcademyCraft is licensed under [GPLv3](http://www.gnu.org/licenses/gpl.html) with the following additional terms:
 
-All versions of AcademyCraft are licensed under [GPLv3](http://www.gnu.org/licenses/gpl.html).   
+#### Commercial Restrictions
+- 🚫 No commercial exploitation of AcademyCraft or its content is allowed. This includes, but is not limited to:
+  - Paid downloads (real/virtual currencies or tokens)
+  - In-game sales of AcademyCraft items or abilities
+  - Monetization of mod content in any form
 
-And all versions of AcademyCraft are additionally licensed as following:  
+#### Analytics Notice
+> ⚠️ As of 2024, the analytics server is no longer operational.
+**All data collection features have been permanently disabled.**
+>
+> Historical note: The mod previously collected anonymous usage data (level-ups, skill usage, etc.) for mod improvement purposes.
 
-Prohibits any person, company, business, organization, etc. from selling AcademyCraft and its contents in any form, including but not limited to paid downloads (including but not limited to various legal currencies, virtual currency, game token, etc.) AcademyCraft's items, the sale of AcademyCraft ability within the game, etc.
+#### Rights Reserved
+Lambda Innovation retains all rights to AcademyCraft, including:
+- Copyright
+- Right of authorship
+- Ownership rights
 
-AcademyCraft will collect your in-game mod usage data (level-up, use skill, etc.) and upload to a server for pure data analytic purpose. The data is guaranteed to be anonymous and will not contain any personal data (e.g. username). The feature is optional and you can turn it off via config.
-
-Lambda Innovation retains the copyright, the right of authorship, the ownership, etc. of AcademyCraft, regardless of all agreements, and any provision that requires these rights or a part of them is deemed invalid.  
-
-Lambda Innovation reserves the right of final interpretation and reserves the right to deny all agreements to revoke all authorizations.    
-
-所有版本的AcademyCraft使用[GPLv3](http://www.gnu.org/licenses/gpl.html)协议。  
-
-并且所有版本的AcademyCraft同时附加有以下版权限制：  
-
-禁止任何个人、公司、企业、组织等以任何形式出售 AcademyCraft 及其内容，包括但不限于付费下载(包括但不限于各种法定货币、虚拟货币、虚拟币、游戏代币等)，游戏内出售 AcademyCraft 物品，游戏内出售 AcademyCraft 能力等。
-
-AcademyCraft 会在游戏中收集玩家对 mod 的使用 (升级，使用技能等) 数据并上传至服务器，用于分析和改进 mod。我们保证数据是匿名的，不包含任何个人信息（如用户名等）。此功能为可选的并可通过配置文件关闭。
-
-LambdaInnovation对于AcademyCraft的著作权、署名权、拥有权、版权等无视一切协议而保留，任何要求这些权利或其中一部分的条款均视为无效。  
-
-LambdaInnovation保留最终解释权，并保留否定一切协议撤销一切授权的权利。  
+These rights are retained regardless of agreements, and Lambda Innovation reserves the right to revoke authorizations.
 
 ### LambdaLib2
+LambdaLib2 is licensed under the MIT License.
 
-LambdaLib2 is Licensed under MIT License.
+<details>
+<summary>MIT License Text</summary>
 
-```chatinput
+```text
 The MIT License (MIT)
 
 Copyright (c) 2020 LambdaInnovation
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 ```
+</details>
 
-## Modpack permission
+## 📚 Additional Information
+### Modpack Usage
+✅ You are free to include this mod in modpacks.
 
-Yes. >)
+### Regarding Toaru Magic Index
 
-## Regarding Toaru Magic Index
+AcademyCraft is loosely inspired by A Certain Scientific Railgun, a spinoff of A Certain Magic Index.
+The mod focuses solely on the science side of the story, building an experience centered around superabilities.
 
-Many people have been asking questions about whether or how much the mod will be related to
-the original story _A Certain Magic Index_. Our answer is that although AC is based on the 
-_Railgun_, which is a spinoff of _Index_, the mod will only focus on the science side of 
-the story, and thus just loosely related to _Index_.
+---
 
-The mod is dedicated to build an interesting experience evolved around the idea of **superability**,
-that's really everything.
+## 中文许可说明
+所有版本的 AcademyCraft 使用 **GPLv3 协议。**
+
+### 附加限制
+- 禁止任何形式出售 AcademyCraft 及其内容，包括但不限于：
+  - 付费下载 (法定货币、虚拟货币、游戏代币等)
+  - 游戏内出售 AcademyCraft 物品或能力
+
+### 数据收集说明
+> ⚠️ 自2024年起，分析服务器已停止运行，所有数据收集功能已禁用。
+
+### 权利声明
+- LambdaInnovation 保留对 AcademyCraft 的著作权、署名权和最终解释权。
 
 [langdir]: src/main/resources/assets/academy/lang
 [tutdir]: src/main/resources/assets/academy/tutorials
 [lambdalib2]: https://github.com/LambdaInnovation/LambdaLib2
 [patreon]: https://www.patreon.com/WeAthFolD
+[alipay]: https://raw.githubusercontent.com/LambdaInnovation/AcademyCraft/master/blob/qr.jpg

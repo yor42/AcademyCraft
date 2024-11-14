@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.nio.IntBuffer;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL30.glGenerateMipmap;
 
 public class Texture2D {

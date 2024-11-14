@@ -1,6 +1,6 @@
 package cn.academy.client.render.entity;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.entity.EntityBlock;
 import cn.lambdalib2.registry.mc.RegEntityRender;
 import cn.lambdalib2.util.MathUtils;
@@ -78,7 +78,7 @@ public class RenderEntityBlock extends Render<EntityBlock> {
                 try {
                     tesr.render(e.tileEntity, x - 0.5, y, z - 0.5, pt, 0, 1.0f);
                 } catch(Exception ex) {
-                    AcademyCraft.log.error("Error handling EntityBlock TE rendering: " + tesr.getClass());
+                    Main.log.error("Error handling EntityBlock TE rendering: " + tesr.getClass());
                     ex.printStackTrace();
                 }
             }

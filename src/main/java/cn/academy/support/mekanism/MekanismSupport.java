@@ -2,12 +2,9 @@ package cn.academy.support.mekanism;
 
 import cn.academy.ACBlocks;
 import cn.academy.ACItems;
-import cn.lambdalib2.registry.RegistryCallback;
 import cn.lambdalib2.registry.StateEventCallback;
 import mekanism.common.recipe.RecipeHandler;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 

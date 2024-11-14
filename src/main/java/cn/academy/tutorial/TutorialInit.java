@@ -2,17 +2,11 @@ package cn.academy.tutorial;
 
 import cn.academy.ACBlocks;
 import cn.academy.ACItems;
-import cn.academy.client.gui.GuiTutorial;
-import cn.academy.Resources;
 import cn.academy.item.ItemApp;
 import cn.academy.terminal.App;
-import cn.academy.terminal.AppEnvironment;
 import cn.academy.terminal.AppRegistry;
 import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.util.Colors;
-import cn.lambdalib2.util.RandUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

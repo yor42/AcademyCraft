@@ -1,6 +1,6 @@
 package cn.academy.util;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.lambdalib2.registry.StateEventCallback;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -18,7 +18,7 @@ public class DebugHelper {
 
     @StateEventCallback
     private static void init(FMLInitializationEvent event) {
-        if(AcademyCraft.DEBUG_MODE) {
+        if(Main.DEBUG_MODE) {
             MinecraftForge.EVENT_BUS.register(new DebugHelper());
         }
     }

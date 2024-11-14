@@ -1,19 +1,17 @@
 package cn.academy.item;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.ability.Category;
 import cn.academy.ability.CategoryManager;
 import com.google.common.base.Preconditions;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -47,7 +45,7 @@ public class ItemInductionFactor extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        if (tab == AcademyCraft.cct) {
+        if (tab == Main.cct) {
             for (Category c : CategoryManager.INSTANCE.getCategories()) {
                 items.add(create(c));
             }

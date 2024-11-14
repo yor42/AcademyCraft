@@ -1,18 +1,17 @@
 package cn.academy.command;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.ability.Category;
 import cn.academy.ability.CategoryManager;
 import cn.academy.ability.Skill;
-import cn.academy.datapart.CooldownData;
 import cn.academy.datapart.AbilityData;
 import cn.academy.datapart.CPData;
+import cn.academy.datapart.CooldownData;
 import cn.academy.util.ACCommand;
+import cn.lambdalib2.datapart.PlayerDataTag;
 import cn.lambdalib2.registry.mc.RegCommand;
 import cn.lambdalib2.s11n.network.NetworkS11nType;
-import cn.lambdalib2.datapart.PlayerDataTag;
 import cn.lambdalib2.util.PlayerUtils;
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.PlayerNotFoundException;
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,7 +51,7 @@ public abstract class CommandAIMBase extends ACCommand {
             try {
                 player = getCommandSenderAsPlayer(commandSender);
             } catch (PlayerNotFoundException e) {
-                AcademyCraft.log.warn("Attempt to use command \"aim\" in the console.");
+                Main.log.warn("Attempt to use command \"aim\" in the console.");
                 return;
             }
 

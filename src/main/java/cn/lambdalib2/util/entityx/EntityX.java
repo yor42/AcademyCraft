@@ -6,14 +6,10 @@
 */
 package cn.lambdalib2.util.entityx;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import cn.lambdalib2.util.Debug;
 import net.minecraft.entity.Entity;
+
+import java.util.*;
 
 /**
  * Compared to the old API, this class is designed to be delegated. Entities should create EntityX by themselves and delegate event&calls.

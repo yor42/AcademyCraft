@@ -1,6 +1,6 @@
 package cn.academy.block.block;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.lambdalib2.util.RandUtils;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +19,7 @@ public class BlockGenericOre extends BlockOre {
     public BlockGenericOre(float hardness, int harvestLevel) {
         setHardness(hardness);
         setHarvestLevel("pickaxe", harvestLevel);
-        setCreativeTab(AcademyCraft.cct);
+        setCreativeTab(Main.cct);
     }
     
     public BlockGenericOre setDropData(Item item) {

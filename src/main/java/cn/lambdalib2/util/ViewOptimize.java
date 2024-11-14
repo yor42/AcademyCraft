@@ -2,7 +2,6 @@ package cn.lambdalib2.util;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
 

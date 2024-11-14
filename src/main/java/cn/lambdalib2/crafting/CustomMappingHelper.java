@@ -1,13 +1,12 @@
 package cn.lambdalib2.crafting;
 
+import cn.lambdalib2.util.Debug;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Field;
-
-import cn.lambdalib2.LambdaLib2;
-import cn.lambdalib2.util.Debug;
 
 public class CustomMappingHelper {
 

@@ -6,22 +6,19 @@
 */
 package cn.lambdalib2.cgui;
 
-import java.util.Iterator;
-
-import cn.lambdalib2.LambdaLib2;
+import cn.lambdalib2.cgui.component.Transform;
 import cn.lambdalib2.cgui.event.*;
-import cn.lambdalib2.util.Debug;
-import cn.lambdalib2.util.GameTimer;
-import cn.lambdalib2.util.HudUtils;
 import cn.lambdalib2.render.font.IFont;
 import cn.lambdalib2.render.font.IFont.FontOption;
 import cn.lambdalib2.render.font.TrueTypeFont;
+import cn.lambdalib2.util.Debug;
+import cn.lambdalib2.util.GameTimer;
+import cn.lambdalib2.util.HudUtils;
 import cn.lambdalib2.util.MathUtils;
-import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
-
-import cn.lambdalib2.cgui.component.Transform;
 import org.lwjgl.util.glu.GLU;
+
+import java.util.Iterator;
 
 /**
  * @author WeathFolD

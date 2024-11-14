@@ -6,17 +6,12 @@
 */
 package cn.lambdalib2.render.legacy;
 
-import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
-import static org.lwjgl.opengl.GL11.glBegin;
-import static org.lwjgl.opengl.GL11.glEnd;
-import static org.lwjgl.opengl.GL11.glNormal3d;
-import static org.lwjgl.opengl.GL11.glTexCoord2d;
-import static org.lwjgl.opengl.GL11.glVertex3d;
-import static org.lwjgl.opengl.GL20.glUseProgram;
-
 import org.apache.commons.lang3.NotImplementedException;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL20.glUseProgram;
 
 /**
  * External mesh drawer using shader.

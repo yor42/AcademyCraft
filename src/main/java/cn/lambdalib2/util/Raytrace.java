@@ -1,20 +1,20 @@
 package cn.lambdalib2.util;
 
-import java.util.List;
-import java.util.function.Predicate;
-
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.MultiPartEntityPart;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.RayTraceResult.Type;
+import net.minecraft.world.World;
 import org.apache.commons.lang3.tuple.Pair;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.world.World;
-import static cn.lambdalib2.util.VecUtils.*;
+import java.util.List;
+import java.util.function.Predicate;
+
+import static cn.lambdalib2.util.VecUtils.add;
+import static cn.lambdalib2.util.VecUtils.multiply;
 
 /**
  * A better wrap up for ray trace routines, supporting entity filtering, block filtering, and combined RayTrace of

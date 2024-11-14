@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.audio.ISound;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -25,9 +24,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-import static cn.lambdalib2.util.VecUtils.add;
-import static cn.lambdalib2.util.VecUtils.multiply;
-import static cn.lambdalib2.util.VecUtils.subtract;
+import static cn.lambdalib2.util.VecUtils.*;
 
 /**
  * A super boomy ranged ray damage. it starts out a ranged ray in the given position and direction,

@@ -6,12 +6,12 @@
 */
 package cn.lambdalib2.cgui;
 
-import java.util.*;
-
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.*;
 
 /**
  * A class that has capability to store widgets. Used by CGui and Widget.

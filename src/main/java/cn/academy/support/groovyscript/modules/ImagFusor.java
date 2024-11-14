@@ -2,7 +2,6 @@ package cn.academy.support.groovyscript.modules;
 
 import cn.academy.crafting.ImagFusorRecipes;
 import com.cleanroommc.groovyscript.api.IIngredient;
-import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import net.minecraft.item.ItemStack;
 

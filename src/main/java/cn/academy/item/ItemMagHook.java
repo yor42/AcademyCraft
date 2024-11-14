@@ -1,6 +1,6 @@
 package cn.academy.item;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.academy.Resources;
 import cn.academy.client.render.item.BakedModelForTEISR;
 import cn.academy.client.render.item.TEISRModel;
@@ -14,7 +14,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -35,7 +38,7 @@ public class ItemMagHook extends Item {
     private ModelResourceLocation _modelLocation;
 
     public ItemMagHook() {
-        setCreativeTab(AcademyCraft.cct);
+        setCreativeTab(Main.cct);
         MinecraftForge.EVENT_BUS.register(this);
     }
 

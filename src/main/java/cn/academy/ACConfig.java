@@ -29,7 +29,7 @@ public final class ACConfig {
     private static String lastError = null;
 
     private static void __init() {
-        Logger log = AcademyCraft.log;
+        Logger log = Main.log;
 
         ResourceLocation defaultRes = new ResourceLocation("academy:config/default.conf");
 

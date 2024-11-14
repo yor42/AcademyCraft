@@ -6,7 +6,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -15,7 +14,7 @@ import java.util.Random;
 
 public class WorldGenPhaseLiq extends WorldGenerator {
 
-    private Block theBlock;
+    private final Block theBlock;
 
     public WorldGenPhaseLiq() {
         this.theBlock = ACBlocks.imag_phase;
@@ -24,8 +23,15 @@ public class WorldGenPhaseLiq extends WorldGenerator {
     @Override
     public boolean generate(World world, Random random, BlockPos pos) {
         int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-        for (x -= 8, z -= 8; y > 5 && world.isAirBlock(new BlockPos(x, y, z)); --y)
-            ; // Find a non-air-block as origin to generate.
+
+        // Adjust initial position
+        x -= 8;
+        z -= 8;
+
+        // Find first non-air block moving downwards
+        while (y > 5 && world.isAirBlock(new BlockPos(x, y, z))) {
+            y--;
+        }
 
         if (y <= 4)
             return false;
@@ -107,7 +113,7 @@ public class WorldGenPhaseLiq extends WorldGenerator {
                             && ibs.getBlock().getLightValue(ibs, world, new BlockPos(x + i1, y + j1, z + j2)) > 0) {
                         Biome biomegenbase = world.getBiomeProvider().getBiome(bPos);
 
-                        if (biomegenbase.topBlock == Blocks.MYCELIUM) {
+                        if (biomegenbase.topBlock.getBlock() == Blocks.MYCELIUM) {
                             world.setBlockState(bPos, Blocks.MYCELIUM.getDefaultState(), 2);
                         } else {
                             world.setBlockState(bPos, Blocks.GRASS.getDefaultState(), 2);

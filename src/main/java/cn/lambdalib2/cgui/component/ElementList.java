@@ -6,13 +6,16 @@
 */
 package cn.lambdalib2.cgui.component;
 
-import java.util.*;
-
 import cn.lambdalib2.cgui.Widget;
 import cn.lambdalib2.cgui.annotation.CGuiEditorComponent;
 import cn.lambdalib2.cgui.event.GuiEvent;
 import cn.lambdalib2.util.MathUtils;
 import com.google.common.collect.ImmutableList;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Component that can hold widgets itself and display them as a list. Only Widgets fully in the area will be shown.

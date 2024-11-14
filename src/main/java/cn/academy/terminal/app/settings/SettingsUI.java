@@ -1,6 +1,6 @@
 package cn.academy.terminal.app.settings;
 
-import cn.academy.AcademyCraft;
+import cn.academy.Main;
 import cn.lambdalib2.cgui.CGuiScreen;
 import cn.lambdalib2.cgui.Widget;
 import cn.lambdalib2.cgui.WidgetContainer;
@@ -10,12 +10,12 @@ import cn.lambdalib2.cgui.component.TextBox;
 import cn.lambdalib2.cgui.event.DragEvent;
 import cn.lambdalib2.cgui.loader.CGUIDocument;
 import cn.lambdalib2.registry.StateEventCallback;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,7 +65,7 @@ public class SettingsUI extends CGuiScreen {
 
     @Override
     public void onGuiClosed() {
-        AcademyCraft.config.save();
+        Main.config.save();
         super.onGuiClosed();
     }
 
