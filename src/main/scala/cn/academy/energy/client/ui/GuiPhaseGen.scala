@@ -7,7 +7,7 @@ import cn.lambdalib2.util.Colors
 
 object GuiPhaseGen {
 
-  def apply(container: ContainerPhaseGen) = {
+  def apply(container: ContainerPhaseGen): ContainerUI = {
     val tile = container.tile
     val inventoryPage = InventoryPage("phasegen")
     val wirelessPage = WirelessPage.userPage(tile)

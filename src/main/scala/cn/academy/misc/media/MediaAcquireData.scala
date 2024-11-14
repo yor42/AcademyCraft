@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.nbt.{NBTTagCompound, NBTTagList, NBTTagString}
 
 object MediaAcquireData {
-  def apply(player: EntityPlayer) = EntityData.get(player).getPart(classOf[MediaAcquireData])
+  def apply(player: EntityPlayer): MediaAcquireData = EntityData.get(player).getPart(classOf[MediaAcquireData])
 }
 
 
@@ -25,7 +25,7 @@ class MediaAcquireData extends DataPart[EntityPlayer] {
   /**
     * Install the given media. It must be internal. Should only be called in SERVER.
     */
-  def install(media: Media) = {
+  def install(media: Media): Unit = {
     require(!media.external)
     checkSide(Side.SERVER)
 
@@ -47,7 +47,7 @@ class MediaAcquireData extends DataPart[EntityPlayer] {
   /**
     * @return Whether a media is installed for player. True for all external media.
     */
-  def isInstalled(media: Media) = {
+  def isInstalled(media: Media): Boolean = {
     media.external || bitset.get(MediaManager.internalMedias.indexOf(media))
   }
 

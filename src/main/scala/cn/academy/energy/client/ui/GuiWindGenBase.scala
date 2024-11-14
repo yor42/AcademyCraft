@@ -15,7 +15,7 @@ object GuiWindGenBase {
 
   private lazy val template = CGUIDocument.read(Resources.getGui("rework/page_windbase")).getWidget("main")
 
-  def apply(container: ContainerWindGenBase) = {
+  def apply(container: ContainerWindGenBase): ContainerUI = {
     val tile = container.tile
     val main = template.copy()
 

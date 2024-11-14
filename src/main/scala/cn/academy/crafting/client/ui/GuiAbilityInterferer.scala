@@ -10,6 +10,7 @@ import cn.lambdalib2.cgui.component.TextBox.ConfirmInputEvent
 import cn.lambdalib2.cgui.event.{FrameEvent, LeftClickEvent, LostFocusEvent}
 import cn.lambdalib2.cgui.loader.CGUIDocument
 import cn.lambdalib2.util.{Colors, MathUtils}
+import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.relauncher.{Side, SideOnly}
 import org.lwjgl.util.Color
 
@@ -21,12 +22,12 @@ object GuiAbilityInterferer {
   import cn.academy.core.client.ui._
   import AbilityInterf._
 
-  lazy val template = CGUIDocument.read(Resources.getGui("rework/page_interfere")).getWidget("main")
+  lazy val template: Widget = CGUIDocument.read(Resources.getGui("rework/page_interfere")).getWidget("main")
 
-  val buttonOn = Resources.getTexture("guis/button/button_switch_on")
-  val buttonOff = Resources.getTexture("guis/button/button_switch_off")
+  val buttonOn: ResourceLocation = Resources.getTexture("guis/button/button_switch_on")
+  val buttonOff: ResourceLocation = Resources.getTexture("guis/button/button_switch_off")
 
-  def apply(container: ContainAbilityInterferer) = {
+  def apply(container: ContainAbilityInterferer): ContainerUI = {
     val window = template.copy()
     val tile = container.tile
 
@@ -43,7 +44,7 @@ object GuiAbilityInterferer {
       listArea.removeWidget("element")
       listArea :+ area
 
-      def update(whitelist: Iterable[String]) = {
+      def update(whitelist: Iterable[String]): Unit = {
         listArea.removeComponent(classOf[ElementList])
         area.focus = None
 
@@ -68,7 +69,7 @@ object GuiAbilityInterferer {
         listArea :+ elist
       }
 
-      def sendUpdate(whitelist: Iterable[String]) = {
+      def sendUpdate(whitelist: Iterable[String]): Unit = {
         tile.setWhitelistClient(whitelist, () => update(whitelist))
       }
 
@@ -109,7 +110,7 @@ object GuiAbilityInterferer {
       val color = texture.color
       var state = tile.enabled
 
-      def setState(state2: Boolean) = {
+      def setState(state2: Boolean): Unit = {
         state = state2
 
         val lum = Colors.f2i(if (state) 1 else 0.6f)
@@ -131,7 +132,7 @@ object GuiAbilityInterferer {
     {
       val elemRange = window.child("panel_config/element_range")
 
-      def updateRange(value: Double) = elemRange.child("element_text_range").component[TextBox].content = value.toString
+      def updateRange(value: Double): Unit = elemRange.child("element_text_range").component[TextBox].content = value.toString
 
       def handle(delta: Int) = () => {
         val newValue = MathUtils.clampd(minRange, maxRange, tile.range + delta)

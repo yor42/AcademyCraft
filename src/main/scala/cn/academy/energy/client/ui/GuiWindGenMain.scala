@@ -6,7 +6,7 @@ import cn.academy.core.client.ui._
 
 object GuiWindGenMain {
 
-  def apply(container: ContainerWindGenMain) = {
+  def apply(container: ContainerWindGenMain): ContainerUI = {
     val tile = container.tile
 
     val invPage = InventoryPage("windmain")

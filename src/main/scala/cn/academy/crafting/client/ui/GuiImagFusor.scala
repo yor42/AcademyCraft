@@ -15,7 +15,7 @@ object GuiImagFusor {
   private lazy val template = CGUIDocument.read(Resources.getGui("rework/page_imagfusor")).getWidget("main")
   private val local = LocalHelper.at("ac.imag_fusor")
 
-  def apply(container: ContainerImagFusor) = {
+  def apply(container: ContainerImagFusor): ContainerUI = {
     val tile = container.tile
 
     val invPage = InventoryPage(template.copy())

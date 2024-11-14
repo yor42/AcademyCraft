@@ -7,7 +7,6 @@
 package cn.lambdalib2.util.markdown
 
 import java.util
-
 import cn.lambdalib2.render.font.IFont.FontOption
 import cn.lambdalib2.render.font.{IFont, TrueTypeFont}
 import cn.lambdalib2.util.Fragmentor.IFontSizeProvider
@@ -15,6 +14,7 @@ import cn.lambdalib2.util.{Colors, Fragmentor, HudUtils, RenderUtils}
 import cn.lambdalib2.util.markdown.MarkdownParser._
 import net.minecraft.util.ResourceLocation
 import org.lwjgl.opengl.GL11
+import org.lwjgl.util.Color
 
 import scala.collection.JavaConversions._
 import scala.collection._
@@ -26,21 +26,21 @@ class GLMarkdownRenderer extends MarkdownRenderer {
 
   // Render parameters
 
-  val headerPrefixes = List(1.0f, 1.2f, 1.4f, 1.6f, 1.8f).reverse.toArray
+  private val headerPrefixes = List(1.0f, 1.2f, 1.4f, 1.6f, 1.8f).reverse.toArray
 
   var font: IFont = TrueTypeFont.defaultFont
-  var boldFont: IFont = TrueTypeFont.defaultFont
-  var italicFont: IFont  = TrueTypeFont.defaultFont
+  private var boldFont: IFont = TrueTypeFont.defaultFont
+  private var italicFont: IFont  = TrueTypeFont.defaultFont
 
   var fontSize = 10.0f
-  var lineSpacing = 4
-  var widthLimit = Float.MaxValue
+  private var lineSpacing = 4
+  var widthLimit: Float = Float.MaxValue
 
-  var textColor = Colors.white()
-  var refTextColor = Colors.fromHexColor(0xffe1c385)
-  var refBackgroundColor = Colors.fromFloat(0.5f, 0.5f, 0.5f, 0.4f)
+  var textColor: Color = Colors.white()
+  private var refTextColor = Colors.fromHexColor(0xffe1c385)
+  var refBackgroundColor: Color = Colors.fromFloat(0.5f, 0.5f, 0.5f, 0.4f)
 
-  def setFonts(_font: IFont, _boldFont: IFont, _italicFont: IFont) = {
+  def setFonts(_font: IFont, _boldFont: IFont, _italicFont: IFont): Unit = {
     font = _font
     boldFont = _boldFont
     italicFont = _italicFont
@@ -54,20 +54,20 @@ class GLMarkdownRenderer extends MarkdownRenderer {
     var lastSize = 0.0f
     var lineBegin = true
 
-    def lineHead = x == 0.0f
+    def lineHead: Boolean = x == 0.0f
   }
 
-  protected val rc: Context = new Context
+  private val rc: Context = new Context
 
   //
   private val instructions = new util.ArrayList[() => Any]()
   private class TextInsr extends (() => Any) {
 
-    var x: Float = 0
+    private var x: Float = 0
     var y: Float = 0
-    var font: IFont = null
-    var option: FontOption = null
-    var txt: String = null
+    private var font: IFont = null
+    private var option: FontOption = null
+    private var txt: String = null
 
     def this(_txt: String, _x: Float, _y: Float, _font: IFont, _option: FontOption) = { this
       x = _x
@@ -77,13 +77,13 @@ class GLMarkdownRenderer extends MarkdownRenderer {
       txt = _txt
     }
 
-    override def apply() = font.draw(txt, x, y, option)
+    override def apply(): Any = font.draw(txt, x, y, option)
   }
 
   private def insr(ins: () => Any) = instructions.add(ins)
   //
 
-  override def onTextContent(text: String, attr: Set[Attribute]) = {
+  override def onTextContent(text: String, attr: Set[Attribute]): Unit = {
     var usedFont = font
     var usedSize = fontSize
     var listElement = false
@@ -145,7 +145,7 @@ class GLMarkdownRenderer extends MarkdownRenderer {
     }
   }
 
-  private def newline(continue: Boolean = false) = {
+  private def newline(continue: Boolean = false): Unit = {
     rc.x = 0.0f
     if (continue) {
       rc.y += rc.lastSize
@@ -157,9 +157,9 @@ class GLMarkdownRenderer extends MarkdownRenderer {
     rc.lineBegin = !continue
   }
 
-  override def onNewline() = newline()
+  override def onNewline(): Unit = newline()
 
-  override def onTag(name: String, attr: Map[String, String]) = {
+  override def onTag(name: String, attr: Map[String, String]): Unit = {
     name match {
       case "img" =>
 
@@ -207,8 +207,8 @@ class GLMarkdownRenderer extends MarkdownRenderer {
     }
   }
 
-  def render() = instructions foreach (_.apply())
+  def render(): Unit = instructions foreach (_.apply())
 
-  def getMaxHeight = rc.y + fontSize
+  def getMaxHeight: Float = rc.y + fontSize
 
 }
