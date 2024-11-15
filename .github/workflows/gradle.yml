@@ -1,0 +1,119 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Java CI with Gradle
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '*.md'
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-update:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: wrapper
+
+      - name: Configure Gradle Properties
+        shell: pwsh
+        run: |
+          Add-Content $env:USERPROFILE\.gradle\gradle.properties "systemProp.https.protocols=TLSv1.2"
+          Add-Content $env:USERPROFILE\.gradle\gradle.properties "org.gradle.jvmargs=-Xmx3G -Dhttps.protocols=TLSv1.2"
+
+      - name: Get mod version
+        id: mod_version
+        shell: pwsh
+        run: |
+          $content = Get-Content "gradle.properties"
+          $version = ($content | Select-String -Pattern "mod_version\s*=\s*(.*)").Matches.Groups[1].Value.Trim()
+          echo "VERSION=$version" >> $env:GITHUB_ENV
+
+      - name: Get current date
+        id: date
+        env:
+          TZ: 'Asia/Seoul'
+        run: echo "NOW=$(date +'%Y%m%d-%H%M%S')" >> $env:GITHUB_ENV
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+        env:
+          GRADLE_OPTS: "-Dhttps.protocols=TLSv1.2 -Dorg.gradle.daemon=false"
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.VERSION }}-${{ env.NOW }}
+          release_name: Build ${{ env.VERSION }} (${{ env.NOW }})
+          body: |
+            Automated build for version ${{ env.VERSION }}
+            Build date: ${{ env.NOW }}
+            
+            This is an automatic build. it might be unstable. Here be dragons!
+          draft: false
+          prerelease: true
+
+      - name: Upload Release Asset (Main JAR)
+        uses: actions/upload-release-asset@v1
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}.jar
+          asset_name: AcademyCraft-${{ env.VERSION }}.jar
+          asset_content_type: application/java-archive
+
+      - name: Upload Release Asset (Dev JAR)
+        uses: actions/upload-release-asset@v1
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
+          asset_name: AcademyCraft-${{ env.VERSION }}-dev.jar
+          asset_content_type: application/java-archive
+
+      - name: Upload Release Asset (Sources JAR)
+        uses: actions/upload-release-asset@v1
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
+          asset_name: AcademyCraft-${{ env.VERSION }}-sources.jar
+          asset_content_type: application/java-archive
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: AcademyCraft
+          path: ${{ github.workspace }}/build/libs

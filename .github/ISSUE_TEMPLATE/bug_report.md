@@ -25,7 +25,8 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [e.g. Windows, MacOS, Linux]
- - MC Version and Forge version: [e.g. 14.23.4.2705-1.12.2]
+ - JVM: [e.g. OpenJDK, Oracle JVM]
+ - Modloader and Modloader version: [e.g. Forge 14.23.4.2705-1.12.2, Cleanroom 0.2.2-alpha]
  - Version [e.g. 1.1.0beta1]
 
 **Additional context**
