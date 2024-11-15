@@ -21,8 +21,8 @@
 ## 📢 Project Status
 
 ### Memorial Notice & Project Maintenance
-This project is now **community-maintained** in memory of [WeAthFoLD](https://github.com/WeAthFoLD).  
-While we strive to keep it functional, **major updates are limited**. Contributors are encouraged to help maintain this legacy mod.
+This project is now **unofficially-maintained** in memory of [WeAthFoLD](https://github.com/WeAthFoLD).  
+While I strive to keep it functional, **major updates are limited**. Contributors are encouraged to help maintain this legacy mod.
 
 **This UNOFFICIAL fork** aims to:
 - Keep the mod compatible with RetroFuturaGradle (RFG)
