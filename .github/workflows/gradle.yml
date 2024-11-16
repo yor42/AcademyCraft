@@ -180,7 +180,6 @@ jobs:
 
       - name: Upload Release Asset (Main JAR)
         uses: actions/upload-release-asset@v1
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -191,7 +190,6 @@ jobs:
 
       - name: Upload Release Asset (Dev JAR)
         uses: actions/upload-release-asset@v1
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -202,7 +200,6 @@ jobs:
 
       - name: Upload Release Asset (Sources JAR)
         uses: actions/upload-release-asset@v1
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
