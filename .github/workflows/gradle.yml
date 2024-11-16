@@ -65,14 +65,11 @@ jobs:
         env:
           GRADLE_OPTS: "-Dhttps.protocols=TLSv1.2 -Dorg.gradle.daemon=false"
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
+          name: Build ${{ env.VERSION }} (${{ env.NOW }})
           tag_name: v${{ env.VERSION }}-${{ env.NOW }}
-          release_name: Build ${{ env.VERSION }} (${{ env.NOW }})
           body: |
             Bleeding Edge Build for version ${{ env.VERSION }}
             Build date: ${{ env.NOW }}
@@ -80,40 +77,12 @@ jobs:
             This is an automatic build. it might be unstable. Here be dragons!
           draft: false
           prerelease: true
-
-      - name: Upload Release Asset (Main JAR)
-        uses: actions/upload-release-asset@v1
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+          files: |
+            build/libs/AcademyCraft-${{ env.VERSION }}.jar
+            build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
+            build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}.jar
-          asset_name: AcademyCraft-${{ env.VERSION }}.jar
-          asset_content_type: application/java-archive
-
-      - name: Upload Release Asset (Dev JAR)
-        uses: actions/upload-release-asset@v1
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
-          asset_name: AcademyCraft-${{ env.VERSION }}-dev.jar
-          asset_content_type: application/java-archive
-
-      - name: Upload Release Asset (Sources JAR)
-        uses: actions/upload-release-asset@v1
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
-          asset_name: AcademyCraft-${{ env.VERSION }}-sources.jar
-          asset_content_type: application/java-archive
-
       - name: Upload Artifact
         uses: actions/upload-artifact@master
         if: always()
@@ -159,57 +128,21 @@ jobs:
           TZ: 'Asia/Seoul'
         run: echo "NOW=$(date +'%Y%m%d-%H%M%S')" >> $env:GITHUB_ENV
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          arguments: build
-        env:
-          GRADLE_OPTS: "-Dhttps.protocols=TLSv1.2 -Dorg.gradle.daemon=false"
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
           body: |
             Release version ${{ env.VERSION }}
             Build date: ${{ env.NOW }}
           draft: false
           prerelease: false
-
-      - name: Upload Release Asset (Main JAR)
-        uses: actions/upload-release-asset@v1
+          files: |
+            build/libs/AcademyCraft-${{ env.VERSION }}.jar
+            build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
+            build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}.jar
-          asset_name: AcademyCraft-${{ env.VERSION }}.jar
-          asset_content_type: application/java-archive
-
-      - name: Upload Release Asset (Dev JAR)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
-          asset_name: AcademyCraft-${{ env.VERSION }}-dev.jar
-          asset_content_type: application/java-archive
-
-      - name: Upload Release Asset (Sources JAR)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
-          asset_name: AcademyCraft-${{ env.VERSION }}-sources.jar
-          asset_content_type: application/java-archive
-
       - name: Upload Artifact
         uses: actions/upload-artifact@master
         if: always()
