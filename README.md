@@ -7,6 +7,8 @@
 
 ---
 
+[![Java CI with Gradle](https://github.com/yor42/AcademyCraft/actions/workflows/gradle.yml/badge.svg)](https://github.com/yor42/AcademyCraft/actions/workflows/gradle.yml)
+
 ## 📋 Table of Contents
 - [📢 Project Status](#-project-status)
 - [🔄 Changes & Updates](#-changes--updates)
