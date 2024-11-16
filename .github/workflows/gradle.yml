@@ -78,9 +78,9 @@ jobs:
           draft: false
           prerelease: true
           files: |
-            build/libs/AcademyCraft-${{ env.VERSION }}.jar
-            build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
-            build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
+            ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}.jar
+            ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
+            ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Artifact
@@ -138,9 +138,9 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            build/libs/AcademyCraft-${{ env.VERSION }}.jar
-            build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
-            build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
+            ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}.jar
+            ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-dev.jar
+            ${{ github.workspace }}/build/libs/AcademyCraft-${{ env.VERSION }}-sources.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Artifact
