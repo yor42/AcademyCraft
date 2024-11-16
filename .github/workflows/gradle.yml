@@ -125,6 +125,13 @@ jobs:
           TZ: 'Asia/Seoul'
         run: echo "NOW=$(date +'%Y%m%d-%H%M%S')" >> $env:GITHUB_ENV
 
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+        env:
+          GRADLE_OPTS: "-Dhttps.protocols=TLSv1.2 -Dorg.gradle.daemon=false"
+
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
