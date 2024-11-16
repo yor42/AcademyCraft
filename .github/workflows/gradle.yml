@@ -77,8 +77,7 @@ jobs:
             This is an automatic build. it might be unstable. Here be dragons!
           draft: false
           prerelease: true
-          files: |
-            ${{ github.workspace }}/build/libs/*.jar
+          files: build/libs/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Artifact
@@ -135,8 +134,7 @@ jobs:
             Build date: ${{ env.NOW }}
           draft: false
           prerelease: false
-          files: |
-            ${{ github.workspace }}/build/libs/*.jar
+          files: build/libs/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Artifact
