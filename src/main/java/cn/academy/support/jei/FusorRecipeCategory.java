@@ -5,11 +5,13 @@ import cn.academy.crafting.ImagFusorRecipes;
 import cn.academy.crafting.ImagFusorRecipes.IFRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +25,7 @@ public class FusorRecipeCategory extends IACRecipeCategory
 {
     public static List<IRecipeWrapper> recipeWrapper = loadCraftingRecipes();
     private static ResourceLocation bg = new ResourceLocation("academy", "textures/guis/nei_fusor.png");
-    private IGuiHelper guiHelper;
+    private final IGuiHelper guiHelper;
 
     public FusorRecipeCategory(IGuiHelper guiHelper)
     {
@@ -52,8 +54,8 @@ public class FusorRecipeCategory extends IACRecipeCategory
         List<IRecipeWrapper> lists = new ArrayList<>();
         for(IFRecipe r : ImagFusorRecipes.INSTANCE.getAllRecipe()) {
             lists.add(iIngredients -> {
-                iIngredients.setInput(ItemStack.class, r.consumeType);
-                iIngredients.setOutput(ItemStack.class, r.output);
+                iIngredients.setInput(VanillaTypes.ITEM, r.consumeType);
+                iIngredients.setOutput(VanillaTypes.ITEM, r.output);
                 //r.cost
             });
         }
@@ -61,23 +63,9 @@ public class FusorRecipeCategory extends IACRecipeCategory
     }
 
     @Override
+    @Nonnull
     public IDrawable getBackground() {
-        IDrawable gui = guiHelper.createDrawable(bg,  0, 0, 115, 66, 115, 66);
-        /*
-
-        HudUtils.rect(24.5f, 0, 0, 0, 115, 66, 115, 66);
-        GL20.glUseProgram(0);
-        if(tick >= 50) tick = 0;
-        GL11.glEnable(GL11.GL_BLEND);
-        Resources.font().draw(String.valueOf(((IFCachedRecipe) arecipes.get(recipe)).liquid),
-                75, 11.5f, new FontOption(13, new Color(0xFF373737)));
-        ShaderMono.instance().useProgram();
-        GL11.glColor4f(55f / 151, 55f / 151, 55f / 151, 1);
-        RenderUtils.loadTexture(new ResourceLocation("academy:textures/guis/progress/progress_fusor.png"));
-        HudUtils.rect(62, 40.5f, 0, 0, 40d * (tick / 50d), 10, 126 * (tick / 50d), 30);
-        GL20.glUseProgram(0);
-         */
-        return gui;
+        return guiHelper.drawableBuilder(bg, 0, 0, 115, 66).setTextureSize(115, 66).build();
     }
 
 }

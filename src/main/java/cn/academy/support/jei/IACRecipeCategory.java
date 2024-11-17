@@ -3,12 +3,14 @@ package cn.academy.support.jei;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public abstract class IACRecipeCategory  implements IRecipeCategory<IRecipeWrapper>
@@ -23,14 +25,15 @@ public abstract class IACRecipeCategory  implements IRecipeCategory<IRecipeWrapp
     protected abstract List<SlotPos> getInputs();
     protected abstract List<SlotPos> getOutputs();
     protected List<List<ItemStack>> getInputStacks(IIngredients ingredients) {
-        return ingredients.getInputs(ItemStack.class);
+        return ingredients.getInputs(VanillaTypes.ITEM);
     }
 
     protected List<List<ItemStack>> getOutputStacks(IIngredients ingredients) {
-        return ingredients.getOutputs(ItemStack.class);
+        return ingredients.getOutputs(VanillaTypes.ITEM);
     }
 
     @Override
+    @Nonnull
     public String getUid()
     {
         return block.getTranslationKey();
@@ -43,6 +46,7 @@ public abstract class IACRecipeCategory  implements IRecipeCategory<IRecipeWrapp
     }
 
     @Override
+    @Nonnull
     public String getModName()
     {
         return "academy";
