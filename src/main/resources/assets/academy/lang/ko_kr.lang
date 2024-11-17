@@ -233,16 +233,16 @@ ac.ability.teleporter.space_fluct.desc=공간 접기 능력을 강화하여 더 
 ac.ability.teleporter.flashing.desc=짧은 시간에 여러 텔레포트를 사용하여 공중에서 기동합니다.
 ac.ability.teleporter.crithit=%fx 치명타!
 
-ac.gui.loctele.err_exp=Exp가 너무 낮으므로 치수를 교차할 수 없습니다.
-ac.gui.loctele.err_cp=CP가 부적합해서 텔레포트를 할 수 없습니다.
+ac.gui.loctele.err_exp=Exp가 너무 낮으므로 차원을 넘을 수 없습니다.
+ac.gui.loctele.err_cp=CP가 부족해서 텔레포트를 할 수 없습니다.
 
 ## Meltdowner
 ac.ability.meltdowner.name=멜트다우너
 
 ### MD Skills
-ac.ability.meltdowner.electron_bomb.name=전자탄
-ac.ability.meltdowner.rad_intensify.name=β 방사선 내구성
-ac.ability.meltdowner.ray_barrage.name=광선 사격
+ac.ability.meltdowner.electron_bomb.name=전자 폭탄
+ac.ability.meltdowner.rad_intensify.name=β선 강화
+ac.ability.meltdowner.ray_barrage.name=광선 폭격
 ac.ability.meltdowner.scatter_bomb.name=산란탄
 ac.ability.meltdowner.meltdowner.name=멜트다우너
 ac.ability.meltdowner.light_shield.name=빛 방패
