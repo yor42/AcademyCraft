@@ -83,7 +83,8 @@ Localized content includes:
 Proper credits will be given in the next release.
 
 ## ⚠️ Donations & Project Status
-While we appreciate the community's support, **monetary contributions cannot be guaranteed to reach the developer's family.** Instead, we encourage you to:
+The current donation link was set up by the original developer, who sadly passed away in 2021. While their Patreon account remains up and may still support their family, I cannot confirm where donations made today are directed.
+If you wish to support the mod’s ongoing maintenance, please consider alternative means of contributing, such as:
 
 - ⭐ Star this repository to honor the developer's work
 - 💻 Contribute to the codebase if you find it valuable
