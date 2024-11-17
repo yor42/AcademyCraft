@@ -90,6 +90,7 @@ If you wish to support the mod’s ongoing maintenance, please consider alternat
 - 💻 Contribute to the codebase if you find it valuable
 
 * [Original Developer's Patreon][patreon]
+* Original Developer's Alipay
 
 ![][alipay]
 
