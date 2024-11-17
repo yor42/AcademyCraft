@@ -35,7 +35,7 @@ item.ac_energy_unit.name=에너지 유닛
 item.ac_windgen_fan.name=풍력발전용 선풍기
 
 item.ac_coin.name=동전
-item.ac_silbarn.name=실리콘 판
+item.ac_silbarn.name=확산 지원 반도체
 item.ac_needle.name=바늘
 item.ac_mag_hook.name=자기 갈고리
 
@@ -254,7 +254,7 @@ ac.ability.meltdowner.electron_missile.name=전자 미사일
 
 ac.ability.meltdowner.electron_bomb.desc=소량의 전자를 끌어 모아 위협적인 광선을 생성합니다.
 ac.ability.meltdowner.rad_intensify.desc=고강도의 방사선으로 인해 광선에 맞은 대상은 몇 초 동안 공격에 두 배로 취약합니다.
-ac.ability.meltdowner.ray_barrage.desc=실리콘 판을 향해 고에너지 광선을 발사하여 앞에 있는 모든 것을 파괴하는 광선 탄막으로 분산시킵니다.
+ac.ability.meltdowner.ray_barrage.desc=확산 지원 반도체를 향해 고에너지 광선을 발사하여 앞에 있는 모든 것을 파괴하는 여러 갈래의 광선 탄막으로 분산시킵니다.
 ac.ability.meltdowner.scatter_bomb.desc=둘 이상의 전자 그룹을 조작하여 공격합니다. 하지만 그 대가로 착탄 지점을 정확하게 제어할 수 없습니다.
 ac.ability.meltdowner.meltdowner.desc=벽과 금속을 녹이는 고에너지 전자 광선을 발사합니다.
 ac.ability.meltdowner.light_shield.desc=전자를 이용해 방패를 만듭니다. 고속으로 움직이는 전자는 당신을 공격하는 모든 것을 파괴하고, 당신과 접촉하는 모든 것에 피해를 입힙니다.
