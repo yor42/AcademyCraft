@@ -118,7 +118,7 @@ ac.app.freq_transmitter.e6=연결에 성공했습니다.
 ac.settings.cat.generic=일반
 ac.settings.prop.attackPlayer=PvP 사용
 ac.settings.prop.destroyBlocks=블록 파괴
-ac.settings.prop.headsOrTails=머리 또는 꼬리 놀이
+ac.settings.prop.headsOrTails=동전 던지기 놀이
 ac.settings.prop.useMouseWheel=마우스 휠로 tp 거리 조정
 #Use mouse wheel to adjust Penetrate Teleport distance
 
@@ -197,7 +197,7 @@ ac.ability.electromaster.body_intensify.name=신체 강화
 ac.ability.electromaster.thunder_clap.name=썬더클랩
 ac.ability.electromaster.thunder_bolt.name=썬더 볼트
 
-ac.ability.electromaster.arc_gen.desc=약한 전기 아크를 발생시켜 부딪히는 부위에 약간의 손상을 입힙니다. 인화성 블록에 직접 부딪히면 점화 기회가 생깁니다.
+ac.ability.electromaster.arc_gen.desc=약한 전기 아크를 발생시켜 부딪히는 부위에 약간의 손상을 입힙니다. 인화성 블록에 직접 쏘면 불이 붙을 수도 있습니다.
 ac.ability.electromaster.mag_manip.desc=자력으로 자력이 있는 것들을 조종하고 움직입니다. 심지어 적에게 피해를 입히기 위해 밖으로 던지기도 합니다.
 ac.ability.electromaster.mine_detect.desc=눈을 감고 자력의 흐름을 느껴보세요. 그러면 주변의 소중한 광물 자원의 기미를 볼 수 있습니다.
 ac.ability.electromaster.railgun.desc=전자 유도 장치를 사용하여 동전을 고속으로 발사합니다. 충격이 가해지는 곳에 파괴적인 피해를 입힙니다.
@@ -491,12 +491,12 @@ ac.tutorial.misaka=어판 %d번
 ac.tutorial.update=클라우드 터미널이 업데이트되었습니다.
 
 # Heads Or Tails
-ac.headsOrTails.0=꼬리입니다!
-ac.headsOrTails.1=머리입니다!
+ac.headsOrTails.0=뒷면이 나왔습니다!
+ac.headsOrTails.1=앞면이 나왔습니다!
 
 # Converter Block
 ac.converter.desc_template=%s을(를) %s(으)로 변환합니다.
 ac.skill_tree.dev_developing=개발중...
 
 # About App
-ac.about.donators_info=특별한 순서가 없습니다.
+ac.about.donators_info=순서 없이 나열됨
