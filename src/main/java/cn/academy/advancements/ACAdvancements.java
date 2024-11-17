@@ -95,9 +95,9 @@ public class ACAdvancements {
             if (!(player instanceof EntityPlayerMP))
                 return false;
 
-            ICriterionTrigger ach = CriteriaTriggers.get(achid);
-            if (ach == null || (!(ach instanceof ACTrigger))) {
-                Main.log.warn("AC Achievement '" + achid + "' does not exist");
+            ICriterionTrigger<ACTrigger.Instance> ach = CriteriaTriggers.get(achid);
+            if ((!(ach instanceof ACTrigger))) {
+                Main.log.warn("AC Achievement '{}' does not exist", achid);
                 return false;
             }
             ((ACTrigger)ach).trigger((EntityPlayerMP) player);

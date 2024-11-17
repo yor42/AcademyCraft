@@ -35,16 +35,16 @@ item.ac_energy_unit.name=에너지 유닛
 item.ac_windgen_fan.name=풍력발전용 선풍기
 
 item.ac_coin.name=동전
-item.ac_silbarn.name=실리콘 밴
+item.ac_silbarn.name=실리콘 판
 item.ac_needle.name=바늘
 item.ac_mag_hook.name=자기 갈고리
 
 item.ac_terminal_installer.name=데이터 터미널
 item.ac_apps.name=앱 설치기
 
-item.ac_developer_portable.name=휴대용 개발자
+item.ac_developer_portable.name=휴대용 개발장치
 item.ac_magnetic_coil.name=고전압 자기 코일
-item.ac_magnetic_coil.desc=개인적인 현실을 다시 쓰기 위해 <br>개발자에게 과도한 요금을 부과합니다.
+item.ac_magnetic_coil.desc=퍼스널 리얼리티을 다시 쓰기 위해 <br>개발장치에 과부하를 겁니다.
 item.ac_induction_factor.name=기능 유도 계수
 item.ac_tutorial.name=클라우드 터미널
 
@@ -57,14 +57,14 @@ tile.ac_machine_frame.name=기계 틀
 
 tile.ac_imag_phase.name=상상 위상 액체
 
-tile.ac_imag_fusor.name=상상 퓨저
+tile.ac_imag_fusor.name=상상 융합기
 tile.ac_matrix.name=무선 상상 매트릭스
 tile.ac_node_basic.name=기본 무선 상상 노드
 tile.ac_node_standard.name=개선 무선 상상 노드
 tile.ac_node_advanced.name=고급 무선 상상 노드
 tile.ac_metal_former.name=금속 변형기
 tile.ac_solar_gen.name=태양광 발전기
-tile.ac_cat_engine.name=고양이 동력기
+tile.ac_cat_engine.name=토스트와 고양이
 tile.ac_phase_gen.name=위상 발전기
 tile.ac_windgen_base.name=풍력발전기 기둥 베이스
 tile.ac_windgen_pillar.name=풍력발전기 기둥
@@ -75,9 +75,9 @@ tile.ac_gteu_output.name=에너지 브리지(GTCEu EU 출력)
 tile.ac_gteu_input.name=에너지 브리지(GTCEu EU 입력)
 tile.ac_rf_output.name=에너지 브리지(CoFH RF 출력)
 tile.ac_rf_input.name=에너지 브리지(CoFH RF 입력)
-tile.ac_dev_normal.name=정상 능력 개발자
-tile.ac_dev_advanced.name=고급 능력 개발자
-tile.ac_ability_interferer.name=능력 참조자
+tile.ac_dev_normal.name=일반 능력 개발장치
+tile.ac_dev_advanced.name=고급 능력 개발장치
+tile.ac_ability_interferer.name=능력 간섭기
 
 # Data Terminal
 ac.terminal.notinstalled=데이터 터미널을 아직 설치하지 않으셨습니다.
@@ -91,11 +91,11 @@ ac.terminal.app_alrdy_installed=%s 앱을 이미 설치했습니다.
 ac.terminal.app_installed=%s 앱을 설치했습니다.
 
 # Apps
-ac.app.skill_tree.name=스킬 트리
+ac.app.skill_tree.name=기술 트리
 ac.app.knowledge_record.name=라이프 레코드
 ac.app.settings.name=설정
 ac.app.media_player.name=미디어 플레이어
-ac.app.tutorial.name=클라우드
+ac.app.tutorial.name=미사카클라우드
 ac.app.about.name=소개
 
 ac.app.freq_transmitter.name=주파수 송신기
@@ -124,8 +124,8 @@ ac.settings.prop.useMouseWheel=마우스 휠로 tp 거리 조정
 
 ac.settings.cat.keys=키
 ac.settings.prop.ability_activation=능력 활성화
-ac.settings.prop.edit_preset=프리셋 편집
-ac.settings.prop.switch_preset=프리셋 전환
+ac.settings.prop.edit_preset=사전 설정 편집
+ac.settings.prop.switch_preset=사전 설정 전환
 ac.settings.prop.open_data_terminal=데이터 터미널 열기
 ac.settings.prop.ability_0=능력 #1
 ac.settings.prop.ability_1=능력 #2
@@ -134,7 +134,7 @@ ac.settings.prop.ability_3=능력 #4
 ac.settings.prop.debug_console=디버그 콘솔
 
 ac.settings.cat.misc=기타
-ac.settings.prop.edit_ui=사용자 지정 UI
+ac.settings.prop.edit_ui=UI 편집
 
 ## Media App
 ## -> ac.app.media.*
@@ -151,23 +151,23 @@ ac.media.sisters_noise.name=sister's noise
 ac.media.sisters_noise.desc=어떤 과학의 초전자포 S OP1
 
 # Ability Generic
-ac.ability.level0=0단계
-ac.ability.level1=1단계
-ac.ability.level2=2단계
-ac.ability.level3=3단계
-ac.ability.level4=4단계
-ac.ability.level5=5단계
+ac.ability.level0=레벨 0
+ac.ability.level1=레벨 1
+ac.ability.level2=레벨 2
+ac.ability.level3=레벨 3
+ac.ability.level4=레벨 4
+ac.ability.level5=레벨 5
 
 death.attack.ac_skill=%1$s가 %3$s을(를) 사용한 %2$s에 의해 살해되었습니다.
 
 ac.activate_key.deactivate.desc=능력 비활성화
-ac.activate_key.endspecial.desc=특수 스킬 모드 종료
-ac.activate_key.endskill.desc=스킬 소개
+ac.activate_key.endspecial.desc=특수 기술 모드 종료
+ac.activate_key.endskill.desc=기술 소개
 
-ac.gui.preset_edit.name=프리셋 수정
-ac.gui.preset_edit.tag=프리셋 #
+ac.gui.preset_edit.name=사전 설정 수정
+ac.gui.preset_edit.tag=사전 설정 #
 ac.gui.preset_edit.skill_remove=전류 제거
-ac.gui.preset_edit.skill_select=스킬 선택
+ac.gui.preset_edit.skill_select=기술 선택
 
 ## Generic Skills
 ac.ability.generic.brain_course.name=브레인 코스
@@ -179,7 +179,7 @@ ac.ability.generic.brain_course_advanced.desc=여러분의 두뇌의 사고력�
 ac.ability.generic.mind_course.desc=여러분의 뇌를 더 잘 이완시키는 방법을 배우세요. CP 복구 속도를 20%% 향상시킵니다.
 
 ## Electromaster
-ac.ability.electromaster.name=전자화기
+ac.ability.electromaster.name=전격술사
 
 ### EM Skills
 ac.ability.electromaster.arc_gen.name=아크 생성
@@ -311,23 +311,23 @@ ac.command.aim.usage=/aim <command>|<help> [parameters...]
 ac.command.aim.help=/aim help: 도움말 메시지를 표시합니다.
 ac.command.aim.cat=/aim cat [catName]: 지정된 플레이어의 범주를 변경하거나 현재 범주를 표시합니다.
 ac.command.aim.catlist=/aim catlist: 사용 가능한 모든 범주의 이름을 나열합니다.
-ac.command.aim.learn=/aim learn <id>|<skillName>: 학습 조건 요구 사항에 관계없이 특정 스킬을 학습합니다.
-ac.command.aim.unlearn=/aim unlearn <id>|<skillName>: 특정 스킬을 해제합니다.
-ac.command.aim.learn_all=/aim learn_all: 모든 스킬을 학습합니다.
+ac.command.aim.learn=/aim learn <id>|<skillName>: 학습 조건 요구 사항에 관계없이 특정 기술을 학습합니다.
+ac.command.aim.unlearn=/aim unlearn <id>|<skillName>: 특정 기술을 해제합니다.
+ac.command.aim.learn_all=/aim learn_all: 모든 기술을 학습합니다.
 ac.command.aim.reset=/aim reset: 능력 정보를 지웁니다.
-ac.command.aim.learned=/aim learned: 현재 학습된 모든 스킬을 표시합니다.
-ac.command.aim.skills=/aim skills: 플레이어의 현재 범주에 있는 모든 스킬을 표시합니다.
+ac.command.aim.learned=/aim learned: 현재 학습된 모든 기술을 표시합니다.
+ac.command.aim.skills=/aim skills: 플레이어의 현재 범주에 있는 모든 기술을 표시합니다.
 ac.command.aim.fullcp=/aim fullcp: 플레이어의 전체 cp를 복원합니다.
 ac.command.aim.level=/aim level: 플레이어의 능력 수준을 설정합니다.
-ac.command.aim.exp=/aim exp <id>|<skillName> [exp]: 스킬의 경험 수준을 설정하거나 봅니다.
-ac.command.aim.cd_clear=/aim cd_clear: 모든 스킬 냉각을 지웁니다.
+ac.command.aim.exp=/aim exp <id>|<skillName> [exp]: 기술의 경험 수준을 설정하거나 봅니다.
+ac.command.aim.cd_clear=/aim cd_clear: 모든 기술 냉각을 지웁니다.
 ac.command.aim.nocat=지정한 범주를 찾을 수 없습니다. /aim catalist를 사용하여 모든 범주를 나열합니다.
-ac.command.aim.cats=현재 사용 가능한 범주: 
+ac.command.aim.cats=현재 사용 가능한 범주:
 ac.command.aim.curcat=플레이어 현재 범주: %s
 ac.command.aim.nonecat=능력 없음
-ac.command.aim.noskill=그러한 스킬을 찾을 수 없습니다. 현재 범주의 모든 스킬을 나열하려면 /aim skills를 사용합니다.
-ac.command.aim.learned.format=학습한 스킬: %s
-ac.command.aim.curexp=%s 스킬의 현재 Exp: %.0f%%
+ac.command.aim.noskill=그러한 기술을 찾을 수 없습니다. 현재 범주의 모든 기술을 나열하려면 /aim skills를 사용합니다.
+ac.command.aim.learned.format=학습한 기술: %s
+ac.command.aim.curexp=%s 기술의 현재 Exp: %.0f%%
 ac.command.aim.notactive=/aim 명령은 현재 비활성화되어 있습니다. 활성 상태를 변경하려면 /aim cheats_on 또는 /aim cheats_off를 사용합니다.
 ac.command.aim.warning=§c경고: /aim 명령을 사용하면 게임 밸런스가 깨지고 모드에 대한 경험에 영향을 미칩니다. 주의하십시오!
 ac.command.aim.outofrange=§c입력 범위 이탈: §f%s에서 %s 사이의 값이어야 합니다.
@@ -340,23 +340,23 @@ ac.command.aimp.usage=/aimp <player name> <command>|<help> [parameters...]
 ac.command.aimp.help=/aimp help: 도움말 메시지를 표시합니다.
 ac.command.aimp.cat=/aimp <player name> cat [catName]: 지정된 플레이어의 범주를 변경하거나 현재 범주를 표시합니다.
 ac.command.aimp.catlist=/aimp catlist: 사용 가능한 모든 범주의 이름을 나열합니다.
-ac.command.aimp.learn=/aimp <player name> learn <id>|<skillName>: 학습 조건 요구 사항에 관계없이 특정 스킬을 학습합니다.
-ac.command.aimp.unlearn=/aimp <player name> unlearn <id>|<skillName>: 특정 스킬을 해제합니다.
-ac.command.aimp.learn_all=/aimp <player name> learn_all: 모든 스킬을 학습합니다.
+ac.command.aimp.learn=/aimp <player name> learn <id>|<skillName>: 학습 조건 요구 사항에 관계없이 특정 기술을 학습합니다.
+ac.command.aimp.unlearn=/aimp <player name> unlearn <id>|<skillName>: 특정 기술을 해제합니다.
+ac.command.aimp.learn_all=/aimp <player name> learn_all: 모든 기술을 학습합니다.
 ac.command.aimp.reset=/aimp <player name> reset: 능력 정보를 지웁니다.
-ac.command.aimp.learned=/aimp <player name> learned: 현재 학습된 모든 스킬을 표시합니다.
-ac.command.aimp.skills=/aimp <player name> skills: 플레이어의 현재 범주에 있는 모든 스킬을 표시합니다.
+ac.command.aimp.learned=/aimp <player name> learned: 현재 학습된 모든 기술을 표시합니다.
+ac.command.aimp.skills=/aimp <player name> skills: 플레이어의 현재 범주에 있는 모든 기술을 표시합니다.
 ac.command.aimp.fullcp=/aimp <player name> fullcp: 플레이어의 전체 cp를 복원합니다.
 ac.command.aimp.level=/aimp <player name> level: 플레이어의 능력 수준을 설정합니다.
-ac.command.aimp.exp=/aimp <player name> exp <id>|<skillName> [exp]: 스킬의 경험 수준을 설정하거나 봅니다.
-ac.command.aimp.cd_clear=/aimp <player name> cd_clear: 모든 스킬 냉각을 지웁니다.
-ac.command.aimp.nocat=그러한 스킬을 찾을 수 없습니다. 현재 범주의 모든 스킬을 나열하려면 /aimp catlist를 사용합니다.
-ac.command.aimp.cats=현재 사용 가능한 범주: 
+ac.command.aimp.exp=/aimp <player name> exp <id>|<skillName> [exp]: 기술의 경험 수준을 설정하거나 봅니다.
+ac.command.aimp.cd_clear=/aimp <player name> cd_clear: 모든 기술 냉각을 지웁니다.
+ac.command.aimp.nocat=그러한 기술을 찾을 수 없습니다. 현재 범주의 모든 기술을 나열하려면 /aimp catlist를 사용합니다.
+ac.command.aimp.cats=현재 사용 가능한 범주:
 ac.command.aimp.curcat=플레이어 현재 범주: %s
 ac.command.aimp.nonecat=능력 없음
-ac.command.aimp.noskill=그러한 스킬을 찾을 수 없습니다. 현재 범주의 모든 스킬을 나열하려면 /aimp <player name> skills를 사용합니다.
-ac.command.aimp.learned.format=학습한 스킬: %s
-ac.command.aimp.curexp=%s 스킬의 현재 Exp: %.0f%%
+ac.command.aimp.noskill=그러한 기술을 찾을 수 없습니다. 현재 범주의 모든 기술을 나열하려면 /aimp <player name> skills를 사용합니다.
+ac.command.aimp.learned.format=학습한 기술: %s
+ac.command.aimp.curexp=%s 기술의 현재 Exp: %.0f%%
 ac.command.aimp.notactive=/aimp 명령은 현재 비활성화되어 있습니다. 활성 상태를 변경하려면 /aimp cheats_on 또는 /aimp cheats_off를 사용합니다.
 ac.command.aimp.warning=§c경고: /aimp 명령을 사용하면 게임 밸런스가 깨지고 모드에 대한 경험에 영향을 미칩니다. 주의하십시오!
 ac.command.aimp.outofrange=§c입력 범위 이탈: §f%s에서 %s 사이의 값이어야 합니다.
@@ -368,89 +368,89 @@ ac.command.aimp.nonecathint=당신은 어떤 능력도 배우지 못했군요!
 advancements.general.root=아카데미크래프트
 advancements.general.root.desc=모든 것의 시작
 advancements.general.open_misaka_cloud=첫 연락
-advancements.general.open_misaka_cloud.desc=클라우드 열기
-advancements.general.getting_phase=신비한 힘
-advancements.general.getting_phase.desc=상상 위상 액체로 물질 유닛 얻기
+advancements.general.open_misaka_cloud.desc=미사카 클라우드를 여십시오
+advancements.general.getting_phase=신비하고 강력한
+advancements.general.getting_phase.desc=상상 위상 액체로 물질 유닛을 획득하십시오
 advancements.general.phase_generator=새로운 에너지
-advancements.general.phase_generator.desc=위상 발전기 제작
+advancements.general.phase_generator.desc=위상 발전기를 제작하십시오
 advancements.general.ac_node=선은 필요없습니다!
-advancements.general.ac_node.desc=기본 무선 상상 노드 제작
+advancements.general.ac_node.desc=기본 무선 상상 노드를 제작하십시오
 advancements.general.ac_matrix=WIFI 이용가능
-advancements.general.ac_matrix.desc=매트릭스 제작
+advancements.general.ac_matrix.desc=매트릭스를 제작하십시오
 advancements.general.terminal_installed=기계가 바꾸는 삶
-advancements.general.terminal_installed.desc=데이터 터미널 설치
+advancements.general.terminal_installed.desc=데이터 터미널을 설치하십시오
 advancements.general.getting_factor=무한한 가능성
-advancements.general.getting_factor.desc=유도 계수 획득
+advancements.general.getting_factor.desc=유도 계수를 획득하십시오
 advancements.general.ac_developer=인간을 위한 한계
-advancements.general.ac_developer.desc=휴대용 능력 개발자 제작
-advancements.general.dev_category=초능력자
-advancements.general.dev_category.desc=능력 발전
+advancements.general.ac_developer.desc=휴대용 능력 개발장치를 제작하십시오
+advancements.general.dev_category=인간 초월
+advancements.general.dev_category.desc=능력을 개발하십시오
 advancements.general.ac_level_3=홀로서기
-advancements.general.ac_level_3.desc=3단계 업그레이드
+advancements.general.ac_level_3.desc=레벨 3에 도달하십시오
 advancements.general.ac_level_5=1인 군대
-advancements.general.ac_level_5.desc=5단계 업그레이드
-advancements.general.convert_category=더 이상 랜덤하지 않는다
-advancements.general.convert_category.desc=카테고리 전환
-advancements.general.ac_learning_skill=연습이 완벽을 만든다
-advancements.general.ac_learning_skill.desc=모든 스킬 습득
+advancements.general.ac_level_5.desc=레벨 5에 도달하십시오
+advancements.general.convert_category=밑장빼기
+advancements.general.convert_category.desc=능력 분류를 변경하십시오
+advancements.general.ac_learning_skill=연습벌레
+advancements.general.ac_learning_skill.desc=모든 기술을 습득하십시오
 advancements.general.ac_milestone=모듈 업그레이드
-advancements.general.ac_milestone.desc=첫번째 스킬의 이정표 달성
-advancements.general.ac_exp_full=몇 번이나 그랬어?
-advancements.general.ac_exp_full.desc=모든 스킬에 대한 완벽한 EXP 달성
-advancements.general.ac_overload=한계 발생
-advancements.general.ac_overload.desc=과부하가 올 때까지 능력을 발휘
+advancements.general.ac_milestone.desc=첫번째 기술의 마일스톤을 달성하십시오
+advancements.general.ac_exp_full=노가다의 제왕
+advancements.general.ac_exp_full.desc=모든 기술에 대해 최대 경험치를 획득하십시오
+advancements.general.ac_overload=초능력자도 한계가 있습니다.
+advancements.general.ac_overload.desc=과부하가 올 때까지 능력을 발휘하십시오
 
 # UI Commons
 ac.gui.common.pg_wireless.not_connected=연결되지 않음
 ac.gui.common.sep.info=정보
 ac.gui.common.sep.wireless_info=무선 정보
 ac.gui.common.sep.wireless_init=무선 네트워크 정보
-ac.gui.common.sep.wireless_noinit=무선 네트워크가 초기화 되지 않음
+ac.gui.common.sep.wireless_noinit=무선 네트워크가 설정되지 않음
 ac.gui.common.sep.change_pass=비밀번호 변경
 ac.gui.common.hist.energy=에너지
 ac.gui.common.hist.buffer=버퍼
 ac.gui.common.hist.liquid=액체
 ac.gui.common.hist.capacity=용량
-ac.gui.common.prop.range=변환 범위
+ac.gui.common.prop.range=송수신 범위
 ac.gui.common.prop.owner=소유자
 ac.gui.common.prop.node_name=노드 이름
 ac.gui.common.prop.password=비밀번호
 ac.gui.common.prop.bandwidth=대역폭
 ac.gui.common.prop.ssid=SSID
-ac.gui.common.prop.gen_speed=생성 속도
+ac.gui.common.prop.gen_speed=발전량
 ac.gui.common.prop.altitude=고도
 
 # Skill Tree
 ac.skill_tree.dev_successful=발전 성공
 ac.skill_tree.dev_failed=발전 실패
-ac.skill_tree.progress=진척
+ac.skill_tree.progress=진행도
 ac.skill_tree.noenergy=에너지가 충분하지 않습니다.
 ac.skill_tree.condition_fail=개발 조건이 충족되지 않았습니다.
 ac.skill_tree.learn_question=학습합니까? (예상 소비량：%s)
 ac.skill_tree.level_question=계속합니까?
 ac.skill_tree.req=요구 사항
-ac.skill_tree.skill_not_learned=스킬을 배우지 못했습니다.
-ac.skill_tree.skill_exp=스킬 경험:
-ac.skill_tree.uplevel=%s로 업그레이드합니다.
-ac.skill_tree.anyskill=%d단계에 대해 학습된 모든 스킬입니다.
-ac.skill_tree.level_fail=먼저 %d단계에 도달해야 합니다.
+ac.skill_tree.skill_not_learned=기술을 배우지 못했습니다.
+ac.skill_tree.skill_exp=기술 경험:
+ac.skill_tree.uplevel=%s로 업그레이드
+ac.skill_tree.anyskill=레벨 %d에서 학습된 아무 기술
+ac.skill_tree.level_fail=먼저 레벨 %d에 도달해야 합니다.
 
-ac.skill_tree.type_portable=휴대용 개발자
-ac.skill_tree.type_normal=일반 개발자
-ac.skill_tree.type_advanced=고급 개발자
+ac.skill_tree.type_portable=휴대용 개발장치
+ac.skill_tree.type_normal=일반 개발장치
+ac.skill_tree.type_advanced=고급 개발장치
 
 ac.skill_tree.console.init=Academy OS Ver 1.0.1에 오신 것을 환영합니다.\nCopyright (c) Academy Tech. All rights reserved. \nUser %s이(가) 감지되었습니다. 시스템 부팅 중......
-ac.skill_tree.console.invalid_cat=\n오류: 사용자의 기능 범주가 잘못되었습니다. 부팅이 중단되었습니다.\n
-ac.skill_tree.console.learn_hint=새 범주를 얻으려면 'learn'을 입력합니다.\n
-ac.skill_tree.console.override=\n경고: 시스템 오버라이드입니다! 외부 주입을 감지했습니다.....\n\n능력 리셋: 'reset' 명령을 사용하여 범주를 재설정합니다. \n능력 레벨은 3 이상이어야 하며 유도 계수는 인벤토리에 있어야 합니다.\n
+ac.skill_tree.console.invalid_cat=\n오류: 사용자의 능력 분류가 잘못되었습니다. 부팅이 중단되었습니다.\n
+ac.skill_tree.console.learn_hint=새 분류를 얻으려면 'learn'을 입력합니다.\n
+ac.skill_tree.console.override=\n경고: 시스템 오버라이드! 외부 주입을 감지했습니다.....\n\n능력 리셋: 'reset' 명령을 사용하여 범주를 재설정합니다. \n능력 레벨은 3 이상이어야 하며 유도 계수는 인벤토리에 있어야 합니다.\n
 ac.skill_tree.console.boot_failed=부팅이 실패했습니다.\n
 ac.skill_tree.console.invalid_command=잘못된 명령입니다.\n
-ac.skill_tree.console.progress=진척: %s%%
-ac.skill_tree.console.reset_begin=능력 카테고리 재설정을 시작하는 중입니다...
-ac.skill_tree.console.reset_succ=개인 현실 재설정 시퀀스에 성공했습니다.\n
-ac.skill_tree.console.reset_fail=개인 현실 재설정 시퀀스에 실패했습니다.\n
-ac.skill_tree.console.reset_fail_dev=기능을 재설정할 수 없습니다. -- 고급 개발자를 사용해야 합니다.\n
-ac.skill_tree.console.reset_fail_other=기능을 재설정할 수 없습니다. -- 레벨이 3보다 낮거나 유도 계수가 감지되지 않습니다.\n
+ac.skill_tree.console.progress=진행도: %s%%
+ac.skill_tree.console.reset_begin=능력 분류 재설정을 시작하는 중입니다...
+ac.skill_tree.console.reset_succ=퍼스널 리얼리티 재설정 절차에 성공했습니다.\n
+ac.skill_tree.console.reset_fail=퍼스널 리얼리티 재설정 절차에 실패했습니다.\n
+ac.skill_tree.console.reset_fail_dev=능력을 재설정할 수 없습니다. -- 고급 개발장치를 사용해야 합니다.\n
+ac.skill_tree.console.reset_fail_other=능력을 재설정할 수 없습니다. -- 레벨이 3보다 낮거나 유도 계수가 감지되지 않았습니다.\n
 ac.skill_tree.console.dev_begin=시뮬레이션을 시작합니다......\n
 ac.skill_tree.console.dev_succ=개발에 성공했습니다.\n
 ac.skill_tree.console.dev_fail=개발에 실패했습니다.\n
@@ -460,9 +460,9 @@ ac.skill_tree.console.dev_fail=개발에 실패했습니다.\n
 # Imag Fusor
 
 # Metal Former
-ac.gui.metal_former.mode.etch=식각
-ac.gui.metal_former.mode.plate=판 충돌
-ac.gui.metal_former.mode.incise=새김
+ac.gui.metal_former.mode.etch=에칭
+ac.gui.metal_former.mode.plate=압연
+ac.gui.metal_former.mode.incise=절삭
 ac.gui.metal_former.mode.refine=정제
 
 # Ability interference block
@@ -473,22 +473,22 @@ ac.ability_interf.cantuse=이 간섭 블록은 사용할 수 없습니다.
 ac.gui.uiedit.elements=요소
 
 ac.gui.uiedit.elm.cpbar=CP 표시기
-ac.gui.uiedit.elm.keyhint=제어 힌트
+ac.gui.uiedit.elm.keyhint=조작 힌트
 ac.gui.uiedit.elm.notification=알림
 ac.gui.uiedit.elm.media=미디어 플레이어
 
 # Cat Engine
-ac.cat_engine.unlink=노드에서 연결이 해제되었습니다.
-ac.cat_engine.notfound=근처에서 노드를 찾을 수 없습니다.
-ac.cat_engine.linked=%s이라는 노드에 연결되어 있습니다.
+ac.cat_engine.unlink=노드와 연결이 해제되었다냥~
+ac.cat_engine.notfound=근처에 노드가 없다냥~
+ac.cat_engine.linked=노드 %s에 연결되었다냥~
 
 # Tutorials
 ac.gui.crafttype.shaped=모양있는 조합
 ac.gui.crafttype.shapeless=모양없는 조합
 
 ac.tutorial.crafting=조합: %s
-ac.tutorial.misaka=어판 %d번
-ac.tutorial.update=클라우드 터미널이 업데이트되었습니다.
+ac.tutorial.misaka=미사카 %d호
+ac.tutorial.update=클라우드 터미널이 갱신되었습니다.
 
 # Heads Or Tails
 ac.headsOrTails.0=뒷면이 나왔습니다!

@@ -47,14 +47,14 @@ public enum RecipeHandler {
     instance;
 
     private WidgetContainer windows;
-    private ResourceLocation tex = Resources.getTexture("guis/tutorial/crafting_grid");
+    private final ResourceLocation tex = Resources.getTexture("guis/tutorial/crafting_grid");
 
     @StateEventCallback
     private static void __init(FMLInitializationEvent ev) {
         instance.windows = CGUIDocument.read(new ResourceLocation("academy:guis/tutorial_windows.xml"));
     }
 
-    private Field _$ShapedOreRecipe$fieldWidth;
+    private final Field _$ShapedOreRecipe$fieldWidth;
     {
         try {
             _$ShapedOreRecipe$fieldWidth = ShapedOreRecipe.class.getDeclaredField("width");
@@ -81,21 +81,17 @@ public enum RecipeHandler {
 
         static final int STEP = 43;
 
-        private final StackDisplay[] stacks;
-        private final StackDisplay output;
         private final String description;
 
         CraftingGridDisplay(StackDisplay _output, StackDisplay[] _stacks, String desc) {
-            stacks = _stacks;
-            output = _output;
             description = desc;
 
             size(196, 128).centered().scale(0.6f);
 
-            for(int i = 0; i < stacks.length; ++i) {
+            for(int i = 0; i < _stacks.length; ++i) {
                 int col = i % 3, row = i / 3;
 
-                StackDisplay original = stacks[i];
+                StackDisplay original = _stacks[i];
                 if(original != null) {
                     original.disposed = false;
                     original.dirty = true;
@@ -105,8 +101,8 @@ public enum RecipeHandler {
                 }
             }
 
-            output.pos(148 + 5, 44 + 5);
-            addWidget(output);
+            _output.pos(148 + 5, 44 + 5);
+            addWidget(_output);
 
             listen(FrameEvent.class, (w, e) ->
             {
@@ -299,7 +295,6 @@ public enum RecipeHandler {
         return lst.stream().flatMap(stk -> Arrays.stream(recipeOfStack(stk))).toArray(Widget[]::new);
     }
 
-    @SuppressWarnings("unchecked")
     public Widget[] recipeOfStack(ItemStack stack) {
         List<Widget> ret = new ArrayList<>();
 
@@ -354,7 +349,7 @@ public enum RecipeHandler {
                     .forEach(entry -> ret.add(drawSmeltRecipe(entry.getKey(), stack)));
         }
 
-        return ret.toArray(new Widget[ret.size()]);
+        return ret.toArray(new Widget[0]);
     }
 
     private boolean itemDamageEqual(ItemStack s1, ItemStack s2) {

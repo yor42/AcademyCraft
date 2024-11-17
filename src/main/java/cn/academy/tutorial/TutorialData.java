@@ -49,7 +49,7 @@ public class TutorialData extends DataPart<EntityPlayer> {
     @SerializeIncluded
     private boolean tutorialAcquired = false;
     @SerializeIncluded
-    private int misakaID = -1;
+    private int misakaID;
 
     private final TickScheduler scheduler = new TickScheduler();
     private boolean dirty;
