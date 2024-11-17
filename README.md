@@ -93,12 +93,9 @@ If you wish to support the mod’s ongoing maintenance, please consider alternat
 
 The following section is preserved in memory of the original developer, **who passed away in Summer 2021**.
 
-### Original Donation Information (Historical)
+### Original Donation Information
 
-> ⚠️ Note: These links are preserved for archival purposes only and are no longer active.
-
-* [Development Blog & Project History (Patreon)][patreon]
-* Historical Alipay QR Code:
+* [Original Developer's Patreon][patreon]
 
 ![][alipay]
 
