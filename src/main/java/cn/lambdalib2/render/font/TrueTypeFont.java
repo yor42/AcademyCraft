@@ -1,6 +1,7 @@
 package cn.lambdalib2.render.font;
 
 import cn.lambdalib2.util.Colors;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
@@ -51,39 +52,73 @@ public class TrueTypeFont implements IFont {
         }
     }
 
-    public static TrueTypeFont defaultFont = withFallback(Font.PLAIN, 32,
-            "맑은 고딕", "Microsoft YaHei", "Adobe Heiti Std R", "STHeiti",
-            "SimHei", "微软雅黑", "黑体",
-            "Consolas", "Monospace", "Arial");
+    private static final Map<String, String[]> localeFontMap = new HashMap<>();
 
-    public static TrueTypeFont withFallback(int style, int size, String... fallbackNames){
-        Font[] allfonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
-        List<Font> used=new ArrayList<>();
-        for (String c : fallbackNames) {
-            for(Font ex:allfonts){
-                if(ex.getName().equalsIgnoreCase(c)) {
-                    used.add(ex);
+    static {
+        localeFontMap.put("en_us", new String[] {
+                "Consolas", "Monospace", "Arial", "Tahoma"
+        });
+        localeFontMap.put("ja_jp", new String[] {
+                "MS Mincho", "MS Gothic", "Yu Gothic", "Meiryo"
+        });
+        localeFontMap.put("ko_kr", new String[] {
+                "Malgun Gothic", "Gulim", "Dotum", "Batang"
+        });
+        localeFontMap.put("ru_ru", new String[] {
+                "Arial", "Times New Roman", "Tahoma", "Verdana"
+        });
+        localeFontMap.put("zh_cn", new String[] {
+                "SimHei", "Microsoft YaHei", "微软雅黑", "宋体"
+        });
+        localeFontMap.put("zh_tw", new String[] {
+                "MingLiU", "PMingLiU", "DFKai-SB", "SimSun"
+        });
+    }
+
+    public static TrueTypeFont defaultFont = getFontBasedOnLocale();
+
+    public static TrueTypeFont getFontBasedOnLocale() {
+        String currentLocale = Minecraft.getMinecraft().gameSettings.language;
+        String[] fontsToTry = localeFontMap.getOrDefault(currentLocale, localeFontMap.get("en_us"));
+
+        return withFallback(Font.PLAIN, 32, fontsToTry);
+    }
+
+    public static TrueTypeFont withFallback(int style, int size, String... fallbackNames) {
+        Font[] allFonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
+        List<Font> used = new ArrayList<>();
+
+        for (String fontName : fallbackNames) {
+            for (Font font : allFonts) {
+                if (font.getName().equalsIgnoreCase(fontName)) {
+                    used.add(font);
                     break;
                 }
             }
         }
-        return (used.isEmpty()) ? new TrueTypeFont(new Font(null, style, size)) : new TrueTypeFont(new Font(used.get(0).getName(), style, size));
+
+        if (used.isEmpty()) {
+            return new TrueTypeFont(new Font("Default", style, size));
+        } else {
+            Font validFont = used.get(0);
+            return new TrueTypeFont(new Font(validFont.getName(), style, size));
+        }
     }
 
-    private static Color BACKGRND_COLOR = new Color(255, 255, 255, 0);
+    private static final Color BACKGRND_COLOR = new Color(255, 255, 255, 0);
     private final int TEXTURE_SZ_LIMIT = Math.min(2048, GL11.glGetInteger(GL_MAX_TEXTURE_SIZE));
 
     private final int charSize;
     private final float maxPerCol;
     private final float maxStep;
-    private List<Integer> generated = new ArrayList<>();
-    private BitSet dirty = new BitSet();
-    private Map<Integer, CachedChar> lookup = new HashMap<>();
+    private final List<Integer> generated = new ArrayList<>();
+    private final BitSet dirty = new BitSet();
+    private final Map<Integer, CachedChar> lookup = new HashMap<>();
     private int step = 0;
-    private float texStep;
+    private final float texStep;
 
     @SuppressWarnings("unchecked")
-    private List<Vertex>[] batchInfoCache = new List[8];
+    private final List<Vertex>[] batchInfoCache = new List[8];
 
     public final Font font;
 
@@ -140,8 +175,8 @@ public class TrueTypeFont implements IFont {
         glAlphaFunc(GL_GEQUAL, 0.1f);
         glEnable(GL_TEXTURE_2D);
 
-        for (int i = 0; i < batchInfoCache.length; ++i) {
-            batchInfoCache[i].clear();
+        for (List<Vertex> vertices : batchInfoCache) {
+            vertices.clear();
         }
 
         for(int i:codePoints(str)){
@@ -267,7 +302,7 @@ public class TrueTypeFont implements IFont {
 
         ByteBuffer byteBuffer;
         DataBuffer db = image.getData().getDataBuffer();
-        Byte bpp = (byte) image.getColorModel().getPixelSize();
+        byte bpp = (byte) image.getColorModel().getPixelSize();
         if (db instanceof DataBufferInt) {
             int[] rawData = ((DataBufferInt) image.getData().getDataBuffer()).getData();
             byte[] bytes = new byte[rawData.length * 4];
