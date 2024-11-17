@@ -89,12 +89,6 @@ If you wish to support the mod’s ongoing maintenance, please consider alternat
 - ⭐ Star this repository to honor the developer's work
 - 💻 Contribute to the codebase if you find it valuable
 
-## Historical Information & Memorial Archive
-
-The following section is preserved in memory of the original developer, **who passed away in Summer 2021**.
-
-### Original Donation Information
-
 * [Original Developer's Patreon][patreon]
 
 ![][alipay]
