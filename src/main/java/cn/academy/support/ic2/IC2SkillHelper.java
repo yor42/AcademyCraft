@@ -24,15 +24,11 @@ import java.util.List;
  */
 public class IC2SkillHelper {
 
-    private static Block IC2CABLE = null;
     private static final IBlockSelector blockSelector = (world, x, y, z, block) -> {
         if(block instanceof BlockTileEntity)
         {
             TileEntity te = world.getTileEntity(new BlockPos(x,y,z));
-            if(te instanceof TileEntityCable)
-            {
-                return true;
-            }
+            return te instanceof TileEntityCable;
         }
         return false;
     };
