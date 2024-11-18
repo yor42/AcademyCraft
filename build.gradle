@@ -197,7 +197,7 @@ dependencies {
     implementation 'org.scala-lang:scala-library:2.11.1'  // Changed from Scala 3
     implementation 'org.scala-lang:scala-compiler:2.11.1' // Changed from Scala 3
 
-    implementation rfg.deobf("curse.maven:mekanism-ce-399904:5351260")
+    compileOnly rfg.deobf("curse.maven:mekanism-ce-399904:5351260")
     compileOnly rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022")
 
     implementation rfg.deobf("codechicken:CodeChickenLib:1.12.2-${project.ccl_ver}:universal")

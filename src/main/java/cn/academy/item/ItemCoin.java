@@ -114,11 +114,12 @@ public class ItemCoin extends Item {
 
         player.playSound(Resources.sound("entity.flipcoin"), 0.5f, 1.0f);
         setPlayerCoin(player, etc);
-        
+
         MinecraftForge.EVENT_BUS.post(new CoinThrowEvent(player, etc));
         if(!player.capabilities.isCreativeMode) {
             stack.setCount(stack.getCount() - 1);
         }
+        player.swingArm(hand);
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
     
