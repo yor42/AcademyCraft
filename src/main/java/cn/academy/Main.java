@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientDisconnectionFromServerEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +44,7 @@ public class Main {
 
     public static final String VERSION = "@VERSION@";
 
-    public static final boolean DEBUG_MODE = VERSION.startsWith("@");
+    public static final boolean DEBUG_MODE = FMLLaunchHandler.isDeobfuscatedEnvironment();
 
     public static final Logger log = LogManager.getLogger("AcademyCraft");
 
