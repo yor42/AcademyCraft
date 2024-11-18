@@ -34,30 +34,31 @@ public class MediaItem extends Item
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
         ItemStack stack = player.getHeldItem(hand);
-        if (!world.isRemote)
+        if (world.isRemote) {
+            return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+        }
+
+        MediaAcquireData acquireData = MediaAcquireData.apply(player);
+        TerminalData tData = TerminalData.get(player);
+
+        Media media = getMedia(stack.getItemDamage());
+
+        if (!tData.isInstalled(MediaApp$.MODULE$))
         {
-            MediaAcquireData acquireData = MediaAcquireData.apply(player);
-            TerminalData tData = TerminalData.get(player);
-
-            Media media = getMedia(stack.getItemDamage());
-
-            if (!tData.isInstalled(MediaApp$.MODULE$))
+            player.sendMessage(new TextComponentTranslation("ac.media.notinstalled"));
+        }
+        else if (acquireData.isInstalled(media))
+        {
+            player.sendMessage(new TextComponentTranslation("ac.media.haveone", media.name()));
+        }
+        else
+        {
+            acquireData.install(media);
+            if (!player.capabilities.isCreativeMode)
             {
-                player.sendMessage(new TextComponentTranslation("ac.media.notinstalled"));
+                stack.shrink(1);
             }
-            else if (acquireData.isInstalled(media))
-            {
-                player.sendMessage(new TextComponentTranslation("ac.media.haveone", media.name()));
-            }
-            else
-            {
-                acquireData.install(media);
-                if (!player.capabilities.isCreativeMode)
-                {
-                    stack.shrink(1);
-                }
-                player.sendMessage(new TextComponentTranslation("ac.media.acquired", media.name()));
-            }
+            player.sendMessage(new TextComponentTranslation("ac.media.acquired", media.name()));
         }
 
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);

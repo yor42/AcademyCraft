@@ -20,6 +20,9 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
+import static gregtech.common.items.MetaItems.POWER_UNIT_LV;
+
 public class GTEUSupport {
 
     public static final String GTCEU_MODID = "gregtech";
@@ -49,15 +52,14 @@ public class GTEUSupport {
         EnergyBlockHelper.register(new GTEUSinkManager());
         EnergyBlockHelper.register(new GTEUSourceManager());
 
-        // https://github.com/TinyModularThings/IC2Classic/blob/master/src/main/java/ic2/api/item/IC2Items.java
         GameRegistry.addShapedRecipe(new ResourceLocation("academy","gteu_input"), null,
                 new ItemStack(gteuInput), "abc", " d ",
                 'a', ACItems.energy_unit, 'b', ACBlocks.machine_frame,
-                'c', IC2Items.getItem("cable", "type:copper,insulation:1"), 'd', ACItems.energy_convert_component);
+                'c', POWER_UNIT_LV, 'd', ACItems.energy_convert_component);
         GameRegistry.addShapedRecipe(new ResourceLocation("academy","gteu_output"), null,
                 new ItemStack(gteuOutput), "abc", " d ",
-                'a', IC2Items.getItemAPI().getItemStack("te", "batbox"), 'b', ACBlocks.machine_frame,
-                'c', IC2Items.getItem("cable", "type:copper,insulation:1"), 'd', ACItems.energy_convert_component);
+                'a', MACHINE_CASING, 'b', ACBlocks.machine_frame,
+                'c', POWER_UNIT_LV, 'd', ACItems.energy_convert_component);
 
         GameRegistry.addShapedRecipe(new ResourceLocation("academy","gteu_input_output"), null,
                 new ItemStack(gteuInput),"X",'X',new ItemStack(gteuOutput));

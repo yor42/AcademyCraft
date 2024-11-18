@@ -27,19 +27,22 @@ public class TileRFOutput extends TileReceiverBase implements IEnergyStorage
     public void update() {
         super.update();
         World world = getWorld();
-        if(!world.isRemote) {
-            for(EnumFacing dir : EnumFacing.VALUES) {
-                BlockPos pos = this.pos.add(dir.getDirectionVec());
-                TileEntity te = world.getTileEntity(pos);
-                if(te instanceof IEnergyStorage && energy > 0) {
-                    IEnergyStorage receiver = (IEnergyStorage) te;
-                    if(receiver.canReceive()) {
-                        int req = receiver.getMaxEnergyStored() - receiver.getEnergyStored();
-                        req = Math.min(if2rf(energy), req);
-                        energy -= rf2if(receiver.receiveEnergy(req, false));
-                    }
-                }
+        if (world.isRemote) {
+            return;
+        }
+        for(EnumFacing dir : EnumFacing.VALUES) {
+            BlockPos pos = this.pos.add(dir.getDirectionVec());
+            TileEntity te = world.getTileEntity(pos);
+            if (!(te instanceof IEnergyStorage) || !(energy > 0)) {
+                continue;
             }
+            IEnergyStorage receiver = (IEnergyStorage) te;
+            if (!receiver.canReceive()) {
+                continue;
+            }
+            int req = receiver.getMaxEnergyStored() - receiver.getEnergyStored();
+            req = Math.min(if2rf(energy), req);
+            energy -= rf2if(receiver.receiveEnergy(req, false));
         }
     }
 

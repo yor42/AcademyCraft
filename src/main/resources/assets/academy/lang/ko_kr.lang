@@ -45,8 +45,8 @@ item.ac_apps.name=앱 설치기
 item.ac_developer_portable.name=휴대용 개발장치
 item.ac_magnetic_coil.name=고전압 자기 코일
 item.ac_magnetic_coil.desc=퍼스널 리얼리티을 다시 쓰기 위해 <br>개발장치에 과부하를 겁니다.
-item.ac_induction_factor.name=기능 유도 계수
-item.ac_tutorial.name=클라우드 터미널
+item.ac_induction_factor.name=능력 유도 계수
+item.ac_tutorial.name=미사카클라우드 터미널
 
 # Block
 tile.ac_constraint_metal.name=제한 금속 광석
@@ -80,8 +80,8 @@ tile.ac_dev_advanced.name=고급 능력 개발장치
 tile.ac_ability_interferer.name=능력 간섭기
 
 # Data Terminal
-ac.terminal.notinstalled=데이터 터미널을 아직 설치하지 않으셨습니다.
-ac.terminal.alrdy_installed=데이터 터미널을 이미 설치하셨습니다.
+ac.terminal.notinstalled=데이터 터미널이 설치되지 않았습니다.
+ac.terminal.alrdy_installed=데이터 터미널이 이미 설치되어 있습니다.
 ac.terminal.key_hint=데이터 터미널을 설치했습니다. %s 키를 사용하여 터미널 UI를 열거나 닫습니다.
 
 ac.gui.terminal.installing= 설치중...
@@ -170,9 +170,9 @@ ac.gui.preset_edit.skill_remove=전류 제거
 ac.gui.preset_edit.skill_select=기술 선택
 
 ## Generic Skills
-ac.ability.generic.brain_course.name=브레인 코스
-ac.ability.generic.brain_course_advanced.name=브레인 고급 코스
-ac.ability.generic.mind_course.name=마인드 코스
+ac.ability.generic.brain_course.name=두뇌 훈련
+ac.ability.generic.brain_course_advanced.name=두뇌 훈련 (고급)
+ac.ability.generic.mind_course.name=사고력 함양 프로그램
 
 ac.ability.generic.brain_course.desc=뇌를 훈련시킵니다. 최대 CP가 1000만큼 증가합니다.
 ac.ability.generic.brain_course_advanced.desc=두뇌의 사고력을 깊이 발전시킵니다. 최대 CP는 1000, 최대 과부하는 100만큼 증가합니다.
@@ -243,8 +243,8 @@ ac.ability.meltdowner.name=멜트다우너
 ac.ability.meltdowner.electron_bomb.name=전자 폭탄
 ac.ability.meltdowner.rad_intensify.name=β선 강화
 ac.ability.meltdowner.ray_barrage.name=광선 폭격
-ac.ability.meltdowner.scatter_bomb.name=산란탄
-ac.ability.meltdowner.meltdowner.name=멜트다우너
+ac.ability.meltdowner.scatter_bomb.name=전자빔 산란
+ac.ability.meltdowner.meltdowner.name=펠렛타이저 웨이브 캐논
 ac.ability.meltdowner.light_shield.name=빛 방패
 ac.ability.meltdowner.jet_engine.name=제트 엔진
 ac.ability.meltdowner.mine_ray_basic.name=기본 채굴 광선
@@ -290,7 +290,7 @@ ac.ability.vecmanip.plasma_cannon.desc=대량의 공기 흐름을 매우 높은 
 
 # Command
 ac.command.invalid=§c잘못된 입력입니다. 다시 시도하십시오.
-ac.command.successful=§2명령어가 성공적으로 수행되었습니다.
+ac.command.successful=§2명령어가 성공적으로 실행되었습니다.
 ac.command.notlearned=§6플레이어는 아직 어떤 능력도 배우지 못했습니다.
 
 ac.command.knowledge.usage=/knowledge <command>|<help> [parameters...]
@@ -299,13 +299,13 @@ ac.command.knowledge.stat=/knowledge stat: 플레이어 ac.knowledge의 통계 �
 ac.command.knowledge.clear=/knowledge clear: 모든 지식 정보를 지우고 다시 시작합니다.
 ac.command.knowledge.getall=/knowledge getall: 지금 바로 모든 지식을 습득하세요.
 ac.command.knowledge.list=/knowledge list: 사용 가능한 모든 지식을 나열합니다.
-ac.command.knowledge.learn=/knowledge learn [knowledge_name]: ac. knowledge를 학습합니다.
-ac.command.knowledge.unlearn=/knowledge unlearn [knowledge_name]: ac. knowledge를 해제합니다.
+ac.command.knowledge.learn=/knowledge learn [knowledge_name]: ac. 지식을 학습합니다.
+ac.command.knowledge.unlearn=/knowledge unlearn [knowledge_name]: ac. 지식을 잊습니다.
 ac.command.knowledge.stat2=배운 지식: %s
 ac.command.knowledge.stat3=발견된 지식: %s
 ac.command.knowledge.notfound=%s 이름을 가진 지식이 없습니다.
 ac.command.knowledge.all=모든 지식:
-ac.command.knowledge.discover=/knowledge discover [knowledge_name]: 특정 ac. knowledge를 검색합니다.
+ac.command.knowledge.discover=/knowledge discover [knowledge_name]: 특정 ac. 지식을 발견합니다.
 
 ac.command.aim.usage=/aim <command>|<help> [parameters...]
 ac.command.aim.help=/aim help: 도움말 메시지를 표시합니다.
@@ -320,7 +320,7 @@ ac.command.aim.skills=/aim skills: 플레이어의 현재 범주에 있는 모�
 ac.command.aim.fullcp=/aim fullcp: 플레이어의 전체 cp를 복원합니다.
 ac.command.aim.level=/aim level: 플레이어의 능력 수준을 설정합니다.
 ac.command.aim.exp=/aim exp <id>|<skillName> [exp]: 기술의 경험 수준을 설정하거나 봅니다.
-ac.command.aim.cd_clear=/aim cd_clear: 모든 기술 냉각을 지웁니다.
+ac.command.aim.cd_clear=/aim cd_clear: 모든 기술 재사용 대기 시간을 지웁니다.
 ac.command.aim.nocat=지정한 범주를 찾을 수 없습니다. /aim catalist를 사용하여 모든 범주를 나열합니다.
 ac.command.aim.cats=현재 사용 가능한 범주:
 ac.command.aim.curcat=플레이어 현재 범주: %s
@@ -354,7 +354,7 @@ ac.command.aimp.nocat=그러한 기술을 찾을 수 없습니다. 현재 범주
 ac.command.aimp.cats=현재 사용 가능한 범주:
 ac.command.aimp.curcat=플레이어 현재 범주: %s
 ac.command.aimp.nonecat=능력 없음
-ac.command.aimp.noskill=그러한 기술을 찾을 수 없습니다. 현재 범주의 모든 기술을 나열하려면 /aimp <player name> skills를 사용합니다.
+ac.command.aimp.noskill=기술을 찾을 수 없습니다. 현재 범주의 모든 기술을 나열하려면 /aimp <player name> skills를 사용합니다.
 ac.command.aimp.learned.format=학습한 기술: %s
 ac.command.aimp.curexp=%s 기술의 현재 Exp: %.0f%%
 ac.command.aimp.notactive=/aimp 명령은 현재 비활성화되어 있습니다. 활성 상태를 변경하려면 /aimp cheats_on 또는 /aimp cheats_off를 사용합니다.
@@ -362,7 +362,7 @@ ac.command.aimp.warning=§c경고: /aimp 명령을 사용하면 게임 밸런스
 ac.command.aimp.outofrange=§c입력 범위 이탈: §f%s에서 %s 사이의 값이어야 합니다.
 ac.command.aimp.maxout=/aimp <player name> maxout:현재 레벨의 업그레이드 진행률을 100%%로 설정합니다.
 ac.command.aimp.nocomm=해당 명령을 찾을 수 없습니다. /aimp help를 사용하여 사용 가능한 모든 명령을 나열합니다.
-ac.command.aimp.nonecathint=당신은 어떤 능력도 배우지 못했군요!
+ac.command.aimp.nonecathint=아직 배운 기술이 없습니다.
 
 # Advancement
 advancements.general.root=아카데미크래프트
@@ -370,12 +370,12 @@ advancements.general.root.desc=모든 것의 시작점
 advancements.general.open_misaka_cloud=첫만남
 advancements.general.open_misaka_cloud.desc=미사카 클라우드를 여십시오
 advancements.general.getting_phase=신비하고 강력한
-advancements.general.getting_phase.desc=상상 위상 액체로 물질 유닛을 획득하십시오
+advancements.general.getting_phase.desc=물질 유닛으로 상상 위상 액체를 획득하십시오
 advancements.general.phase_generator=새로운 에너지
 advancements.general.phase_generator.desc=위상 발전기를 제작하십시오
 advancements.general.ac_node=선은 필요없습니다!
 advancements.general.ac_node.desc=기본 무선 상상 노드를 제작하십시오
-advancements.general.ac_matrix=WIFI 터져요?
+advancements.general.ac_matrix=Wi-Fi 터져요?
 advancements.general.ac_matrix.desc=매트릭스를 제작하십시오
 advancements.general.terminal_installed=정보화 혁명
 advancements.general.terminal_installed.desc=데이터 터미널을 설치하십시오
@@ -389,7 +389,7 @@ advancements.general.ac_level_3=홀로서기
 advancements.general.ac_level_3.desc=레벨 3에 도달하십시오
 advancements.general.ac_level_5=1인 군대
 advancements.general.ac_level_5.desc=레벨 5에 도달하십시오
-advancements.general.convert_category=밑장빼기
+advancements.general.convert_category=밑장 빼기
 advancements.general.convert_category.desc=능력 분류를 변경하십시오
 advancements.general.ac_learning_skill=연습벌레
 advancements.general.ac_learning_skill.desc=모든 기술을 습득하십시오

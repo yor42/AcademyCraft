@@ -3,7 +3,7 @@
 
 # Common
 itemGroup.AcademyCraft=AcademyCraft
-ac.data_config_parse_fail=[AcademyCraft] Failed to parse custom config data file. The error:
+ac.data_config_parse_fail=[AcademyCraft] Failed to parse custom config data file:
 
 # Item
 item.ac_crystal_low.name=Low-purity Imag Crystal
@@ -32,10 +32,10 @@ item.ac_mat_core_0.name=Basic Matrix Core
 item.ac_mat_core_1.name=Improved Matrix Core
 item.ac_mat_core_2.name=Advanced Matrix Core
 item.ac_energy_unit.name=Energy Unit
-item.ac_windgen_fan.name=Wind Generator Fan
+item.ac_windgen_fan.name=Wind Generator Blade
 
 item.ac_coin.name=Coin
-item.ac_silbarn.name=Silicon Barn
+item.ac_silbarn.name=Diffusion Support Semiconductor
 item.ac_needle.name=Needle
 item.ac_mag_hook.name=Magnetic Hook
 
@@ -66,7 +66,7 @@ tile.ac_metal_former.name=Metal Former
 tile.ac_solar_gen.name=Solar Generator
 tile.ac_cat_engine.name=Toast and Cat
 tile.ac_phase_gen.name=Phase Generator
-tile.ac_windgen_base.name=Wind Generator Pillar Base
+tile.ac_windgen_base.name=Wind Generator Base
 tile.ac_windgen_pillar.name=Wind Generator Pillar
 tile.ac_windgen_main.name=Wind Generator
 tile.ac_eu_output.name=Energy Bridge (IC2 EU Out)
@@ -104,7 +104,7 @@ ac.app.freq_transmitter.s1_0=Press ENTER to confirm
 ac.app.freq_transmitter.s1_1=Authorizing...
 ac.app.freq_transmitter.s2_0=Right click any wireless node nearby to establish link. Click any other blocks to quit.
 ac.app.freq_transmitter.s3_0=Right click any wireless receiver or generator nearby to esablish link. Click any other blocks to quit.
-ac.app.freq_transmitter.st=Action Timeout.
+ac.app.freq_transmitter.st=Action Timed out.
 
 ac.app.freq_transmitter.e0=The wireless matrix is not initialized.
 ac.app.freq_transmitter.e1=Authorization failed.
@@ -117,7 +117,7 @@ ac.app.freq_transmitter.e6=Link successful.
 ## Settings App
 ac.settings.cat.generic=Generic
 ac.settings.prop.attackPlayer=Enable PvP
-ac.settings.prop.destroyBlocks=Destroy blocks
+ac.settings.prop.destroyBlocks=Block Destruction
 ac.settings.prop.headsOrTails=Play Heads or Tails
 ac.settings.prop.useMouseWheel=Mouse wheel adjust tp distance
 #Use mouse wheel to adjust Penetrate Teleport distance
@@ -151,12 +151,12 @@ ac.media.sisters_noise.name=sister's noise
 ac.media.sisters_noise.desc=Toaru Kagaku no Railgun S OP1
 
 # Ability Generic
-ac.ability.level0=Level 0
-ac.ability.level1=Level 1
-ac.ability.level2=Level 2
-ac.ability.level3=Level 3
-ac.ability.level4=Level 4
-ac.ability.level5=Level 5
+ac.ability.level0=LEVEL 0
+ac.ability.level1=LEVEL 1
+ac.ability.level2=LEVEL 2
+ac.ability.level3=LEVEL 3
+ac.ability.level4=LEVEL 4
+ac.ability.level5=LEVEL 5
 
 death.attack.ac_skill=%1$s was killed by %2$s using %3$s
 
@@ -164,18 +164,18 @@ ac.activate_key.deactivate.desc=Deactivate Ability
 ac.activate_key.endspecial.desc=End Special Skill Mode
 ac.activate_key.endskill.desc=Abort Skill
 
-ac.gui.preset_edit.name=Preset Edit
+ac.gui.preset_edit.name=Edit Preset
 ac.gui.preset_edit.tag=Preset #
-ac.gui.preset_edit.skill_remove=Remove Current
+ac.gui.preset_edit.skill_remove=Remove Skill
 ac.gui.preset_edit.skill_select=Select Skill
 
 ## Generic Skills
-ac.ability.generic.brain_course.name=Brain Course
-ac.ability.generic.brain_course_advanced.name=Brain Course Advanced
-ac.ability.generic.mind_course.name=Mind Course
+ac.ability.generic.brain_course.name=Brain Training Program
+ac.ability.generic.brain_course_advanced.name=Brain Training Program (Advanced)
+ac.ability.generic.mind_course.name=Thought Cultivation Program
 
-ac.ability.generic.brain_course.desc=Undergo training for your brain. Increases Max CP by 1000.
-ac.ability.generic.brain_course_advanced.desc=Develop the thinking ability of your brain deeply. Increases Max CP by 1000 and Max Overload by 100.
+ac.ability.generic.brain_course.desc=Exercises the brain's thinking ability. Increases Max CP by 1000.
+ac.ability.generic.brain_course_advanced.desc=Deeper and more effective development of the brain's thinking ability. Increases maximum CP by 1000 points and maximum overload by 100 points.
 ac.ability.generic.mind_course.desc=Learn how to relax your brain better. Speed up CP recovery by 20%%.
 
 ## Electromaster
@@ -184,47 +184,47 @@ ac.ability.electromaster.name=Electromaster
 ### EM Skills
 ac.ability.electromaster.arc_gen.name=Arc Generation
 ac.ability.electromaster.mag_manip.name=Magnet Manipulation
-ac.ability.electromaster.mine_detect.name=Mine Detection
+ac.ability.electromaster.mine_detect.name=Metal Detection
 ac.ability.electromaster.railgun.name=Railgun
 ac.ability.electromaster.mag_movement.name=Magnet Movement
 ac.ability.electromaster.iron_sand.name=Iron Sand Control
 ac.ability.electromaster.iron_sand.sword.name=Iron Sand Sword
 ac.ability.electromaster.iron_sand.whip.name=Iron Sand Whip
 ac.ability.electromaster.iron_sand.storm.name=Iron Sand Storm
-ac.ability.electromaster.iron_sand.cone.name=Iron Sand Cone
-ac.ability.electromaster.charging.name=Current Charging
-ac.ability.electromaster.body_intensify.name=Body Intensify
-ac.ability.electromaster.thunder_clap.name=Thunderclap
+ac.ability.electromaster.iron_sand.cone.name=Iron Sand Spine
+ac.ability.electromaster.charging.name=Current Recoil
+ac.ability.electromaster.body_intensify.name=Bioelectricity Enhancement
+ac.ability.electromaster.thunder_clap.name=Thunderfall
 ac.ability.electromaster.thunder_bolt.name=Thunder Bolt
 
-ac.ability.electromaster.arc_gen.desc=Arouse a weak electrical arc, which causes slight damage on the area it hits. If it directly hits a flammable block, it will have a chance to ignite it.
-ac.ability.electromaster.mag_manip.desc=Manipulate and move magnetizable things with the magnetic force, even throw them out to damage enemies.
-ac.ability.electromaster.mine_detect.desc=Close your eyes and feel the flow of magnetism, allowing you to see a hint of precious mineral resources around you.
-ac.ability.electromaster.railgun.desc=Shoot the coin out at a high speed with electromagnetic induction. Cause destructive damage where it impacts.
-ac.ability.electromaster.mag_movement.desc=Generate a strong magenetic field and pull yourself towards some magnetic target. Extremely useful when moving or escaping.
-ac.ability.electromaster.iron_sand.desc=Separate and manipulate the iron in sand to create a changeable and dangerous attack effect.
-ac.ability.electromaster.charging.desc=Generate electric current to charge the thing in your hand or electric blocks in the world.
-ac.ability.electromaster.body_intensify.desc=Fine-tune your bioelectricity to improve your physical ability for a short duration.
-ac.ability.electromaster.thunder_clap.desc=Manipulate the magnetic field in the atmosphere to create thunderclouds, and guide the electricity down to cause a devastating strike of lightning.
-ac.ability.electromaster.thunder_bolt.desc=Compresses an enormous amount of electricity into a powerful bolt, bursting out and damaging anything in it's area.
+ac.ability.electromaster.arc_gen.desc=Sparks a weaker arc of electricity that spreads out at the point of impact to deal damage, and may ignite flammable blocks if it hits them directly.
+ac.ability.electromaster.mag_manip.desc=Use electromagnetism to manipulate and move magnetizable objects in the world, and even throw them to attack enemies.
+ac.ability.electromaster.mine_detect.desc=Closing your eyes and feeling the flow of magnetic lines around you will allow you to see traces of rare mineral resources around you.
+ac.ability.electromaster.railgun.desc=Shoots out the coin with the principle of electromagnetic induction at high speeds to cause devastation.
+ac.ability.electromaster.mag_movement.desc=Releases electromagnetic force to magnetizable object to launch yourself toward it quickly.
+ac.ability.electromaster.iron_sand.desc=By separating and manipulating the iron from the sand around your body, you can create a varied and extremely dangerous attack.
+ac.ability.electromaster.charging.desc=Charges an item in your hand or machine block in the world.
+ac.ability.electromaster.body_intensify.desc=Manipulate your own bioelectricity to strengthen your body in a short period of time.
+ac.ability.electromaster.thunder_clap.desc=Manipulate the electromagnetic field atmosphere in the atmosphere to catalyze a thundercloud and pull the electricity in it to produce a destructive lightning.
+ac.ability.electromaster.thunder_bolt.desc=Generates a massive amount of electricity, constraining it into a column and launching it. Upon hitting the entity, the violent current bursts out to cause secondary damage.
 
 ## Teleporter
 ac.ability.teleporter.name=Teleporter
 
 ### TP Skills
-ac.ability.teleporter.threatening_teleport.name=Threatening Teleport
-ac.ability.teleporter.dim_folding_theorem.name=Dimension Folding Theorem
-ac.ability.teleporter.penetrate_teleport.name=Penetrate Teleport
-ac.ability.teleporter.mark_teleport.name=Mark Teleport
-ac.ability.teleporter.flesh_ripping.name=Flesh Ripping
-ac.ability.teleporter.location_teleport.name=Location Teleport
-ac.ability.teleporter.shift_tp.name=Shift Teleport
-ac.ability.teleporter.space_fluct.name=Space Fluctuation
-ac.ability.teleporter.flashing.name=Flashing
+ac.ability.teleporter.threatening_teleport.name=Hazardous Teleportation
+ac.ability.teleporter.dim_folding_theorem.name=Introduction to Folding Space
+ac.ability.teleporter.penetrate_teleport.name=Penetrative Teleportation
+ac.ability.teleporter.mark_teleport.name=Marked Teleportation
+ac.ability.teleporter.flesh_ripping.name=Flesh Tearing
+ac.ability.teleporter.location_teleport.name=Location Teleportation
+ac.ability.teleporter.shift_tp.name=Shift Teleportation
+ac.ability.teleporter.space_fluct.name=Spatial Fluctuation
+ac.ability.teleporter.flashing.name=High speed Flashing
 
-ac.ability.teleporter.threatening_teleport.desc=Teleport items to somewhere around you. Sometimes just a small fragment is able to kill an enemy.
+ac.ability.teleporter.threatening_teleport.desc=Teleport items to somewhere around you. Sometimes just a small pebble is able to kill an enemy.
 ac.ability.teleporter.dim_folding_theorem.desc=Boost your damage against enemies by generating a tiny space folding phonemonon.
-ac.ability.teleporter.penetrate_teleport.desc=Derive the thickness of an obstacle in front of you, and teleport straight through it.
+ac.ability.teleporter.penetrate_teleport.desc=A marvelous sense of space allows you to roughly deduce the thickness of the obstacle ahead and teleport across it.
 ac.ability.teleporter.mark_teleport.desc=Marks where you are looking at as the destination, and teleports you there.
 ac.ability.teleporter.flesh_ripping.desc=Rip apart your enemy’s inside and inflict gory damage. The over-bloody effect may make you feel uncomfortable. 
 ac.ability.teleporter.location_teleport.desc=Memorize your current location and teleport back from anywhere far away afterwards.
@@ -234,23 +234,23 @@ ac.ability.teleporter.flashing.desc=Use multiple teleportations in a short time 
 ac.ability.teleporter.crithit=%fx critical hit!
 
 ac.gui.loctele.err_exp=Exp too low, can't cross dimension
-ac.gui.loctele.err_cp=CP inadequate, can't teleport
+ac.gui.loctele.err_cp=CP too low, can't teleport
 
 ## Meltdowner
 ac.ability.meltdowner.name=Meltdowner
 
 ### MD Skills
 ac.ability.meltdowner.electron_bomb.name=Electron Bomb
-ac.ability.meltdowner.rad_intensify.name=β Radiation Intensify
-ac.ability.meltdowner.ray_barrage.name=Ray Barrage
-ac.ability.meltdowner.scatter_bomb.name=Scattering Bomb
-ac.ability.meltdowner.meltdowner.name=Meltdowner
+ac.ability.meltdowner.rad_intensify.name=β-Ray Intensification
+ac.ability.meltdowner.ray_barrage.name=Scattered Beam Shower
+ac.ability.meltdowner.scatter_bomb.name=Electron Beam Scattering
+ac.ability.meltdowner.meltdowner.name=Pelletizer Wave Cannon
 ac.ability.meltdowner.light_shield.name=Light Shield
 ac.ability.meltdowner.jet_engine.name=Jet Engine
-ac.ability.meltdowner.mine_ray_basic.name=Basic Mining Ray
-ac.ability.meltdowner.mine_ray_expert.name=Expert Mining Ray
-ac.ability.meltdowner.mine_ray_luck.name=Luck Mining Ray
-ac.ability.meltdowner.electron_missile.name=Electron Missile
+ac.ability.meltdowner.mine_ray_basic.name=Mining Ray
+ac.ability.meltdowner.mine_ray_expert.name=Enhanced Mining Ray
+ac.ability.meltdowner.mine_ray_luck.name=Advanced Mining Ray
+ac.ability.meltdowner.electron_missile.name=Cruise Beam Cannon
 
 ac.ability.meltdowner.electron_bomb.desc=Pull together a small amount of electrons to generate a threatening beam. 
 ac.ability.meltdowner.rad_intensify.desc=Because of the high-intensity radiation, the target hit by beam is doubly vulnerable to attacks for a few seconds. 
@@ -268,11 +268,11 @@ ac.ability.meltdowner.electron_missile.desc=Hold together a HUGE amount of elect
 ac.ability.vecmanip.name=Vector Manip
 
 ### VM skills
-ac.ability.vecmanip.dir_shock.name=Directed Shock
+ac.ability.vecmanip.dir_shock.name=Directed impulse
 ac.ability.vecmanip.ground_shock.name=Groundshock
 ac.ability.vecmanip.vec_accel.name=Vector Acceleration
-ac.ability.vecmanip.vec_deviation.name=Vector Deviation
-ac.ability.vecmanip.dir_blast.name=Directed Blastwave
+ac.ability.vecmanip.vec_deviation.name=Vector Offset
+ac.ability.vecmanip.dir_blast.name=Cluster Impact
 ac.ability.vecmanip.storm_wing.name=Storm Wing
 ac.ability.vecmanip.blood_retro.name=Blood Retrograde
 ac.ability.vecmanip.vec_reflection.name=Vector Reflection
@@ -350,7 +350,7 @@ ac.command.aimp.fullcp=/aimp <player name> fullcp: Restore full cp of the player
 ac.command.aimp.level=/aimp <player name> level: Set the player's ability level.
 ac.command.aimp.exp=/aimp <player name> exp <id>|<skillName> [exp]: Set or view the skill's experience level.
 ac.command.aimp.cd_clear=/aimp <player name> cd_clear: Clear all skill cooldown.
-ac.command.aimp.nocat=Specified category not found. Use /aimp catlist to list all categories.
+ac.command.aimp.nocat=Category not found. Use /aimp catlist to list all categories.
 ac.command.aimp.cats=Currently available categories: 
 ac.command.aimp.curcat=Player current category: %s
 ac.command.aimp.nonecat=No ability
@@ -370,12 +370,12 @@ advancements.general.root.desc=The beginning of everything
 advancements.general.open_misaka_cloud=First Contact
 advancements.general.open_misaka_cloud.desc=Open Misaka Cloud
 advancements.general.getting_phase=Mysterious and powerful
-advancements.general.getting_phase.desc=Get a matter unit with Imag Phase Liquid
-advancements.general.phase_generator=New Energy
+advancements.general.getting_phase.desc=Get a bucket load of Imag Phase Liquid with Matter Unit
+advancements.general.phase_generator=New Type of Energy
 advancements.general.phase_generator.desc=Craft a Phase Generator
-advancements.general.ac_node=No More Wires!
+advancements.general.ac_node=Over the Air!
 advancements.general.ac_node.desc=Craft a Basic Wireless Imag Node
-advancements.general.ac_matrix=WIFI Available Here
+advancements.general.ac_matrix=Wi-Fi Available Here
 advancements.general.ac_matrix.desc=Craft a Matrix
 advancements.general.terminal_installed=Technology Changes Life
 advancements.general.terminal_installed.desc=Install Data Terminal
@@ -383,34 +383,34 @@ advancements.general.getting_factor=Infinite Possibility
 advancements.general.getting_factor.desc=Get an Induction Factor
 advancements.general.ac_developer=There is a Limit for Human
 advancements.general.ac_developer.desc=Craft a Portable Ability Developer
-advancements.general.dev_category=Above Human
+advancements.general.dev_category=Rejecting the Humanity
 advancements.general.dev_category.desc=Develop an Ability
-advancements.general.ac_level_3=On My Own
-advancements.general.ac_level_3.desc=Upgrade to level 3
+advancements.general.ac_level_3=Go My Way!
+advancements.general.ac_level_3.desc=Upgrade to LEVEL 3
 advancements.general.ac_level_5=One Man Army
-advancements.general.ac_level_5.desc=Upgrade to level 5
-advancements.general.convert_category=No More Randomized
-advancements.general.convert_category.desc=Transform your category
+advancements.general.ac_level_5.desc=Upgrade to LEVEL 5
+advancements.general.convert_category=No More Gacha
+advancements.general.convert_category.desc=Change your category with Induction factor
 advancements.general.ac_learning_skill=Practice Makes Perfect
 advancements.general.ac_learning_skill.desc=Learn any skill
-advancements.general.ac_milestone=Upgrade Module
+advancements.general.ac_milestone=Feelin' Good!
 advancements.general.ac_milestone.desc=Reach first skill's milestone
-advancements.general.ac_exp_full=How many times did you do that?
+advancements.general.ac_exp_full=In hall of the grind king
 advancements.general.ac_exp_full.desc=Achieve full EXP for any skill
-advancements.general.ac_overload=There is Still a Limit for ESPers
+advancements.general.ac_overload=ESPer PACK-GONE.
 advancements.general.ac_overload.desc=Use your ability, until it overloads
 
 # UI Commons
 ac.gui.common.pg_wireless.not_connected=Not Connected
 ac.gui.common.sep.info=Information
-ac.gui.common.sep.wireless_info=Wireless Information
+ac.gui.common.sep.wireless_info=Wireless Network Information
 ac.gui.common.sep.wireless_init=Wireless Network Initialization
 ac.gui.common.sep.wireless_noinit=Wireless Network Not Initialized
 ac.gui.common.sep.change_pass=Change Password
 ac.gui.common.hist.energy=ENERGY
 ac.gui.common.hist.buffer=BUFFER
-ac.gui.common.hist.liquid=LIQUID
-ac.gui.common.hist.capacity=CAPACITY
+ac.gui.common.hist.liquid=PHASE LIQUID
+ac.gui.common.hist.capacity=CONNECTION CAP.
 ac.gui.common.prop.range=Trans. Range
 ac.gui.common.prop.owner=Owner
 ac.gui.common.prop.node_name=Node Name
@@ -478,9 +478,9 @@ ac.gui.uiedit.elm.notification=Notification
 ac.gui.uiedit.elm.media=Media Player
 
 # Cat Engine
-ac.cat_engine.unlink=Unlinked from the node meow~
-ac.cat_engine.notfound=Didn't found any node nearby meow~
-ac.cat_engine.linked=Linked to the node named %s meow~
+ac.cat_engine.unlink=Unlinked from the node nya~
+ac.cat_engine.notfound=Didn't found any node nearby nya~
+ac.cat_engine.linked=Linked to the node named %s nya~
 
 # Tutorials
 ac.gui.crafttype.shaped=Shaped Crafting
