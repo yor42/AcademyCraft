@@ -31,10 +31,7 @@ public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
 
     @MethodDescription(description = "groovyscript.wiki.academy.imag_fusor.remove", example = @Example("item('academy:crystal_normal')"), type = MethodDescription.Type.REMOVAL)
     public void removeByInput(ItemStack input) {
-        ImagFusorRecipes.IFRecipe recipe = ImagFusorRecipes.INSTANCE.removeRecipebyInput(input);
-        if (recipe != null) {
-            this.addBackup(recipe);
-        }
+        this.remove(ImagFusorRecipes.INSTANCE.getRecipe(input));
     }
 
 }
