@@ -366,8 +366,8 @@ ac.command.aimp.nonecathint=당신은 어떤 능력도 배우지 못했군요!
 
 # Advancement
 advancements.general.root=아카데미크래프트
-advancements.general.root.desc=모든 것의 시작
-advancements.general.open_misaka_cloud=첫 연락
+advancements.general.root.desc=모든 것의 시작점
+advancements.general.open_misaka_cloud=첫만남
 advancements.general.open_misaka_cloud.desc=미사카 클라우드를 여십시오
 advancements.general.getting_phase=신비하고 강력한
 advancements.general.getting_phase.desc=상상 위상 액체로 물질 유닛을 획득하십시오
@@ -375,9 +375,9 @@ advancements.general.phase_generator=새로운 에너지
 advancements.general.phase_generator.desc=위상 발전기를 제작하십시오
 advancements.general.ac_node=선은 필요없습니다!
 advancements.general.ac_node.desc=기본 무선 상상 노드를 제작하십시오
-advancements.general.ac_matrix=WIFI 이용가능
+advancements.general.ac_matrix=WIFI 터져요?
 advancements.general.ac_matrix.desc=매트릭스를 제작하십시오
-advancements.general.terminal_installed=기계가 바꾸는 삶
+advancements.general.terminal_installed=정보화 혁명
 advancements.general.terminal_installed.desc=데이터 터미널을 설치하십시오
 advancements.general.getting_factor=무한한 가능성
 advancements.general.getting_factor.desc=유도 계수를 획득하십시오
