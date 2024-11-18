@@ -503,8 +503,8 @@ ac.about.donators_info=In no particular order
 
 # Groovyscript
 groovyscript.wiki.academy.imag_fusor.title=Imag Fusor
-groovyscript.wiki.academy.imag_fusor.description=Converts one item and defined amount of Imag phase liquid into one item.
-groovyscript.wiki.academy.imag_fusor.add=Adds recipes in the format `output`, `input`, `amount of phase liquid`
+groovyscript.wiki.academy.imag_fusor.description=Converts one item and defined amount of Imag Phase Liquid into one item.
+groovyscript.wiki.academy.imag_fusor.add=Adds recipes in the format `output`, `input`, `amount of Imag Phase Liquid`
 groovyscript.wiki.academy.imag_fusor.remove=Removes an entry matching the given `ItemStack`
 groovyscript.wiki.academy.imag_fusor.clear=Removes all entry of Imag Fusor
 
