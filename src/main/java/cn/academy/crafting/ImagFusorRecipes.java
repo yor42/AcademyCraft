@@ -21,11 +21,11 @@ public class ImagFusorRecipes {
     
     private final List<IFRecipe> recipeList = new ArrayList<>();
     
-    public IFRecipe addRecipe(ItemStack consume, int liquid, ItemStack output) {
-        return addRecipe(new IFRecipe(consume, liquid, output));
+    public void addRecipe(ItemStack consume, int liquid, ItemStack output) {
+        addRecipe(new IFRecipe(consume, liquid, output));
     }
     
-    public IFRecipe addRecipe(IFRecipe recipe) {
+    public void addRecipe(IFRecipe recipe) {
         for(IFRecipe r : recipeList) {
 
             if(r.consumeType == recipe.consumeType) {
@@ -34,18 +34,6 @@ public class ImagFusorRecipes {
         }
         
         recipeList.add(recipe);
-        return recipe;
-    }
-
-    @Nullable
-    public IFRecipe removeRecipebyInput(ItemStack input) {
-        for(IFRecipe r : recipeList) {
-            if(r.matches(input)) {
-                recipeList.remove(r);
-                return r;
-            }
-        }
-        return null;
     }
     
     public IFRecipe getRecipe(ItemStack input) {
