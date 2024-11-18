@@ -17,6 +17,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 
+import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Collections;
 import java.util.List;
@@ -77,9 +78,7 @@ public class AbilityData extends DataPart<EntityPlayer> {
                 level = 0;
             }
 
-            for(int i = 0; i < skillExps.length; ++i) {
-                skillExps[i] = 0.0f;
-            }
+            Arrays.fill(skillExps, 0.0f);
             learnedSkills.set(0, learnedSkills.size(), false);
 
             sync();

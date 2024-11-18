@@ -52,7 +52,7 @@ public class CPData extends DataPart<EntityPlayer> {
         boolean interfering();
     }
 
-    private Map<String, IInterfSource> interfSources = new HashMap<>();
+    private final Map<String, IInterfSource> interfSources = new HashMap<>();
 
     @SerializeIncluded
     private boolean activated = false;
