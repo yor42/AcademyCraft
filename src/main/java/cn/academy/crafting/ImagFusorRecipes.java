@@ -5,6 +5,7 @@ import cn.lambdalib2.s11n.network.NetworkS11n.ContextException;
 import cn.lambdalib2.s11n.network.NetworkS11n.NetS11nAdaptor;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -26,19 +27,15 @@ public class ImagFusorRecipes {
     
     public IFRecipe addRecipe(IFRecipe recipe) {
         for(IFRecipe r : recipeList) {
-            if(r.matches(recipe.consumeType)) {
-                throw new RuntimeException("Can't register multiple recipes for same item " + recipe.consumeType.getItem() + 
-                        "(#" + recipe.consumeType.getItemDamage() + ")!!");
+
+            if(r.consumeType == recipe.consumeType) {
+                throw new RuntimeException("Can't register multiple recipes for same item " + recipe.consumeType.toString()+"!!");
             }
         }
         
         recipeList.add(recipe);
         recipe.id = recipeList.size() - 1;
         return recipe;
-    }
-
-    public void removeRecipe(IFRecipe recipe) {
-        recipeList.removeIf(r -> r.matches(recipe.consumeType));
     }
 
     @Nullable
@@ -67,20 +64,30 @@ public class ImagFusorRecipes {
     public static class IFRecipe {
         
         int id;
-        public final ItemStack consumeType;
+        public final Ingredient consumeType;
+        public final int inputAmount;
         public final int consumeLiquid;
         public final ItemStack output;
         
-        public IFRecipe(ItemStack stack, int liq, ItemStack _output) {
+        public IFRecipe(Ingredient stack, int _inputAmount, int liq, ItemStack _output) {
             consumeType = stack;
+            inputAmount = _inputAmount;
             consumeLiquid = liq;
             output = _output;
         }
-        
-        public boolean matches(ItemStack input) {
-            return consumeType.getItem() == input.getItem() && consumeType.getItemDamage() == input.getItemDamage();
+
+        public IFRecipe(ItemStack stack, int liq, ItemStack _output) {
+            this(Ingredient.fromStacks(stack), stack.getCount(), liq, _output);
         }
         
+        public boolean matches(ItemStack input) {
+            return consumeType.test(input) && inputAmount<=input.getCount();
+        }
+
+        public int getInputAmount() {
+            return inputAmount;
+        }
+
         public int getID() {
             return id;
         }

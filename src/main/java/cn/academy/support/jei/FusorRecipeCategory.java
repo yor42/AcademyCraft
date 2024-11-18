@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,7 +55,9 @@ public class FusorRecipeCategory extends IACRecipeCategory
         List<IRecipeWrapper> lists = new ArrayList<>();
         for(IFRecipe r : ImagFusorRecipes.INSTANCE.getAllRecipe()) {
             lists.add(iIngredients -> {
-                iIngredients.setInput(VanillaTypes.ITEM, r.consumeType);
+                List<List<ItemStack>> inputLists = new ArrayList<>();
+                inputLists.add(Arrays.asList(r.consumeType.matchingStacks));
+                iIngredients.setInputLists(VanillaTypes.ITEM, inputLists);
                 iIngredients.setOutput(VanillaTypes.ITEM, r.output);
                 //r.cost
             });

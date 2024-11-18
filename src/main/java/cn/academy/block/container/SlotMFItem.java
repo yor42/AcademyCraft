@@ -21,7 +21,7 @@ public class SlotMFItem extends Slot {
     public boolean isItemValid(ItemStack stack) {
         if(slot == 0) {
             for (MetalFormerRecipes.RecipeObject obj : MetalFormerRecipes.INSTANCE.getAllRecipes()) {
-                if (obj.input.getItem() == stack.getItem()) return true;
+                if (obj.input.test(stack)) return true;
             }
         }
         return false;

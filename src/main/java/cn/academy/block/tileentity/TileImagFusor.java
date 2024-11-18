@@ -203,7 +203,7 @@ public class TileImagFusor extends TileReceiverBase implements IFluidHandler, IS
             // Also check whether the amount of Liquid is enough,
             // and whether the output of currentRecipe can be outputed into outputslot
             // Added by Shielian
-        if(inventory[0].isEmpty() || currentRecipe.consumeType.getItem() != inventory[0].getItem()
+        if(inventory[0].isEmpty() || !currentRecipe.matches(inventory[0])
                 || this.pullEnergy(CONSUME_PER_TICK) != CONSUME_PER_TICK || this.getLiquidAmount() < currentRecipe.consumeLiquid
                 || (!inventory[SLOT_OUTPUT].isEmpty() && inventory[SLOT_OUTPUT].getItem() != currentRecipe.output.getItem())
                 ) {
@@ -223,7 +223,7 @@ public class TileImagFusor extends TileReceiverBase implements IFluidHandler, IS
         if(isWorking()) {
             int drained = tank.drain(currentRecipe.consumeLiquid, true).amount;
             if(!world.isRemote) {
-                inventory[0].shrink(currentRecipe.consumeType.getCount());
+                inventory[0].shrink(currentRecipe.getInputAmount());
                 if(inventory[0].getCount() <= 0)
                     inventory[0]=ItemStack.EMPTY;
                 
@@ -251,7 +251,7 @@ public class TileImagFusor extends TileReceiverBase implements IFluidHandler, IS
     
     public boolean isActionBlocked() {
         return !isWorking() || 
-            (inventory[0].getCount() < currentRecipe.consumeType.getCount()) ||
+            (inventory[0].getCount() < currentRecipe.getInputAmount()) ||
             (!inventory[1].isEmpty() && (!StackUtils.isStackDataEqual(inventory[1], currentRecipe.output) ||
             inventory[1].getCount() + currentRecipe.output.getCount() > inventory[1].getMaxStackSize())) ||
             currentRecipe.consumeLiquid > this.getLiquidAmount();

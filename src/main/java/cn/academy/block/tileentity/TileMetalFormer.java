@@ -98,7 +98,7 @@ public class TileMetalFormer extends TileReceiverBase implements ISidedInventory
                     if(workCounter == WORK_TICKS) { // Finish the job.
                         ItemStack inputSlot = this.getStackInSlot(SLOT_IN);
                         ItemStack outputSlot = this.getStackInSlot(SLOT_OUT);
-                        inputSlot.shrink(current.input.getCount());
+                        inputSlot.shrink(current.getCount());
                         if(inputSlot.getCount() == 0)
                             this.setInventorySlotContents(SLOT_IN, ItemStack.EMPTY);
                         

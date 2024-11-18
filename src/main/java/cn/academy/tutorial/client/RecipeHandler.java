@@ -254,7 +254,7 @@ public enum RecipeHandler {
     private Widget drawMFRecipe(MetalFormerRecipes.RecipeObject recipe) {
         // CGUI Rocks
         Widget ret = windows.getWidget("MetalFormer").copy();
-        ret.getWidget("slot_in").addWidget(new StackDisplay(recipe.input).centered());
+        ret.getWidget("slot_in").addWidget(new StackDisplay(recipe.input.getMatchingStacks()).centered());
         ret.getWidget("slot_out").addWidget(new StackDisplay(recipe.output).centered());
         DrawTexture.get(ret.getWidget("mode")).setTex(recipe.mode.texture);
         return ret;
@@ -262,7 +262,7 @@ public enum RecipeHandler {
 
     private Widget drawIFRecipe(IFRecipe recipe) {
         Widget ret = windows.getWidget("ImagFusor").copy();
-        ret.getWidget("slot_in").addWidget(new StackDisplay(recipe.consumeType).centered());
+        ret.getWidget("slot_in").addWidget(new StackDisplay(recipe.consumeType.getMatchingStacks()).centered());
         ret.getWidget("slot_out").addWidget(new StackDisplay(recipe.output).centered());
         TextBox.get(ret.getWidget("amount")).setContent(String.valueOf(recipe.consumeLiquid));
 

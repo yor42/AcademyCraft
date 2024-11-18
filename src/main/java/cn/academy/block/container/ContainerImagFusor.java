@@ -65,7 +65,7 @@ public class ContainerImagFusor extends TechUIContainer<TileImagFusor> {
         public boolean isItemValid(ItemStack stack) {
             if(slot == 0) {
                 for (ImagFusorRecipes.IFRecipe obj : ImagFusorRecipes.INSTANCE.getAllRecipe()) {
-                    if (obj.consumeType.getItem() == stack.getItem()) return true;
+                    if (obj.consumeType.test(stack)) return true;
                 }
             }
             return false;

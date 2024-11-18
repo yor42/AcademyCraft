@@ -7,6 +7,7 @@ import cn.lambdalib2.s11n.network.NetworkS11n.ContextException;
 import cn.lambdalib2.s11n.network.NetworkS11n.NetS11nAdaptor;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 import javax.annotation.Nullable;
@@ -23,21 +24,30 @@ public enum MetalFormerRecipes {
         private int id = -1;
         
         public final Mode mode;
-        public final ItemStack input;
+        public final Ingredient input;
+        public final int count;
         public final ItemStack output;
         
-        public RecipeObject(ItemStack _input, ItemStack _output, Mode _mode) {
+        public RecipeObject(Ingredient _input, int _count, ItemStack _output, Mode _mode) {
             input = _input;
             output = _output;
+            count = _count;
             mode = _mode;
+        }
+
+        public RecipeObject(ItemStack _input, ItemStack _output, Mode _mode) {
+            this(Ingredient.fromStacks(_input), _input.getCount(), _output, _mode);
         }
         
         public boolean accepts(ItemStack stack, Mode mode2) {
             return  stack != null &&
                     mode == mode2 &&
-                    input.getItem() == stack.getItem() &&
-                    input.getCount() <= stack.getCount() &&
-                    input.getItemDamage() == stack.getItemDamage();
+                    input.test(stack) &&
+                    count <= stack.getCount();
+        }
+
+        public int getCount() {
+            return count;
         }
 
         public void setId(int id) {
