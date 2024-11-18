@@ -34,7 +34,6 @@ public class ImagFusorRecipes {
         }
         
         recipeList.add(recipe);
-        recipe.id = recipeList.size() - 1;
         return recipe;
     }
 
@@ -62,8 +61,7 @@ public class ImagFusorRecipes {
     }
 
     public static class IFRecipe {
-        
-        int id;
+
         public final Ingredient consumeType;
         public final int inputAmount;
         public final int consumeLiquid;
@@ -89,7 +87,7 @@ public class ImagFusorRecipes {
         }
 
         public int getID() {
-            return id;
+            return ImagFusorRecipes.INSTANCE.recipeList.indexOf(this);
         }
         
     }
@@ -98,7 +96,7 @@ public class ImagFusorRecipes {
         NetworkS11n.addDirect(IFRecipe.class, new NetS11nAdaptor<IFRecipe>() {
             @Override
             public void write(ByteBuf buf, IFRecipe obj) {
-                buf.writeInt(obj.id);
+                buf.writeInt(obj.getID());
             }
             @Override
             public IFRecipe read(ByteBuf buf) throws ContextException {
