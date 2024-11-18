@@ -1,9 +1,13 @@
 package cn.academy.support.groovyscript;
 
+import cn.academy.Main;
 import cn.academy.support.groovyscript.modules.ImagFusor;
 import cn.academy.support.groovyscript.modules.MetalFormer;
 import com.cleanroommc.groovyscript.api.GroovyPlugin;
 import com.cleanroommc.groovyscript.compat.mods.GroovyContainer;
+import com.cleanroommc.groovyscript.documentation.linkgenerator.LinkGeneratorHooks;
+
+import static cn.academy.Main.NAME;
 
 public class AcademyCraftGroovyPlugin implements GroovyPlugin {
 
@@ -12,17 +16,18 @@ public class AcademyCraftGroovyPlugin implements GroovyPlugin {
 
     @Override
     public String getModId() {
-        return "academy";
+        return Main.MODID;
     }
 
     @Override
     public String getContainerName() {
-        return "AcademyCraft";
+        return NAME;
     }
 
     @Override
     public void onCompatLoaded(GroovyContainer<?> groovyContainer) {
         groovyContainer.addProperty(FUSOR);
         groovyContainer.addProperty(FORMER);
+        LinkGeneratorHooks.registerLinkGenerator(new LinkGenerator());
     }
 }

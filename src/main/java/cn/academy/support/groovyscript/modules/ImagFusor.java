@@ -1,5 +1,6 @@
 package cn.academy.support.groovyscript.modules;
 
+import cn.academy.Main;
 import cn.academy.crafting.ImagFusorRecipes;
 import com.cleanroommc.groovyscript.api.IIngredient;
 import com.cleanroommc.groovyscript.api.documentation.annotations.Example;
@@ -14,7 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Main.MODID)
 public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
     @Override
     public Collection<ImagFusorRecipes.IFRecipe> getRecipes() {

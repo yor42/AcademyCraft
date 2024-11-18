@@ -1,6 +1,7 @@
 package cn.academy.support.groovyscript;
 
 import cn.academy.Main;
+import com.cleanroommc.groovyscript.documentation.Documentation;
 import com.cleanroommc.groovyscript.documentation.linkgenerator.BasicLinkGenerator;
 import com.cleanroommc.groovyscript.documentation.linkgenerator.ILinkGenerator;
 
@@ -18,6 +19,6 @@ public class LinkGenerator extends BasicLinkGenerator implements ILinkGenerator 
 
     @Override
     protected String domain() {
-        return "https://github.com/yor42/AcademyCraft";
+        return "https://github.com/yor42/AcademyCraft/";
     }
 }

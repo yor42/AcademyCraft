@@ -1,5 +1,6 @@
 package cn.academy.support.groovyscript.modules;
 
+import cn.academy.Main;
 import cn.academy.block.tileentity.TileMetalFormer;
 import cn.academy.crafting.ImagFusorRecipes;
 import cn.academy.crafting.MetalFormerRecipes;
@@ -17,7 +18,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Main.MODID)
 public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeObject> {
 
     @MethodDescription(description = "groovyscript.wiki.academy.metal_former.add.etch", type = MethodDescription.Type.ADDITION)

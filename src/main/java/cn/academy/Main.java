@@ -29,24 +29,30 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map.Entry;
 
+import static cn.academy.Main.MODID;
+import static cn.academy.Main.NAME;
+
 /**
  * Academy Craft Mod Main Class
  * 
  * @author acaly, WeathFolD, KS
  *
  */
-@Mod(modid = "academy", name = "AcademyCraft", version = Main.VERSION, dependencies = "required-after:lambdalib2@@LAMBDA_LIB_VERSION@")
-@RegistryMod(rootPackage = "cn.academy.", resourceDomain = "academy")
+@Mod(modid = MODID, name = NAME, version = Main.VERSION, dependencies = "required-after:"+Tags.LAMBDALIB_MOD_ID+"@"+Tags.LAMBDA_LIB_VERSION)
+@RegistryMod(rootPackage = Tags.ROOT_PACKAGE, resourceDomain = Main.MODID)
 public class Main {
 
     @Instance("academy-craft")
     public static Main INSTANCE;
 
-    public static final String VERSION = "@VERSION@";
+    public static final String MODID = Tags.MOD_ID;
+    public static final String NAME = Tags.MOD_NAME;
+    public static final String VERSION = Tags.VERSION;
+
 
     public static final boolean DEBUG_MODE = FMLLaunchHandler.isDeobfuscatedEnvironment();
 
-    public static final Logger log = LogManager.getLogger("AcademyCraft");
+    public static final Logger log = LogManager.getLogger(NAME);
 
     static final String[] scripts = { "generic", "ability", "electromaster", "teleporter", "meltdowner",
             "generic_skills" };
@@ -57,7 +63,7 @@ public class Main {
 
     public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel("academy-network");
 
-    public static CreativeTabs cct = new CreativeTabs("AcademyCraft") {
+    public static CreativeTabs cct = new CreativeTabs(NAME) {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(ACItems.logo);

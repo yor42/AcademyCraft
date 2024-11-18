@@ -1,5 +1,6 @@
 package cn.lambdalib2;
 
+import cn.academy.Tags;
 import cn.lambdalib2.multiblock.MsgBlockMulti;
 import cn.lambdalib2.registry.RegistryMod;
 import cn.lambdalib2.registry.impl.RegistryManager;
@@ -14,21 +15,24 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
 
-@RegistryMod(resourceDomain = "lambdalib2")
-@Mod(modid = LambdaLib2.MODID, version = LambdaLib2.VERSION)
+import static cn.lambdalib2.LambdaLib2.MODID;
+
+@RegistryMod(resourceDomain = MODID)
+@Mod(modid = MODID, version = LambdaLib2.VERSION)
 public class LambdaLib2
 {
-    public static final String MODID = "lambdalib2";
-    public static final String VERSION = "@LAMBDA_LIB_VERSION@";
+    public static final String MODID = Tags.LAMBDALIB_MOD_ID;
+    public static final String VERSION = Tags.LAMBDA_LIB_VERSION;
 
     /**
      * Whether we are in development (debug) mode.
      */
-    public static final boolean DEBUG = VERSION.startsWith("@");
+    public static final boolean DEBUG = FMLLaunchHandler.isDeobfuscatedEnvironment();
 
     public static final SimpleNetworkWrapper channel = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
     public static Configuration config;
