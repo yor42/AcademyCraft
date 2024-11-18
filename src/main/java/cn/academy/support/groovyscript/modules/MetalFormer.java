@@ -3,16 +3,16 @@ package cn.academy.support.groovyscript.modules;
 import cn.academy.block.tileentity.TileMetalFormer;
 import cn.academy.crafting.MetalFormerRecipes;
 import com.cleanroommc.groovyscript.api.IIngredient;
+import com.cleanroommc.groovyscript.registry.StandardListRegistry;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class MetalFormer extends VirtualizedRegistry<MetalFormerRecipes.RecipeObject> {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
-    @Override
-    public void onReload() {
-        this.removeScripted().forEach(this::removeRecipe);
-        this.restoreFromBackup().forEach(this::addRecipe);
-    }
+public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeObject> {
 
     public void addEtchRecipe(IIngredient input, ItemStack output){
         for(ItemStack stack:input.getMatchingStacks()) {
@@ -38,32 +38,29 @@ public class MetalFormer extends VirtualizedRegistry<MetalFormerRecipes.RecipeOb
         }
     }
 
-    public void removeEtchingbyInput(IIngredient input){
+    public void removeEtchbyInput(ItemStack input){
         this.removeByInputandMode(input, TileMetalFormer.Mode.ETCH);
     }
 
-    public void removePlqtingbyInput(IIngredient input){
+    public void removePlatebyInput(ItemStack input){
         this.removeByInputandMode(input, TileMetalFormer.Mode.PLATE);
     }
 
-    public void removeIncisebyInput(IIngredient input){
+    public void removeIncisebyInput(ItemStack input){
         this.removeByInputandMode(input, TileMetalFormer.Mode.INCISE);
     }
 
-    public void removeRefinebyInput(IIngredient input){
+    public void removeRefinebyInput(ItemStack input){
         this.removeByInputandMode(input, TileMetalFormer.Mode.REFINE);
     }
 
-    public void removeByInputandMode(IIngredient input, TileMetalFormer.Mode mode){
+    public void removeByInputandMode(ItemStack input, TileMetalFormer.Mode mode) {
         MetalFormerRecipes.RecipeObject recipe;
-        for(ItemStack stack:input.getMatchingStacks()) {
-            recipe = MetalFormerRecipes.INSTANCE.removebyInput(stack, mode);
+        recipe = MetalFormerRecipes.INSTANCE.removebyInput(input, mode);
 
-            if (recipe != null){
-                this.addBackup(recipe);
-            }
+        if (recipe != null) {
+            this.addBackup(recipe);
         }
-
     }
 
     public void addRecipe(MetalFormerRecipes.RecipeObject recipe){
@@ -74,5 +71,10 @@ public class MetalFormer extends VirtualizedRegistry<MetalFormerRecipes.RecipeOb
     public void removeRecipe(MetalFormerRecipes.RecipeObject recipe){
         MetalFormerRecipes.INSTANCE.remove(recipe);
         this.addBackup(recipe);
+    }
+
+    @Override
+    public Collection<MetalFormerRecipes.RecipeObject> getRecipes() {
+        return MetalFormerRecipes.INSTANCE.getAllRecipes();
     }
 }

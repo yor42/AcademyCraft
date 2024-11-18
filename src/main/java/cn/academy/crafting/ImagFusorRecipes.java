@@ -6,6 +6,7 @@ import cn.lambdalib2.s11n.network.NetworkS11n.NetS11nAdaptor;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,17 @@ public class ImagFusorRecipes {
 
     public void removeRecipe(IFRecipe recipe) {
         recipeList.removeIf(r -> r.matches(recipe.consumeType));
+    }
+
+    @Nullable
+    public IFRecipe removeRecipebyInput(ItemStack input) {
+        for(IFRecipe r : recipeList) {
+            if(r.matches(input)) {
+                recipeList.remove(r);
+                return r;
+            }
+        }
+        return null;
     }
     
     public IFRecipe getRecipe(ItemStack input) {
