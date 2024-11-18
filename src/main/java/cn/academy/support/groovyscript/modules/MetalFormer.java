@@ -22,67 +22,66 @@ import java.util.Iterator;
 @RegistryDescription(linkGenerator = Main.MODID)
 public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeObject> {
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.add.etch", example = @Example("item('minecraft:stonebrick'), item('minecraft:stonebrick', 3)"), type = MethodDescription.Type.ADDITION)
+    @MethodDescription(example = @Example("item('minecraft:stonebrick'), item('minecraft:stonebrick', 3)"), type = MethodDescription.Type.ADDITION)
     public void addEtchRecipe(IIngredient input, ItemStack output){
         this.addRecipe(input, output, TileMetalFormer.Mode.ETCH);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.add.incise", example = @Example("block('minecraft:cobblestone'), item('minecraft:stone_slab', 3)"), type = MethodDescription.Type.ADDITION)
+    @MethodDescription(example = @Example("block('minecraft:cobblestone'), item('minecraft:stone_slab', 3)"), type = MethodDescription.Type.ADDITION)
     public void addInciseRecipe(IIngredient input, ItemStack output){
         this.addRecipe(input, output, TileMetalFormer.Mode.INCISE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.add.plate", example = @Example("ore('ingotIron'), item('academy:reinforced_iron_plate')"), type = MethodDescription.Type.ADDITION)
+    @MethodDescription(example = @Example("ore('ingotIron'), item('academy:reinforced_iron_plate')"), type = MethodDescription.Type.ADDITION)
     public void addPlateRecipe(IIngredient input, ItemStack output){
         this.addRecipe(input, output, TileMetalFormer.Mode.PLATE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.add.refine", example = @Example("ore('oreDiamond'), item('minecraft:diamond') * 64"), type = MethodDescription.Type.ADDITION)
+    @MethodDescription(example = @Example("ore('oreDiamond'), item('minecraft:diamond') * 64"), type = MethodDescription.Type.ADDITION)
     public void addRefineRecipe(IIngredient input, ItemStack output){
         this.addRecipe(input, output, TileMetalFormer.Mode.REFINE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.remove.etch", example = @Example("ore('oreDiamond')"), type = MethodDescription.Type.REMOVAL)
-    public void removeEtchByInput(ItemStack input){
+    @MethodDescription(example = @Example("ore('oreDiamond')"))
+    public void removeEtchByInput(IIngredient input){
         this.removeByInputAndMode(input, TileMetalFormer.Mode.ETCH);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.remove.plate", example = @Example("ore('oreDiamond')"), type = MethodDescription.Type.REMOVAL)
-    public void removePlateByInput(ItemStack input){
+    @MethodDescription(example = @Example("ore('oreDiamond')"))
+    public void removePlateByInput(IIngredient input){
         this.removeByInputAndMode(input, TileMetalFormer.Mode.PLATE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.remove.incise", example = @Example("ore('oreDiamond')"), type = MethodDescription.Type.REMOVAL)
-    public void removeInciseByInput(ItemStack input){
+    @MethodDescription(example = @Example("ore('oreDiamond')"))
+    public void removeInciseByInput(IIngredient input){
         this.removeByInputAndMode(input, TileMetalFormer.Mode.INCISE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.remove.refine", example = @Example("ore('oreDiamond')"), type = MethodDescription.Type.REMOVAL)
-    public void removeRefineByInput(ItemStack input){
+    @MethodDescription(example = @Example("ore('oreDiamond')"))
+    public void removeRefineByInput(IIngredient input){
         this.removeByInputAndMode(input, TileMetalFormer.Mode.REFINE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.clear.etch", type = MethodDescription.Type.REMOVAL)
-    public void clearEtch(){
+    @MethodDescription
+    public void removeAllEtch(){
         removeByMode(TileMetalFormer.Mode.ETCH);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.clear.incise", type = MethodDescription.Type.REMOVAL)
-    public void clearIncise(){
+    @MethodDescription
+    public void removeAllIncise(){
         removeByMode(TileMetalFormer.Mode.INCISE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.clear.plate", type = MethodDescription.Type.REMOVAL)
-    public void clearPlate(){
+    @MethodDescription
+    public void removeAllPlate(){
         removeByMode(TileMetalFormer.Mode.PLATE);
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.metal_former.clear.refine", type = MethodDescription.Type.REMOVAL)
-    public void clearRefine(){
+    @MethodDescription
+    public void removeAllRefine(){
         removeByMode(TileMetalFormer.Mode.REFINE);
     }
 
-    @GroovyBlacklist
     public void removeByMode(TileMetalFormer.Mode mode){
         Iterator<MetalFormerRecipes.RecipeObject> recipeObjectIterator = MetalFormerRecipes.INSTANCE.getAllRecipes().iterator();
         while(recipeObjectIterator.hasNext()){
@@ -99,15 +98,16 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
         }
     }
 
+    public void removeByInputAndMode(IIngredient input, TileMetalFormer.Mode mode) {
+        for(ItemStack stack: input.getMatchingStacks()) {
+            this.remove(MetalFormerRecipes.INSTANCE.getRecipe(stack, mode));
+        }
+    }
+
     @Override
     public boolean add(MetalFormerRecipes.RecipeObject recipe) {
         recipe.setId(this.getRecipes().size());
         return super.add(recipe);
-    }
-
-    @GroovyBlacklist
-    public void removeByInputAndMode(ItemStack input, TileMetalFormer.Mode mode) {
-        this.remove(MetalFormerRecipes.INSTANCE.getRecipe(input, mode));
     }
 
     @Override
