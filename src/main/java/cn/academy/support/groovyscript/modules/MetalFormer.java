@@ -92,7 +92,8 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
 
     @GroovyBlacklist
     public void removeByMode(TileMetalFormer.Mode mode){
-        for (MetalFormerRecipes.RecipeObject recipe : MetalFormerRecipes.INSTANCE.getAllRecipes()) {
+        ArrayList<MetalFormerRecipes.RecipeObject> objects = new ArrayList<>(MetalFormerRecipes.INSTANCE.getAllRecipes());
+        for (MetalFormerRecipes.RecipeObject recipe : objects) {
             if (recipe.mode == mode) {
                 this.remove(recipe);
             }
