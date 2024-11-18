@@ -36,15 +36,6 @@ public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
             this.addBackup(recipe);
         }
     }
-    @MethodDescription(description = "groovyscript.wiki.academy.imag_fusor.clear", type = MethodDescription.Type.REMOVAL)
-    public void clearRecipe(){
-        Iterator<ImagFusorRecipes.IFRecipe> iterator = ImagFusorRecipes.INSTANCE.getAllRecipe().iterator();
-        while (iterator.hasNext()) {
-            ImagFusorRecipes.IFRecipe recipe = iterator.next();
-            iterator.remove();
-            this.addBackup(recipe);
-        }
-    }
 
     public void addRecipe(ImagFusorRecipes.IFRecipe recipe){
         ImagFusorRecipes.INSTANCE.addRecipe(recipe);
