@@ -521,3 +521,5 @@ groovyscript.wiki.academy.metal_former.removeAllEtch=Removes all etching entry o
 groovyscript.wiki.academy.metal_former.removeAllIncise=Removes all incising entry of metal former
 groovyscript.wiki.academy.metal_former.removeAllPlate=Removes all plating entry of metal former
 groovyscript.wiki.academy.metal_former.removeAllRefine=Removes all refining entry of metal former
+groovyscript.wiki.academy.imag_fusor.fluidAmount.value=Amount of Imag Phase Liquid consumed for this recipe
+groovyscript.wiki.academy.metal_former.mode.value=Working mode of Metal former required for this recipe

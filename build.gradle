@@ -240,18 +240,6 @@ processResources {
         )
     }
 
-    inputs.property "version", project.version
-    inputs.property "lambdalib_ver", project.lambdalib_ver
-    inputs.property "mc_version", project.minecraft.version
-
-    filesMatching('**/*.java') {
-        filter(ReplaceTokens, tokens: [
-                'VERSION': project.version,
-                'LAMBDA_LIB_VERSION': "[${project.lambdalib_ver}]",
-                'MC_VERSION': project.minecraft.version
-        ])
-    }
-
 }
 
 jar {

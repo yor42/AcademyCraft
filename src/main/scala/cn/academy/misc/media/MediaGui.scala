@@ -14,6 +14,7 @@ import cn.lambdalib2.registry.StateEventCallback
 import cn.lambdalib2.util.{Colors, GameTimer}
 import net.minecraftforge.fml.relauncher.{Side, SideOnly}
 import net.minecraft.client.Minecraft
+import net.minecraft.client.entity.EntityPlayerSP
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 
 private object MediaGuiInit {
@@ -29,15 +30,15 @@ class MediaGui extends CGuiScreen {
   import MediaGuiInit._
   import cn.lambdalib2.cgui.ScalaCGUI._
 
-  val backend = MediaBackend(thePlayer)
+  private val backend = MediaBackend(thePlayer)
 
-  val T_PLAY = Resources.getTexture("guis/apps/media_player/play")
-  val T_PAUSE = Resources.getTexture("guis/apps/media_player/pause")
+  private val T_PLAY = Resources.getTexture("guis/apps/media_player/play")
+  private val T_PAUSE = Resources.getTexture("guis/apps/media_player/pause")
 
-  val pageMain = document.getWidget("back").copy
+  private val pageMain = document.getWidget("back").copy
 
-  val data = MediaAcquireData(thePlayer)
-  val allInstalled = MediaManager.allMedias.filter(data.isInstalled)
+  val data: MediaAcquireData = MediaAcquireData(thePlayer)
+  private val allInstalled = MediaManager.allMedias.filter(data.isInstalled)
 
   { // Init media elements
     val area = pageMain.child("area")
@@ -125,7 +126,7 @@ class MediaGui extends CGuiScreen {
 
   updatePlayDisplay()
 
-  def wrapEdit(button: Widget, box: Widget, callback: String => Any) = {
+  def wrapEdit(button: Widget, box: Widget, callback: String => Any): Widget = {
     button.transform.doesDraw = true
 
     val dt = new DrawTexture(null).setColor(Colors.monoBlend(.4f, 0))
@@ -161,7 +162,7 @@ class MediaGui extends CGuiScreen {
   /**
     * Fetches current playing info and updates it to all GUI elements.
     */
-  def updatePlayDisplay() = {
+  private def updatePlayDisplay() = {
     val playTimeText = pageMain.child("play_time").component[TextBox]
     val progress = pageMain.child("progress").component[ProgressBar]
     val title = pageMain.child("title").component[TextBox]
@@ -181,9 +182,9 @@ class MediaGui extends CGuiScreen {
     }
   }
 
-  def currentPlaying = backend.currentPlaying
+  def currentPlaying: Option[PlayInfo] = backend.currentPlaying
 
-  def thePlayer = Minecraft.getMinecraft.player
+  def thePlayer: EntityPlayerSP = Minecraft.getMinecraft.player
 
   override def doesGuiPauseGame(): Boolean = false
 }
@@ -193,7 +194,7 @@ private object MediaAuxGui {
   import cn.lambdalib2.cgui.ScalaCGUI._
 
   @StateEventCallback
-  def init(ev: FMLInitializationEvent) = {
+  def init(ev: FMLInitializationEvent): Widget = {
     val base = CGUIDocument.read(Resources.getGui("media_player_aux")).getWidget("base")
 
     ACHud.instance.addElement(base, new Condition {

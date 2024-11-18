@@ -26,7 +26,7 @@ public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
 
     @MethodDescription(example = @Example("item('academy:crystal_normal'), item('academy:crystal_low'), 3000"), type = MethodDescription.Type.ADDITION)
     public void addRecipe(ItemStack output, IIngredient input, int liquidAmount){
-        this.add(new ImagFusorRecipes.IFRecipe(input.toMcIngredient(), input.getAmount(), liquidAmount, output));
+        recipeBuilder().fluid(liquidAmount).input(input).output(output).register();
     }
 
     @MethodDescription(example = @Example("item('academy:crystal_normal')"))
@@ -43,6 +43,8 @@ public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
         return new RecipeBuilder();
     }
 
+    @Property(property = "input", comp = @Comp(eq=1))
+    @Property(property = "output", comp = @Comp(eq=1))
     public static class RecipeBuilder extends AbstractRecipeBuilder<ImagFusorRecipes.IFRecipe> {
 
         @Property(defaultValue = "1000", comp = @Comp(gt = 0))
@@ -56,7 +58,7 @@ public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
 
         @Override
         public String getErrorMsg() {
-            return "Error Adding AcademyCraft Metal Former Recipe";
+            return "Error Adding AcademyCraft Imag Fusor Recipe";
         }
 
         @Override

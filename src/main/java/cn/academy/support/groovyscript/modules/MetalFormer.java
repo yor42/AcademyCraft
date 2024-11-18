@@ -2,23 +2,16 @@ package cn.academy.support.groovyscript.modules;
 
 import cn.academy.Main;
 import cn.academy.block.tileentity.TileMetalFormer;
-import cn.academy.crafting.ImagFusorRecipes;
 import cn.academy.crafting.MetalFormerRecipes;
 import cn.academy.support.groovyscript.AcademyCraftGroovyPlugin;
-import com.cleanroommc.groovyscript.api.GroovyBlacklist;
 import com.cleanroommc.groovyscript.api.GroovyLog;
 import com.cleanroommc.groovyscript.api.IIngredient;
 import com.cleanroommc.groovyscript.api.documentation.annotations.*;
-import com.cleanroommc.groovyscript.compat.mods.roots.Moss;
 import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.StandardListRegistry;
-import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 
 @RegistryDescription(linkGenerator = Main.MODID)
@@ -95,7 +88,7 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
     }
 
     public void addRecipe(IIngredient input, ItemStack output, TileMetalFormer.Mode mode){
-        this.add(new MetalFormerRecipes.RecipeObject(input.toMcIngredient(), input.getAmount(), output, mode));
+        recipeBuilder().mode(mode).input(input).output(output).register();
     }
 
     public void removeByInputAndMode(IIngredient input, TileMetalFormer.Mode mode) {
@@ -124,10 +117,12 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
         return new RecipeBuilder();
     }
 
+    @Property(property = "input", comp = @Comp(eq=1))
+    @Property(property = "output", comp = @Comp(eq=1))
     public static class RecipeBuilder extends AbstractRecipeBuilder<MetalFormerRecipes.RecipeObject>{
 
         @Property(defaultValue = "ETCH", comp = @Comp(not = "null"))
-        private TileMetalFormer.Mode MODE = TileMetalFormer.Mode.ETCH;
+        private TileMetalFormer.Mode mode = TileMetalFormer.Mode.ETCH;
 
         @Override
         public String getErrorMsg() {
@@ -137,32 +132,32 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
         @Override
         public void validate(GroovyLog.Msg msg) {
             validateItems(msg, 1, 1, 1, 1);
-            msg.add(MODE == null, "mode must not be null!");
+            msg.add(mode == null, "mode must not be null!");
         }
 
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "mode")
         public RecipeBuilder mode(TileMetalFormer.Mode mode){
-            this.MODE = mode;
+            this.mode = mode;
             return this;
         }
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "mode")
         public RecipeBuilder incise(){
-            this.MODE = TileMetalFormer.Mode.INCISE;
+            this.mode = TileMetalFormer.Mode.INCISE;
             return this;
         }
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "mode")
         public RecipeBuilder plate(){
-            this.MODE = TileMetalFormer.Mode.PLATE;
+            this.mode = TileMetalFormer.Mode.PLATE;
             return this;
         }
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "mode")
         public RecipeBuilder refine(){
-            this.MODE = TileMetalFormer.Mode.REFINE;
+            this.mode = TileMetalFormer.Mode.REFINE;
             return this;
         }
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "mode")
         public RecipeBuilder etch(){
-            this.MODE = TileMetalFormer.Mode.ETCH;
+            this.mode = TileMetalFormer.Mode.ETCH;
             return this;
         }
 
@@ -177,7 +172,7 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
             if(!validate()){
                 return null;
             }
-            MetalFormerRecipes.RecipeObject object = new MetalFormerRecipes.RecipeObject(input.get(0).toMcIngredient(), input.get(0).getAmount(), output.get(0), this.MODE);
+            MetalFormerRecipes.RecipeObject object = new MetalFormerRecipes.RecipeObject(input.get(0).toMcIngredient(), input.get(0).getAmount(), output.get(0), this.mode);
             AcademyCraftGroovyPlugin.FORMER.add(object);
             return object;
         }
