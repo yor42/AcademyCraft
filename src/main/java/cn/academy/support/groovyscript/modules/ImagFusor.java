@@ -22,10 +22,10 @@ public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
         return ImagFusorRecipes.INSTANCE.getAllRecipe();
     }
 
-    @MethodDescription(description = "groovyscript.wiki.academy.imag_fusor.add", type = MethodDescription.Type.ADDITION)
+    @MethodDescription(description = "groovyscript.wiki.academy.imag_fusor.add", example = @Example("item('academy:crystal_normal'), item('academy:crystal_low'), 3000"), type = MethodDescription.Type.ADDITION)
     public void addRecipe(ItemStack output, IIngredient input, int liquidAmount){
         for(ItemStack stack:input.getMatchingStacks()) {
-            this.addRecipe(new ImagFusorRecipes.IFRecipe(stack, liquidAmount, output));
+            this.add(new ImagFusorRecipes.IFRecipe(stack, liquidAmount, output));
         }
     }
 
@@ -37,8 +37,4 @@ public class ImagFusor extends StandardListRegistry<ImagFusorRecipes.IFRecipe> {
         }
     }
 
-    public void addRecipe(ImagFusorRecipes.IFRecipe recipe){
-        ImagFusorRecipes.INSTANCE.addRecipe(recipe);
-        this.addScripted(recipe);
-    }
 }

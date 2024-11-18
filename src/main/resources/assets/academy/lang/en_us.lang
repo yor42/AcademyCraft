@@ -506,7 +506,6 @@ groovyscript.wiki.academy.imag_fusor.title=Imag Fusor
 groovyscript.wiki.academy.imag_fusor.description=Converts one item and defined amount of Imag Phase Liquid into one item.
 groovyscript.wiki.academy.imag_fusor.add=Adds recipes in the format `output`, `input`, `amount of Imag Phase Liquid`
 groovyscript.wiki.academy.imag_fusor.remove=Removes an entry matching the given `ItemStack`
-groovyscript.wiki.academy.imag_fusor.clear=Removes all entry of Imag Fusor
 
 groovyscript.wiki.academy.metal_former.title=Metal Former
 groovyscript.wiki.academy.metal_former.description=Converts an item into another item, according to the mode of the machine.
@@ -518,7 +517,6 @@ groovyscript.wiki.academy.metal_former.remove.etch=Removes an entry matching the
 groovyscript.wiki.academy.metal_former.remove.incise=Removes an entry matching the given `ItemStack` from incise recipes
 groovyscript.wiki.academy.metal_former.remove.plate=Removes an entry matching the given `ItemStack` from plate recipes
 groovyscript.wiki.academy.metal_former.remove.refine=Removes an entry matching the given `ItemStack` from refine recipes
-groovyscript.wiki.academy.metal_former.clear.all=Removes all entry of metal former
 groovyscript.wiki.academy.metal_former.clear.etch=Removes all etching entry of metal former
 groovyscript.wiki.academy.metal_former.clear.incise=Removes all etching entry of metal former
 groovyscript.wiki.academy.metal_former.clear.plate=Removes all etching entry of metal former

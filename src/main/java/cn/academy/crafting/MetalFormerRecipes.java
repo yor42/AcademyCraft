@@ -39,6 +39,10 @@ public enum MetalFormerRecipes {
                     input.getCount() <= stack.getCount() &&
                     input.getItemDamage() == stack.getItemDamage();
         }
+
+        public void setId(int id) {
+            this.id = id;
+        }
     }
     
     final List<RecipeObject> objects = new ArrayList<>();

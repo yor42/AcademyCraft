@@ -505,7 +505,6 @@ groovyscript.wiki.academy.imag_fusor.title=상상 융합기
 groovyscript.wiki.academy.imag_fusor.description=한 아이템과 정해진 양의 상상 위상 액체를 다른 아이템으로 변경합니다
 groovyscript.wiki.academy.imag_fusor.add=`출력`, `입력`, `상상 위상 액체 소모량`의 형식으로 상상 융합기의 조합법을 추가합니다
 groovyscript.wiki.academy.imag_fusor.remove=`아이템스택`과 입력이 일치하는 상상 융합기의 조합법을 삭제합니다.
-groovyscript.wiki.academy.imag_fusor.clear=상상 융합기의 모든 조합법을 삭제합니다
 
 groovyscript.wiki.academy.metal_former.title=금속 변형기
 groovyscript.wiki.academy.metal_former.description=한 아이템을 동작 모드에 따라 다른 아이템으로 변형합니다.
@@ -517,7 +516,6 @@ groovyscript.wiki.academy.metal_former.remove.etch=`아이템스택`과 입력�
 groovyscript.wiki.academy.metal_former.remove.incise=`아이템스택`과 입력이 일치하는 금속 변형기의 절삭 조합법을 삭제합니다.
 groovyscript.wiki.academy.metal_former.remove.plate=`아이템스택`과 입력이 일치하는 금속 변형기의 압연 조합법을 삭제합니다.
 groovyscript.wiki.academy.metal_former.remove.refine=`아이템스택`과 입력이 일치하는 금속 변형기의 정제 조합법을 삭제합니다.
-groovyscript.wiki.academy.metal_former.clear.all=금속 변형기의 모든 조합법을 삭제합니다.
 groovyscript.wiki.academy.metal_former.clear.etch=금속 변형기의 모든 에칭 조합법을 삭제합니다.
 groovyscript.wiki.academy.metal_former.clear.incise=금속 변형기의 모든 절삭 조합법을 삭제합니다.
 groovyscript.wiki.academy.metal_former.clear.plate=금속 변형기의 모든 압연 조합법을 삭제합니다.
