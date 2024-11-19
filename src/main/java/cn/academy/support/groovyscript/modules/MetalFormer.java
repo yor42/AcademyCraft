@@ -57,22 +57,22 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
         this.removeByInputAndMode(input, TileMetalFormer.Mode.REFINE);
     }
 
-    @MethodDescription
+    @MethodDescription(priority = 2000)
     public void removeAllEtch(){
         removeByMode(TileMetalFormer.Mode.ETCH);
     }
 
-    @MethodDescription
+    @MethodDescription(priority = 2000)
     public void removeAllIncise(){
         removeByMode(TileMetalFormer.Mode.INCISE);
     }
 
-    @MethodDescription
+    @MethodDescription(priority = 2000)
     public void removeAllPlate(){
         removeByMode(TileMetalFormer.Mode.PLATE);
     }
 
-    @MethodDescription
+    @MethodDescription(priority = 2000)
     public void removeAllRefine(){
         removeByMode(TileMetalFormer.Mode.REFINE);
     }
@@ -135,7 +135,7 @@ public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeO
             msg.add(mode == null, "mode must not be null!");
         }
 
-        @RecipeBuilderMethodDescription(field = "mode")
+        @RecipeBuilderMethodDescription(field = "mode", priority = 2000)
         public RecipeBuilder mode(TileMetalFormer.Mode mode){
             this.mode = mode;
             return this;
