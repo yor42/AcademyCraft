@@ -111,8 +111,9 @@ public class ItemCoin extends Item {
         //Spawn at both side, not syncing for render effect purpose
         EntityCoinThrowing etc = new EntityCoinThrowing(player, stack);
         world.spawnEntity(etc);
-
-        player.playSound(Resources.sound("entity.flipcoin"), 0.5f, 1.0f);
+        if(world.isRemote) {
+            player.playSound(Resources.sound("entity.flipcoin"), 0.4f+(world.rand.nextFloat()*0.1f), 0.9f+(world.rand.nextFloat()*0.1f));
+        }
         setPlayerCoin(player, etc);
 
         MinecraftForge.EVENT_BUS.post(new CoinThrowEvent(player, etc));

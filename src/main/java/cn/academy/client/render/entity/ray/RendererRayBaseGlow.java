@@ -1,5 +1,6 @@
 package cn.academy.client.render.entity.ray;
 
+import cn.academy.entity.EntityRayBase;
 import cn.academy.entity.IRay;
 import cn.lambdalib2.render.legacy.Tessellator;
 import cn.lambdalib2.util.MathUtils;
@@ -20,7 +21,7 @@ import static org.lwjgl.opengl.GL11.*;
  * Renderer to draw glow texture
  * @author WeAthFolD
  */
-public abstract class RendererRayBaseGlow<T extends IRay> extends Render {
+public abstract class RendererRayBaseGlow<T extends EntityRayBase &IRay> extends Render<T> {
     
     {
         this.shadowOpaque = 0;
@@ -31,17 +32,16 @@ public abstract class RendererRayBaseGlow<T extends IRay> extends Render {
     }
 
     @Override
-    public void doRender(Entity entity, double x, double y, double z, 
+    public void doRender(T entity, double x, double y, double z,
             float yaw, float partialTicks) {
-        T ray = (T) entity;
-        
+
         Minecraft mc = Minecraft.getMinecraft();
         
         glPushMatrix();
         
-        doTransform(ray);
+        doTransform(entity);
         
-        Vec3d position = ray.getRayPosition();
+        Vec3d position = entity.getRayPosition();
         Vec3d relativePosition = VecUtils.subtract(position,
                 new Vec3d(x, y, y));
         glTranslated(x, y, z);
@@ -50,11 +50,11 @@ public abstract class RendererRayBaseGlow<T extends IRay> extends Render {
         //The ray viewing direction.
         Vec3d dir = VecUtils.toDirVector(entity, partialTicks);
         //Pick two far enough start and end point.
-        Vec3d start = VecUtils.multiply(dir, ray.getStartFix()),
-            end = VecUtils.add(start, VecUtils.multiply(dir, ray.getLength() - ray.getStartFix()));
+        Vec3d start = VecUtils.multiply(dir, entity.getStartFix()),
+            end = VecUtils.add(start, VecUtils.multiply(dir, entity.getLength() - entity.getStartFix()));
         
         Vec3d upDir;
-        boolean firstPerson = ViewOptimize.isFirstPerson(ray);
+        boolean firstPerson = ViewOptimize.isFirstPerson(entity);
         if(firstPerson) {
             upDir = new Vec3d(0, 1, -0.5);
         } else {
@@ -85,9 +85,9 @@ public abstract class RendererRayBaseGlow<T extends IRay> extends Render {
 //        GL11.glEnable(GL11.GL_TEXTURE_2D);
         //DEBUG END
         
-        if(ray.needsViewOptimize()) {
+        if(entity.needsViewOptimize()) {
             yaw = MathUtils.lerpDegree(entity.prevRotationYaw, entity.rotationYaw, partialTicks);
-            Vec3d vec = ViewOptimize.getFixVector(ray);
+            Vec3d vec = ViewOptimize.getFixVector(entity);
             vec = vec.rotateYaw((float) ((270 - yaw) / 180 * Math.PI));
             start = VecUtils.add(start, vec);
             
@@ -95,10 +95,10 @@ public abstract class RendererRayBaseGlow<T extends IRay> extends Render {
             // end = VecUtils.add(end, vec);
         }
         
-        doTransform(ray);
+        doTransform(entity);
         
         //Now delegate to the render itself~
-        draw(ray, start, end, upDir);
+        draw(entity, start, end, upDir);
         
         glPopMatrix();
     }
@@ -136,7 +136,7 @@ public abstract class RendererRayBaseGlow<T extends IRay> extends Render {
     protected abstract void draw(T ray, Vec3d start, Vec3d end, Vec3d sideDir);
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
+    protected ResourceLocation getEntityTexture(T p_110775_1_) {
         return null;
     }
 

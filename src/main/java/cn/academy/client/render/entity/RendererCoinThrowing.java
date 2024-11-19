@@ -18,16 +18,16 @@ import org.lwjgl.opengl.GL11;
  * @author KSkun
  */
 @RegEntityRender(EntityCoinThrowing.class)
-public class RendererCoinThrowing extends Render {
+public class RendererCoinThrowing extends Render<EntityCoinThrowing> {
 
     public RendererCoinThrowing(RenderManager manager) {
         super(manager);
     }
 
     @Override
-    public void doRender(Entity var1, double x, double y, double z,
+    public void doRender(EntityCoinThrowing var1, double x, double y, double z,
             float var8, float var9) {
-        EntityCoinThrowing etc = (EntityCoinThrowing) var1;
+        EntityCoinThrowing etc = var1;
         EntityPlayer player = etc.player;
         boolean fp = player == Minecraft.getMinecraft().player
                 && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0;
@@ -64,7 +64,7 @@ public class RendererCoinThrowing extends Render {
     }
     
     @Override
-    protected ResourceLocation getEntityTexture(Entity var1) {
+    protected ResourceLocation getEntityTexture(EntityCoinThrowing var1) {
         return null;
     }
 

@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 @RegEntityRender(EntityMagHook.class)
-public class RendererMagHook extends Render {
+public class RendererMagHook extends Render<EntityMagHook> {
 
     final ObjLegacyRender model = Resources.getModel("maghook"),
             model_open = Resources.getModel("maghook_open");
@@ -27,9 +27,9 @@ public class RendererMagHook extends Render {
     }
 
     @Override
-    public void doRender(Entity ent, double x, double y, double z, float a,
+    public void doRender(EntityMagHook ent, double x, double y, double z, float a,
             float b) {
-        EntityMagHook hook = (EntityMagHook) ent;
+        EntityMagHook hook = ent;
         ObjLegacyRender realModel = model;
         if (hook.isHit) {
             realModel = model_open;
@@ -51,7 +51,7 @@ public class RendererMagHook extends Render {
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity var1) {
+    protected ResourceLocation getEntityTexture(EntityMagHook var1) {
         return null;
     }
 
