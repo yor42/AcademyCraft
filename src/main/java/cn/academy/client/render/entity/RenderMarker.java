@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL20;
  *
  */
 @RegEntityRender(EntityMarker.class)
-public class RenderMarker extends Render {
+public class RenderMarker extends Render<EntityMarker> {
 
     static final Tessellator t = Tessellator.instance;
     final double[][] mulArray = { { 0, 0, 0 }, { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 }, { 0, 1, 0 }, { 1, 1, 0 },
@@ -31,29 +31,28 @@ public class RenderMarker extends Render {
     }
 
     @Override
-    public void doRender(Entity ent, double x, double y, double z, float a, float b) {
-        EntityMarker marker = (EntityMarker) ent;
-        if (!marker.firstUpdated())
+    public void doRender(EntityMarker ent, double x, double y, double z, float a, float b) {
+        if (!ent.firstUpdated())
             return;
 
-        Entity targ = marker.target;
+        Entity targ = ent.target;
         float width, height;
         if (targ != null) {
             width = targ.width;
             height = targ.height;
         } else {
-            width = marker.width;
-            height = marker.height;
+            width = ent.width;
+            height = ent.height;
         }
 
         ShaderNotex.instance().useProgram();
         GL11.glDisable(GL11.GL_TEXTURE_2D);
-        if (marker.ignoreDepth)
+        if (ent.ignoreDepth)
             GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glPushMatrix();
 
         GL11.glTranslated(x - width / 2, y + 0.05 * Math.sin(GameTimer.getAbsTime() / 400.0), z - width / 2);
-        Colors.bindToGL(marker.color);
+        Colors.bindToGL(ent.color);
         renderMark(width, height);
 
         GL11.glPopMatrix();
@@ -90,7 +89,7 @@ public class RenderMarker extends Render {
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity var1) {
+    protected ResourceLocation getEntityTexture(EntityMarker var1) {
         return null;
     }
 

@@ -1,5 +1,6 @@
 package cn.academy.client.render.entity.ray;
 
+import cn.academy.entity.EntityRayBase;
 import cn.academy.entity.IRay;
 import cn.lambdalib2.render.legacy.GLSLMesh;
 import cn.lambdalib2.render.legacy.ShaderNotex;
@@ -17,7 +18,7 @@ import java.util.List;
  * Renderer to draw the concrete cylinder
  * @author WeAthFolD
  */
-public class RendererRayCylinder<T extends IRay> extends RendererRayBaseSimple {
+public class RendererRayCylinder<T extends EntityRayBase&IRay> extends RendererRayBaseSimple<T> {
     
     public double width = 0.08;
     
@@ -87,8 +88,8 @@ public class RendererRayCylinder<T extends IRay> extends RendererRayBaseSimple {
             head.setQuads(faces.toArray(new Integer[]{}));
         }
         { //Build the cylinder.
-            List<double[]> vertices = new ArrayList();
-            List<Integer> faces = new ArrayList();
+            List<double[]> vertices = new ArrayList<>();
+            List<Integer> faces = new ArrayList<>();
             
             for(int j = 0; j < DIV; ++j) {
                 double[] p1 = new double[] { 
@@ -133,20 +134,18 @@ public class RendererRayCylinder<T extends IRay> extends RendererRayBaseSimple {
     }
 
     @Override
-    protected void draw(Entity entity, double len) {
+    protected void draw(T entity, double len) {
         if(RenderUtils.isInShadowPass())
             return;
         
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glPushMatrix();
-        
-        IRay ray = (IRay) entity;
-        
+
         //HACK: Store the previous alpha
         int oldA = color.getAlpha();
-        color.setAlpha((int) (color.getAlpha() * ray.getAlpha()) );
+        color.setAlpha((int) (color.getAlpha() * ((IRay) entity).getAlpha()) );
         
-        double width = this.width * ray.getWidth();
+        double width = this.width * ((IRay) entity).getWidth();
 
         Colors.bindToGL(color);
         GL11.glDisable(GL11.GL_LIGHTING);

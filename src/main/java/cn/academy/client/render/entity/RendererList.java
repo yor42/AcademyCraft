@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class RendererList<T extends Entity> extends Render<T> {
     
-    List<Render> renderers = new ArrayList<>();
+    List<Render<T>> renderers = new ArrayList<>();
     
-    public RendererList(RenderManager rm, Render ...rs) {
+    public RendererList(RenderManager rm, Render<T> ...rs) {
         super(rm);
         renderers.addAll(Arrays.asList(rs));
     }
     
-    public RendererList append(Render e) {
+    public RendererList<T> append(Render<T> e) {
         renderers.add(e);
         return this;
     }
@@ -30,7 +30,7 @@ public class RendererList<T extends Entity> extends Render<T> {
     @Override
     public void doRender(T ent, double x,
             double y, double z, float a, float b) {
-        for(Render r : renderers)
+        for(Render<T> r : renderers)
             r.doRender(ent, x, y, z, a, b);
     }
 

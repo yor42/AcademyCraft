@@ -60,7 +60,7 @@ public class EntityMdRaySmall extends EntityRayBase {
     }
 
     @RegEntityRender(EntityMdRaySmall.class)
-    public static class SmallMdRayRender extends RendererRayComposite {
+    public static class SmallMdRayRender<T extends EntityRayBase&IRay> extends RendererRayComposite<T> {
 
         public SmallMdRayRender(RenderManager manager) {
             super(manager, "mdray_small");

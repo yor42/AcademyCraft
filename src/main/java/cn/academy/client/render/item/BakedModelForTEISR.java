@@ -22,11 +22,11 @@ import java.util.List;
  * See: https://mcforge.readthedocs.io/en/latest/rendering/teisr/
  */
 public class BakedModelForTEISR implements IBakedModel {
-    private ResourceLocation _location;
-    private Matrix4f[] _transformMapping = new Matrix4f[TransformType.values().length];
-    private IBakedModel[] _modelMapping = new IBakedModel[TransformType.values().length];
+    private final ResourceLocation _location;
+    private final Matrix4f[] _transformMapping = new Matrix4f[TransformType.values().length];
+    private final IBakedModel[] _modelMapping = new IBakedModel[TransformType.values().length];
 
-    private Matrix4f _identityMatrix = new Matrix4f();
+    private final Matrix4f _identityMatrix = new Matrix4f();
 
     public Runnable fiddleRuntime;
 

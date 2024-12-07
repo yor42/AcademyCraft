@@ -122,7 +122,7 @@ public class RenderUtils {
             for (var7 = 0; var7 < tileSize; ++var7) {
                 var8 = (float) var7 / tileSize;
                 var9 = u2 - (u2 - u1) * var8 - tx;
-                var10 = 1.0F * var8;
+                var10 = var8;
                 t.addVertexWithUV(var10, 0.0D, -w, var9, v2);
                 t.addVertexWithUV(var10, 0.0D, w, var9, v2);
                 t.addVertexWithUV(var10, 1.0D, w, var9, v1);
@@ -176,7 +176,7 @@ public class RenderUtils {
     
     private static void initSMCSupport() {
         try {
-            Class shadersClass = Class.forName(_shadersClassName);
+            Class<?> shadersClass = Class.forName(_shadersClassName);
             fIsShadowPass = shadersClass.getField("isShadowPass");
             smcPresent = true;
             Debug.log("LambdaLib SMC support successfully initialized.");

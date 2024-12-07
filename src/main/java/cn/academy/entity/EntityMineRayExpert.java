@@ -19,8 +19,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 @SideOnly(Side.CLIENT)
 public class EntityMineRayExpert extends EntityRayBase {
-
-    public static ExpertRayRenderer renderer;
     
     public EntityMineRayExpert(EntityPlayer _player) {
         super(_player);
@@ -56,7 +54,7 @@ public class EntityMineRayExpert extends EntityRayBase {
     }
 
     @RegEntityRender(EntityMineRayExpert.class)
-    public static class ExpertRayRenderer extends RendererRayComposite {
+    public static class ExpertRayRenderer<T extends EntityRayBase&IRay> extends RendererRayComposite<T> {
 
         public ExpertRayRenderer(RenderManager manager) {
             super(manager, "mdray_expert");
@@ -71,7 +69,7 @@ public class EntityMineRayExpert extends EntityRayBase {
         }
         
         @Override
-        public void doRender(Entity ent, double x,
+        public void doRender(T ent, double x,
                 double y, double z, float a, float b) {
             this.cylinderIn.width = 0.045;
             this.cylinderIn.color.set(216, 248, 216, 180);
