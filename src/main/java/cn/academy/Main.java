@@ -74,10 +74,13 @@ public class Main {
     private static void preInit(FMLPreInitializationEvent event) {
         log.info("Starting AcademyCraft");
         log.info("Copyright (c) Lambda Innovation, 2013-2018");
+        log.info("Copyright (c) yor42, 2024");
         log.info("https://ac.li-dev.cn/");
+        log.info("In memory of WeAthFoLD, Thank you for playing! -yor42");
         recipes = new RecipeRegistry();
 
         config = new Configuration(event.getSuggestedConfigurationFile());
+        config.load();
     }
 
     @EventHandler
