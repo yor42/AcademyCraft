@@ -2,8 +2,7 @@ package cn.academy.ability.client.ui
 
 import java.util
 import java.util.function.Consumer
-
-import cn.academy.{ACItems, Main, Resources}
+import cn.academy.{ACItems, GUIContext, Main, Resources}
 import cn.academy.ability.{AbilityLocalization, Skill}
 import cn.lambdalib2.registry.StateEventCallback
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
@@ -102,7 +101,7 @@ object SkillPosEditorUI {
       override def onKeyDown() = {
         Minecraft.getMinecraft.displayGuiScreen(SkillPosEditorUI())
       }
-    })
+    }, GUIContext.IN_GAME_UNPAUSED)
   }
 
   def apply(): CGuiScreen = {

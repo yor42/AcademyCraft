@@ -11,6 +11,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import static net.minecraftforge.client.settings.KeyConflictContext.UNIVERSAL;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface RegDynamicKeyHandler {
@@ -27,7 +29,7 @@ class RegDynKeyHandlerImpl {
                 field.setAccessible(true);
                 RegDynamicKeyHandler anno = field.getAnnotation(RegDynamicKeyHandler.class);
                 try {
-                    KeyManager.dynamic.addKeyHandler(anno.keyID(), (KeyHandler) field.get(null));
+                    KeyManager.dynamic.addKeyHandler(anno.keyID(), (KeyHandler) field.get(null), UNIVERSAL);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }

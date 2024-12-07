@@ -177,7 +177,6 @@ public class ControlOverrider {
             Override ovr = entry.getValue();
             int keyid = entry.getKey();
 
-            ovr.kb.setKeyCode(keyid);
             if(!kbMap.containsItem(keyid))
                 kbMap.addKey(keyid, new ArrayList<>() );
             Collection<KeyBinding> collection = kbMap.lookup(keyid);

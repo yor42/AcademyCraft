@@ -6,6 +6,7 @@ import cn.academy.terminal.app.settings.PropertyElements;
 import cn.academy.terminal.app.settings.SettingsUI;
 import cn.lambdalib2.input.KeyHandler;
 import cn.lambdalib2.input.KeyManager;
+import net.minecraftforge.client.settings.IKeyConflictContext;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -28,9 +29,8 @@ public class ACKeyManager extends KeyManager {
     }
 
     @Override
-    public void addKeyHandler(String name, String keyDesc, int defKeyID, boolean global, KeyHandler handler) {
-        super.addKeyHandler(name, keyDesc, defKeyID, global, handler);
-        SettingsUI.addProperty(PropertyElements.KEY, "keys", name, defKeyID, false);
+    public void addKeyHandler(String name, String keyDesc, int defKeyID, KeyHandler handler, IKeyConflictContext context) {
+        super.addKeyHandler(name, keyDesc, defKeyID, handler, context);
     }
 
     private ACKeyManager() {}

@@ -1,10 +1,18 @@
 package cn.lambdalib2.input;
 
+import cn.academy.ability.ctrl.ClientHandler;
+import cn.academy.terminal.app.settings.KeybindElement;
+import cn.academy.terminal.app.settings.PropertyElements;
+import cn.academy.terminal.app.settings.SettingsUI;
 import cn.lambdalib2.util.ClientUtils;
 import cn.lambdalib2.util.Debug;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.client.settings.IKeyConflictContext;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
@@ -17,6 +25,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.function.Predicate;
+
+import static cn.academy.GUIContext.IN_GAME_UNPAUSED;
+import static net.minecraftforge.client.settings.KeyConflictContext.IN_GAME;
+import static net.minecraftforge.client.settings.KeyConflictContext.UNIVERSAL;
 
 /**
  * The instance of this class handles a set of KeyHandlers, and restore their key bindings
@@ -70,46 +84,39 @@ public class KeyManager {
 
     public int getKeyID(KeyHandler handler) {
         KeyHandlerState kb = getKeyBinding(handler);
-        return kb == null ? -1 : kb.keyID;
+        return kb == null ? -1 : kb.getKeyCode();
     }
 
-    public void addKeyHandler(int keyID, KeyHandler handler) {
-        addKeyHandler(keyID, false, handler);
-    }
-
-    public void addKeyHandler(int keyID, boolean global, KeyHandler handler) {
+    public void addKeyHandler(int keyID, KeyHandler handler, IKeyConflictContext context) {
         Debug.require(getConfig() == null, "You can't use anonymous key handlers on KeyHandler with config!");
 
         String name = "_anonymous_" + _anonymousHandlerCount;
-        addKeyHandler(name, "", keyID, global, handler);
+        addKeyHandler(name, "", keyID, handler, context);
         ++_anonymousHandlerCount;
     }
 
-    public void addKeyHandler(String name, int defKeyID, KeyHandler handler) {
-        addKeyHandler(name, "", defKeyID, false, handler);
-    }
-
-    public void addKeyHandler(String name, String keyDesc, int defKeyID, KeyHandler handler) {
-        addKeyHandler(name, keyDesc, defKeyID, false, handler);
+    public void addKeyHandler(String name, int defKeyID, KeyHandler handler, IKeyConflictContext context) {
+        addKeyHandler(name, "", defKeyID, handler, context);
     }
 
     /**
      * Add a key handler.
      * @param keyDesc Description of the key in the configuration file
      * @param defKeyID Default key ID in config file
-     * @param global If global=true, this key will have callback even if opening GUI.
+     * @param context key conflict context
      */
-    public void addKeyHandler(String name, String keyDesc, int defKeyID, boolean global, KeyHandler handler) {
+    public void addKeyHandler(String name, String keyDesc, int defKeyID, KeyHandler handler, IKeyConflictContext context) {
         if(_bindingMap.containsKey(name))
             throw new RuntimeException("Duplicate key: " + name + " of object " + handler);
-        
+
         Configuration conf = getConfig();
         int keyID = defKeyID;
         if(conf != null) {
             keyID = conf.getInt(name, "keys", defKeyID, -1000, 1000, keyDesc);
         }
-        KeyHandlerState kb = new KeyHandlerState(handler, keyID, global);
+        KeyHandlerState kb = new KeyHandlerState(name, handler, keyID, context);
         _bindingMap.put(name, kb);
+        SettingsUI.addProperty(new KeybindElement(kb), "keys", name, defKeyID, false);
     }
 
     /**
@@ -124,13 +131,7 @@ public class KeyManager {
     public void resetBindingKey(String name, int newKey) {
         KeyHandlerState kb = _bindingMap.get(name);
         if(kb != null) {
-            Configuration cfg = getConfig();
-            if(cfg != null) {
-                Property p = cfg.get("keys", name, kb.keyID);
-                p.set(newKey);
-            }
-            
-            kb.keyID = newKey;
+            kb.setKeyCode(newKey);
             if(kb.keyDown)
                 kb.handler.onKeyAbort();
             
@@ -152,7 +153,8 @@ public class KeyManager {
             if(kb.dead) {
                 iter.remove();
             } else {
-                boolean down = getKeyDown(kb.keyID);
+
+                boolean down = getKeyDown(kb.getKeyCode());
 
                 if (kb.keyDown && shouldAbort) {
                     kb.keyDown = false;
@@ -161,10 +163,10 @@ public class KeyManager {
                 } else if (!kb.keyDown && down && !shouldAbort && !kb.keyAborted) {
                     kb.keyDown = true;
                     kb.handler.onKeyDown();
-                } else if (kb.keyDown && !down && !shouldAbort) {
+                } else if (kb.keyDown && !down) {
                     kb.keyDown = false;
                     kb.handler.onKeyUp();
-                } else if (kb.keyDown && down && !shouldAbort) {
+                } else if (kb.keyDown) {
                     kb.handler.onKeyTick();
                 }
 
@@ -192,22 +194,28 @@ public class KeyManager {
         }
     }
 
-    private class KeyHandlerState {
-        KeyHandler handler;
-        boolean isGlobal;
-
-        int keyID;
-
-        boolean keyDown;
-        boolean keyAborted;
-
-        boolean dead;
-
-        private KeyHandlerState(KeyHandler h, int k, boolean g) {
-            handler = h;
-            keyID = k;
-            isGlobal = g;
+    public void registerKeys() {
+        for(KeyHandlerState kb : _bindingMap.values()) {
+            ClientRegistry.registerKeyBinding(kb);
         }
     }
 
+    private class KeyHandlerState extends KeyBinding {
+        KeyHandler handler;
+
+        boolean keyAborted = false;
+        boolean keyDown = false;
+
+        boolean dead;
+
+        private KeyHandlerState(String name, KeyHandler h, int defaultkey, IKeyConflictContext context) {
+            super("ac.settings.prop."+name, context, defaultkey, "key.categories.academycraft");
+            handler = h;
+        }
+
+        @Override
+        public void setKeyCode(int keyCode) {
+            super.setKeyCode(keyCode);
+        }
+    }
 }

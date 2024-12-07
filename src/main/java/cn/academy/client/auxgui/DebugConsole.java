@@ -25,6 +25,8 @@ import org.lwjgl.util.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import static cn.academy.GUIContext.IN_GAME_UNPAUSED;
+
 /**
  * The overall debug console. Use BACKSPACE to switch between states.
  * @author WeAthFolD
@@ -61,7 +63,7 @@ public class DebugConsole extends AuxGui {
                 State[] states = State.values();
                 INSTANCE.state = states[(INSTANCE.state.ordinal() + 1) % states.length];
             }
-        });
+        }, IN_GAME_UNPAUSED);
     }
 
     enum State { NONE, NORMAL, SHOW_EXP }

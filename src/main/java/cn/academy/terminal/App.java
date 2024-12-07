@@ -38,9 +38,8 @@ public abstract class App {
         return icon;
     }
 
-    public App setPreInstalled() {
+    public void setPreInstalled() {
         preInstalled = true;
-        return this;
     }
 
     public int getID() {

@@ -8,8 +8,11 @@ import cn.academy.datapart.AbilityData;
 import cn.academy.datapart.CPData;
 import cn.academy.datapart.PresetData;
 import cn.academy.event.ConfigModifyEvent;
+import cn.academy.event.ability.AbilityActivateEvent;
+import cn.academy.event.ability.AbilityDeactivateEvent;
 import cn.academy.event.ability.FlushControlEvent;
 import cn.academy.event.ability.PresetSwitchEvent;
+import cn.academy.terminal.app.settings.KeybindElement;
 import cn.academy.terminal.app.settings.PropertyElements;
 import cn.academy.terminal.app.settings.SettingsUI;
 import cn.academy.util.RegACKeyHandler;
@@ -18,15 +21,25 @@ import cn.lambdalib2.input.KeyManager;
 import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.registry.mc.RegEventHandler;
 import cn.lambdalib2.util.GameTimer;
+import cn.lambdalib2.util.SideUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
+
+import static cn.academy.GUIContext.ABILITY_ACTIVE;
+import static net.minecraftforge.client.settings.KeyConflictContext.IN_GAME;
+import static net.minecraftforge.fml.common.eventhandler.EventPriority.HIGHEST;
 
 /**
  * Misc key event listener for skill events.
@@ -47,28 +60,27 @@ public final class ClientHandler {
             Keyboard.KEY_F
     };
 
-    private static final int[] keyIDs = new int[keyIDsInit.length];
+    public static boolean isAbilityActive = false;
+
+    private static final ArrayList<SkillKeyBind> SKILL_KEY_BINDS = new ArrayList<>();
 
     @StateEventCallback
     private static void init(FMLInitializationEvent ev) {
-        updateAbilityKeys();
         for (int i = 0; i < keyIDsInit.length; ++i) {
-            SettingsUI.addProperty(PropertyElements.KEY, "keys", "ability_" + i, keyIDsInit[i], false);
+            SkillKeyBind keyBind = new SkillKeyBind(i, keyIDsInit[i]);
+            SKILL_KEY_BINDS.add(keyBind);
+            ClientRegistry.registerKeyBinding(keyBind);
+            SettingsUI.addProperty(new KeybindElement(keyBind), "keys", "ability_" + i, keyIDsInit[i], false);
         }
+        updateAbilityKeys();
     }
 
-    private static void updateAbilityKeys() {
-        Configuration cfg = Main.config;
-        for (int i = 0; i < getKeyCount(); ++i) {
-            keyIDs[i] = cfg.getInt("ability_" + i, "keys",
-                    keyIDsInit[i], -1000, 1000, "Ability control key #" + i);
-        }
-
+    public static void updateAbilityKeys() {
         MinecraftForge.EVENT_BUS.post(new FlushControlEvent());
     }
 
     public static int getKeyMapping(int id) {
-        return keyIDs[id];
+        return SKILL_KEY_BINDS.get(id).getKeyCode();
     }
 
     public static int getKeyCount() {
@@ -141,6 +153,29 @@ public final class ClientHandler {
         @SubscribeEvent
         public void onConfigModify(ConfigModifyEvent evt) {
             updateAbilityKeys();
+        }
+
+        @SubscribeEvent
+        public void activateAbility(AbilityActivateEvent evt) {
+            isAbilityActive = true;
+        }
+
+        @SubscribeEvent
+        public void deactivateAbility(AbilityDeactivateEvent evt) {
+            isAbilityActive = false;
+        }
+    }
+
+
+    private static class SkillKeyBind extends KeyBinding{
+
+        public SkillKeyBind(int index, int keycode) {
+            super("ac.settings.prop.ability_"+index, ABILITY_ACTIVE, keycode, "key.categories.academycraft");
+        }
+
+        @Override
+        public void setKeyCode(int keyCode) {
+            super.setKeyCode(keyCode);
         }
     }
 

@@ -300,12 +300,12 @@ public class ClientRuntime extends DataPart<EntityPlayer> {
         ControlOverrider.override(OVERRIDE_GROUP, set);
     }
 
-    private class KeyState {
+    private static class KeyState {
         boolean state = false;
         boolean realState = false;
     }
 
-    public class DelegateNode {
+    public static class DelegateNode {
         public final KeyDelegate delegate;
         public final int keyID;
 

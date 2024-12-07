@@ -501,6 +501,9 @@ ac.skill_tree.dev_developing=개발중...
 # About App
 ac.about.donators_info=순서 없이 나열됨
 
+# Keybinding
+key.categories.academycraft=아카데미크래프트
+
 groovyscript.wiki.academy.imag_fusor.title=상상 융합기
 groovyscript.wiki.academy.imag_fusor.description=한 아이템과 정해진 양의 상상 위상 액체를 다른 아이템으로 변경합니다
 groovyscript.wiki.academy.imag_fusor.addRecipe=`출력`, `입력`, `상상 위상 액체 소모량`의 형식으로 상상 융합기의 조합법을 추가합니다

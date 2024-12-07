@@ -501,6 +501,9 @@ ac.skill_tree.dev_developing=Developing...
 # About App
 ac.about.donators_info=In no particular order
 
+# Keybinding
+key.categories.academycraft=AcademyCraft
+
 # Groovyscript
 groovyscript.wiki.academy.imag_fusor.title=Imag Fusor
 groovyscript.wiki.academy.imag_fusor.description=Converts one item and defined amount of Imag Phase Liquid into one item.

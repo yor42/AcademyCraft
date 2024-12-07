@@ -44,6 +44,9 @@ import org.lwjgl.util.glu.GLU;
 import java.util.ArrayList;
 import java.util.List;
 
+import static cn.academy.GUIContext.HAS_OPEN_TERMINAL;
+import static cn.academy.GUIContext.IN_GAME_UNPAUSED;
+
 /**
  * @author WeAthFolD
  */
@@ -105,7 +108,7 @@ public class TerminalUI extends AuxGui {
         oldHelper = mc.mouseHelper;
         mc.mouseHelper = helper = new TerminalMouseHelper();
 
-        KeyManager.dynamic.addKeyHandler("terminal_click",KeyManager.MOUSE_LEFT, clickHandler = new LeftClickHandler());
+        KeyManager.dynamic.addKeyHandler("terminal_click",KeyManager.MOUSE_LEFT, clickHandler = new LeftClickHandler(), HAS_OPEN_TERMINAL);
         ControlOverrider.override(OVERRIDE_GROUP, KeyManager.MOUSE_LEFT);
 //
 //        // There is a chance that About App will be opened
@@ -377,7 +380,11 @@ public class TerminalUI extends AuxGui {
         current = newGui;
         AuxGuiHandler.register(current);
     }
-    
+
+    public static AuxGui getCurrentTerminal() {
+        return current;
+    }
+
     @RegACKeyHandler(name = "open_data_terminal", keyID = Keyboard.KEY_LMENU)
     public static KeyHandler keyHandler = new KeyHandler() {
         

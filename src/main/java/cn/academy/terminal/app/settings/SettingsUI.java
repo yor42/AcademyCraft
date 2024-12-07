@@ -53,9 +53,7 @@ public class SettingsUI extends CGuiScreen {
     }
 
     private static void add(String cat, UIProperty prop) {
-        List<UIProperty> list = properties.get(cat);
-        if(list == null)
-            properties.put(cat, list = new ArrayList<>());
+        List<UIProperty> list = properties.computeIfAbsent(cat, k -> new ArrayList<>());
         list.add(prop);
     }
 
