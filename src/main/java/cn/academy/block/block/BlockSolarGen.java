@@ -5,6 +5,7 @@ import cn.academy.block.tileentity.TileSolarGen;
 import cn.academy.energy.client.ui.GuiSolarGen;
 import cn.lambdalib2.registry.mc.gui.GuiHandlerBase;
 import cn.lambdalib2.registry.mc.gui.RegGuiHandler;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +13,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * @author WeAthFolD
  */
 public class BlockSolarGen extends ACBlockMulti {
-
+    protected static final AxisAlignedBB AABB_BOTTOM_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
     @RegGuiHandler
     public static final GuiHandlerBase handler = new GuiHandlerBase() {
         @SideOnly(Side.CLIENT)
@@ -43,7 +46,7 @@ public class BlockSolarGen extends ACBlockMulti {
     };
 
     public BlockSolarGen() {
-        super(Material.ROCK);
+        super(Material.IRON);
 //        setBlockBounds(0, 0, 0, 1, 0.5f, 1);
         this.finishInit();
         
@@ -75,6 +78,16 @@ public class BlockSolarGen extends ACBlockMulti {
 
     @Override
     public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return AABB_BOTTOM_HALF;
+    }
+
+    @Override
+    public boolean isTopSolid(IBlockState state) {
         return false;
     }
 
