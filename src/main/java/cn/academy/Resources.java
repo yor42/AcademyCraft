@@ -5,6 +5,8 @@ import cn.lambdalib2.cgui.component.TextBox;
 import cn.lambdalib2.render.font.IFont;
 import cn.lambdalib2.render.font.IFont.FontOption;
 import cn.lambdalib2.render.obj.ObjLegacyRender;
+import cn.lambdalib2.render.obj.ObjVBORenderer;
+import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -48,7 +50,7 @@ public class Resources {
     }
 
     @SideOnly(Side.CLIENT)
-    public static ObjLegacyRender getModel(String mdlName) {
+    public static ObjVaoRenderer getModel(String mdlName) {
         return ClientResources.getModel(mdlName);
     }
     

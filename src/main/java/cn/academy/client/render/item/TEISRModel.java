@@ -1,7 +1,10 @@
 package cn.academy.client.render.item;
 
 import cn.lambdalib2.render.obj.ObjLegacyRender;
+import cn.lambdalib2.render.obj.ObjVBORenderer;
+import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import cn.lambdalib2.util.RenderUtils;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -13,11 +16,11 @@ import java.nio.FloatBuffer;
 
 public class TEISRModel extends TileEntityItemStackRenderer {
 
-    private final ObjLegacyRender _render;
+    private final ObjVaoRenderer _render;
     private final FloatBuffer _mat;
     private final ResourceLocation _tex;
 
-    public TEISRModel(ObjLegacyRender model, ResourceLocation texture, Matrix4f mat) {
+    public TEISRModel(ObjVaoRenderer model, ResourceLocation texture, Matrix4f mat) {
         _render = model;
         _tex = texture;
         _mat = BufferUtils.createFloatBuffer(16);
@@ -27,11 +30,11 @@ public class TEISRModel extends TileEntityItemStackRenderer {
 
     @Override
     public void renderByItem(ItemStack itemStackIn) {
-        GL11.glPushMatrix();
-        GL11.glMultMatrix(_mat);
+        GlStateManager.pushMatrix();
+        GlStateManager.multMatrix(_mat);
         RenderUtils.loadTexture(_tex);
         _render.renderAll();
-        GL11.glPopMatrix();
+        GlStateManager.popMatrix();
     }
 
 }

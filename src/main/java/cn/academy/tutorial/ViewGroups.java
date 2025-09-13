@@ -6,6 +6,8 @@ import cn.academy.tutorial.client.RecipeHandler;
 import cn.academy.util.LocalHelper;
 import cn.lambdalib2.cgui.Widget;
 import cn.lambdalib2.render.obj.ObjLegacyRender;
+import cn.lambdalib2.render.obj.ObjVBORenderer;
+import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import cn.lambdalib2.util.Colors;
 import cn.lambdalib2.util.GameTimer;
 import cn.lambdalib2.util.HudUtils;
@@ -38,12 +40,7 @@ public final class ViewGroups {
 
     private static Random random = new Random();
 
-    private static final ViewGroup nothing = new ViewGroup() {
-        @Override
-        public Tag getTag() {
-            return null;
-        }
-    };
+    private static final ViewGroup nothing = () -> null;
 
     public static ViewGroup drawsBlock(Block block) {
         return drawsBlock(block, 0);
@@ -150,7 +147,7 @@ public final class ViewGroups {
 
     @SideOnly(Side.CLIENT)
     private static ViewGroup displayModelImpl(String mdl, String texture, CompTransform transform) {
-        ObjLegacyRender model = Resources.getModel(mdl);
+        ObjVaoRenderer model = Resources.getModel(mdl);
         ResourceLocation res_tex = Resources.getTexture("models/" + texture);
         return new ViewGroup() {
             @Override
@@ -160,7 +157,7 @@ public final class ViewGroups {
                     glRotated((GameTimer.getAbsTime() / 50.0) % 360.0, 0, 1, 0);
                     transform.doTransform();
                     RenderUtils.loadTexture(res_tex);
-                    model.renderAll();
+                    model.justRenderAll();
                     glPopMatrix();
                 })};
             }

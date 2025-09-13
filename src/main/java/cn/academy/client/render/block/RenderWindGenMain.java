@@ -5,8 +5,11 @@ import cn.academy.block.tileentity.TileWindGenMain;
 import cn.lambdalib2.multiblock.RenderBlockMulti;
 import cn.lambdalib2.registry.mc.RegTileEntityRender;
 import cn.lambdalib2.render.obj.ObjLegacyRender;
+import cn.lambdalib2.render.obj.ObjVBORenderer;
+import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import cn.lambdalib2.util.GameTimer;
 import cn.lambdalib2.util.RenderUtils;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
@@ -18,7 +21,7 @@ public class RenderWindGenMain extends RenderBlockMulti {
     @RegTileEntityRender(TileWindGenMain.class)
     private static final RenderWindGenMain instance = new RenderWindGenMain();
 
-    ObjLegacyRender
+    ObjVaoRenderer
         mdlBody = Resources.getModel("windgen_main"),
         mdlFan = Resources.getModel("windgen_fan");
 
@@ -30,11 +33,11 @@ public class RenderWindGenMain extends RenderBlockMulti {
     public void drawAtOrigin(TileEntity te) {
         TileWindGenMain gen = (TileWindGenMain) te;
 
-        GL11.glPushMatrix();
+        GlStateManager.pushMatrix();
 
         // draw body
         RenderUtils.loadTexture(texBody);
-        mdlBody.renderAll();
+        mdlBody.justRenderAll();
 
 
         // draw fan
@@ -43,17 +46,17 @@ public class RenderWindGenMain extends RenderBlockMulti {
             double time = GameTimer.getTime();
             double dt = gen.lastFrame == -1 ? 0 : time - gen.lastFrame;
             gen.lastFrame = time;
-            gen.lastRotation += gen.getSpinSpeed() * dt;
+            gen.lastRotation += (float) (gen.getSpinSpeed() * dt);
 
-            GL11.glPushMatrix();
-            GL11.glTranslated(0, 0.5, 0.82);
-            GL11.glRotated(gen.lastRotation, 0, 0, -1);
+            GlStateManager.pushMatrix();
+            GlStateManager.translate(0, 0.5, 0.82);
+            GlStateManager.rotate(gen.lastRotation, 0, 0, -1);
             RenderUtils.loadTexture(texFan);
             mdlFan.renderAll();
-            GL11.glPopMatrix();
+            GlStateManager.popMatrix();
         }
 
-        GL11.glPopMatrix();
+        GlStateManager.popMatrix();
     }
 
 }

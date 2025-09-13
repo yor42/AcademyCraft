@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 /**
  * @author WeAthFolD
  */
-public class RenderImagPhaseLiquid extends TileEntitySpecialRenderer {
+public class RenderImagPhaseLiquid extends TileEntitySpecialRenderer<TileImagPhase> {
 
     @RegTileEntityRender(TileImagPhase.class)
     private static final RenderImagPhaseLiquid instance = new RenderImagPhaseLiquid();
@@ -57,7 +57,7 @@ public class RenderImagPhaseLiquid extends TileEntitySpecialRenderer {
     }
 
     @Override
-    public void render(TileEntity te, double x,
+    public void render(TileImagPhase te, double x,
             double y, double z, float w, int destroyStage, float alpha_) {
         if(!(te.getBlockType() instanceof BlockFluidClassic))
             return;

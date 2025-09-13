@@ -9,6 +9,8 @@ import cn.lambdalib2.render.font.IFont;
 import cn.lambdalib2.render.font.TrueTypeFont;
 import cn.lambdalib2.render.obj.ObjLegacyRender;
 import cn.lambdalib2.render.obj.ObjParser;
+import cn.lambdalib2.render.obj.ObjVBORenderer;
+import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import cn.lambdalib2.util.ResourceUtils;
 import com.google.common.base.Throwables;
 import net.minecraft.client.Minecraft;
@@ -47,7 +49,7 @@ public class ClientResources {
     private static boolean fontsInit = false;
     private static TrueTypeFont font, fontBold, fontItalic;
 
-    private static final Map<ResourceLocation, ObjLegacyRender> cachedModels = new HashMap<>();
+    private static final Map<ResourceLocation, ObjVaoRenderer> cachedModels = new HashMap<>();
 
     public static IFont font() {
         checkFontInit();
@@ -144,10 +146,10 @@ public class ClientResources {
         return ret;
     }
 
-    public static ObjLegacyRender getModel(String mdlName) {
+    public static ObjVaoRenderer getModel(String mdlName) {
         return cachedModels.computeIfAbsent(
             new ResourceLocation("academy", "models/" + mdlName + ".obj"), 
-            (loc) -> new ObjLegacyRender(ObjParser.parse(loc))
+            (loc) -> new ObjVaoRenderer(ObjParser.parse(loc))
         );
     }
 

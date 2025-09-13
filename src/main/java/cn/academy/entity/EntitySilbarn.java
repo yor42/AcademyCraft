@@ -8,12 +8,15 @@ import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.registry.mc.RegEntity;
 import cn.lambdalib2.registry.mc.RegEntityRender;
 import cn.lambdalib2.render.obj.ObjLegacyRender;
+import cn.lambdalib2.render.obj.ObjVBORenderer;
+import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import cn.lambdalib2.util.*;
 import cn.lambdalib2.util.entityx.EntityAdvanced;
 import cn.lambdalib2.util.entityx.EntityCallback;
 import cn.lambdalib2.util.entityx.MotionHandler;
 import cn.lambdalib2.util.entityx.event.CollideEvent;
 import cn.lambdalib2.util.entityx.handlers.Rigidbody;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -225,7 +228,7 @@ public class EntitySilbarn extends EntityAdvanced
     @RegEntityRender(EntitySilbarn.class)
     public static class RenderSibarn extends Render<EntitySilbarn> {
         
-        private final ObjLegacyRender model = Resources.getModel("silbarn");
+        private final ObjVaoRenderer model = Resources.getModel("silbarn");
         private final ResourceLocation tex = Resources.getTexture("models/silbarn");
 
         public RenderSibarn(RenderManager renderManager) {
@@ -238,17 +241,17 @@ public class EntitySilbarn extends EntityAdvanced
             EntitySilbarn sibarn = (EntitySilbarn) var1;
             if(sibarn.hit)
                 return;
-            GL11.glPushMatrix();
-            GL11.glTranslated(x, y, z);
+            GlStateManager.pushMatrix();
+            GlStateManager.translate(x, y, z);
             RenderUtils.loadTexture(tex);
             double scale = .05;
-            GL11.glScaled(scale, scale, scale);
-            GL11.glRotated(0.03 * (long)((GameTimer.getTime() - sibarn.createTime) * 1000),
-                    sibarn.axis.x, sibarn.axis.y, sibarn.axis.z);
-            GL11.glRotated(-var1.rotationYaw, 0, 1, 0);
-            GL11.glRotated(90, 1, 0, 0);
+            GlStateManager.scale(scale, scale, scale);
+            GlStateManager.rotate((float) (0.03 * (long)((GameTimer.getTime() - sibarn.createTime) * 1000)),
+                    (float) sibarn.axis.x, (float) sibarn.axis.y, (float) sibarn.axis.z);
+            GlStateManager.rotate(-var1.rotationYaw, 0, 1, 0);
+            GlStateManager.rotate(90, 1, 0, 0);
             model.renderAll();
-            GL11.glPopMatrix();
+            GlStateManager.popMatrix();
         }
 
         @Nullable

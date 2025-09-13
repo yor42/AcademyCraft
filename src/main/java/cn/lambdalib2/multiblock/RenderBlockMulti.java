@@ -1,5 +1,6 @@
 package cn.lambdalib2.multiblock;
 
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -28,14 +29,14 @@ public abstract class RenderBlockMulti<T extends TileEntity> extends TileEntityS
 
         if (inf == null || !inf.isLoaded() || inf.subID != 0)
             return;
-        GL11.glPushMatrix();
+        GlStateManager.pushMatrix();
         double[] off = bm.getPivotOffset(inf);
         double[] off2 = bm.rotCenters[inf.dir.ordinal()];
-        GL11.glTranslated(x + off[0] + off2[0], y + 0 + off2[1], z + off[1] + off2[2]);
+        GlStateManager.translate(x + off[0] + off2[0], y + 0 + off2[1], z + off[1] + off2[2]);
         // GL11.glTranslated(x, y, z);
-        GL11.glRotated(bm.getRotation(inf), 0, 1, 0);
+        GlStateManager.rotate((float) bm.getRotation(inf), 0, 1, 0);
         drawAtOrigin(te);
-        GL11.glPopMatrix();
+        GlStateManager.popMatrix();
     }
 
     public abstract void drawAtOrigin(T te);

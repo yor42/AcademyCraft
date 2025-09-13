@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class ObjModel {
 
     public final List<Vertex> vertices = new ArrayList<>();
     public final Multimap<String, Face> faces = HashMultimap.create();
+    public FloatBuffer vertexBuffer;
 
     public static class Vertex {
 

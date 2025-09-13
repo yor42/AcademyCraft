@@ -5,7 +5,11 @@ import cn.academy.block.tileentity.TileDeveloper;
 import cn.lambdalib2.multiblock.RenderBlockMulti;
 import cn.lambdalib2.registry.mc.RegTileEntityRender;
 import cn.lambdalib2.render.obj.ObjLegacyRender;
+import cn.lambdalib2.render.obj.ObjVBORenderer;
+import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import cn.lambdalib2.util.RenderUtils;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
@@ -18,18 +22,30 @@ public class RenderDeveloperNormal extends RenderBlockMulti<TileDeveloper> {
     public static final RenderDeveloperNormal instance = new RenderDeveloperNormal();
 
     private final ResourceLocation texture = Resources.getTexture("models/developer_normal");
-    private final ObjLegacyRender mdl = Resources.getModel("developer_normal");
+    private final ObjVaoRenderer mdl = Resources.getModel("developer_normal");
 
     @Override
     public void drawAtOrigin(TileDeveloper te) {
-        GL11.glDisable(GL11.GL_CULL_FACE);
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GL11.glRotated(180f, 0, 1, 0);
-        GL11.glScalef(0.5f, 0.5f, 0.5f);
+        // Use GlStateManager for better state management
+        GlStateManager.pushMatrix();
+
+        GlStateManager.disableCull();
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+        // Disable lighting if the model has its own lighting, or looks better without it
+        RenderHelper.disableStandardItemLighting();
+
+        GlStateManager.rotate(180f, 0, 1, 0);
+        GlStateManager.scale(0.5f, 0.5f, 0.5f);
+
         RenderUtils.loadTexture(texture);
-        mdl.renderAll();
-        GL11.glEnable(GL11.GL_CULL_FACE);
+
+        mdl.justRenderAll(); // begin/render/end wrapped in one call
+
+        RenderHelper.enableStandardItemLighting();
+        GlStateManager.enableCull();
+        GlStateManager.popMatrix();
     }
 
 }
