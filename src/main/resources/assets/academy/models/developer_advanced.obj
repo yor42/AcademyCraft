@@ -1,5 +1,7 @@
 # Wavefront OBJ exported by MilkShape 3D
 
+mtllib developer_advanced.mtl
+usemtl texture
 v 0.377900 0.693899 -0.426642
 v 0.628200 0.842999 -0.653743
 v 0.931200 0.768299 -0.612943

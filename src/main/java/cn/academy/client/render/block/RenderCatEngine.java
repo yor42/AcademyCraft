@@ -6,6 +6,7 @@ import cn.lambdalib2.registry.mc.RegTileEntityRender;
 import cn.lambdalib2.render.legacy.Tessellator;
 import cn.lambdalib2.util.GameTimer;
 import cn.lambdalib2.util.RenderUtils;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -35,16 +36,16 @@ public class RenderCatEngine extends TileEntitySpecialRenderer {
         x += 0.5;
         z += 0.5;
 
-        GL11.glPushMatrix();
-        GL11.glDisable(GL11.GL_CULL_FACE);
+        GlStateManager.pushMatrix();
+        GlStateManager.disableCull();
 
-        GL11.glTranslated(x, y + 0.03 * Math.sin(GameTimer.getTime() * 0.006), z);
+        GlStateManager.translate(x, y + 0.03 * Math.sin(GameTimer.getTime() * 0.006), z);
 
         double yaw = Math.atan2(x, z) * 180 / Math.PI;
-        GL11.glRotated(yaw + 180, 0, 1, 0);
-        GL11.glTranslated(0, .5, 0);
-        GL11.glRotated(engine.rotation, 1, 0, 0);
-        GL11.glTranslated(-.5, -.5, 0);
+        GlStateManager.rotate((float) (yaw + 180), 0, 1, 0);
+        GlStateManager.translate(0, .5, 0);
+        GlStateManager.rotate((float) engine.rotation, 1, 0, 0);
+        GlStateManager.translate(-.5, -.5, 0);
 
         Tessellator t = Tessellator.instance;
         RenderUtils.loadTexture(TEXTURE);

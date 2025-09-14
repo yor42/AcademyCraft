@@ -1,7 +1,7 @@
 # This file uses centimeters as units for non-parametric coordinates.
 # UVs by headus UVLayout v2.08.00 2012/05/02 06:40:44
 
-mtllib wind_gen_pillar.mtl
+mtllib windgen_pillar.mtl
 g default
 v 0.282843 0.005189 -0.282843
 v 0.000000 0.005189 -0.400000
@@ -125,7 +125,7 @@ vn 0.000000 1.000000 0.000000
 vn 0.000000 1.000000 0.000000
 s 1
 g pCylinder2
-usemtl initialShadingGroup
+usemtl texture
 f 1/35/1 2/36/2 9/37/3
 f 9/37/3 2/36/2 10/38/4
 s 2

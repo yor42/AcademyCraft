@@ -1,6 +1,7 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib 233333333333333333333333333.mtl
+mtllib silbarn.mtl
+
 g default
 v -3.317940 -0.099538 5.640497
 v 3.317940 -0.099538 5.640497
@@ -60,7 +61,7 @@ vn -1.000000 0.000000 0.000000
 vn -1.000000 0.000000 0.000000
 s off
 g pCube1
-usemtl initialShadingGroup
+usemtl texture
 f 1/1/1 2/2/2 4/3/3 3/4/4
 f 3/5/5 4/6/6 6/7/7 5/8/8
 f 5/9/9 6/10/10 8/11/11 7/12/12

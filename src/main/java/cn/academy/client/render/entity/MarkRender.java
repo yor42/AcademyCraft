@@ -6,6 +6,7 @@ import cn.academy.entity.EntityTPMarking;
 import cn.lambdalib2.registry.mc.RegEntityRender;
 import cn.lambdalib2.render.legacy.ShaderSimple;
 import cn.lambdalib2.util.RenderUtils;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -40,33 +41,33 @@ public class MarkRender extends Render<EntityTPMarking> {
 
         int texID = (int) ((mark.ticksExisted / 2.5) % tex.length);
 
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glDisable(GL11.GL_LIGHTING);
-        GL11.glDisable(GL11.GL_CULL_FACE);
-        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        GlStateManager.enableBlend();
+        GlStateManager.disableLighting();
+        GlStateManager.disableCull();
+        GlStateManager.disableDepth();
 
-        GL11.glPushMatrix();
+        GlStateManager.pushMatrix();
         {
-            GL11.glTranslated(x, y, z);
+            GlStateManager.translate(x, y, z);
 
-            GL11.glRotated(-mark.rotationYaw, 0, 1, 0);
-            GL11.glScaled(-1, -1, 1);
+            GlStateManager.rotate(-mark.rotationYaw, 0, 1, 0);
+            GlStateManager.scale(-1, -1, 1);
             ShaderSimple.instance().useProgram();
             RenderUtils.loadTexture(tex[texID]);
 
             if (!mark.available) {
-                GL11.glColor4d(1, 0.2, 0.2, 1);
+                GlStateManager.color(1F, 0.2F, 0.2F, 1F);
             } else {
-                GL11.glColor4d(1, 1, 1, 1);
+                GlStateManager.color(1, 1, 1, 1);
             }
 
             model.draw();
             GL20.glUseProgram(0);
         }
-        GL11.glPopMatrix();
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glEnable(GL11.GL_LIGHTING);
-        GL11.glEnable(GL11.GL_CULL_FACE);
+        GlStateManager.popMatrix();
+        GlStateManager.enableDepth();
+        GlStateManager.enableLighting();
+        GlStateManager.enableCull();
     }
 
     @Nullable

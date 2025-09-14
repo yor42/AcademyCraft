@@ -141,7 +141,7 @@ vn 0.000000 0.653145 -0.757232
 # 37 normals
 
 g default
-usemtl Material01
+usemtl texture
 s 1
 f 10/1/1 12/2/2 11/3/3
 f 10/1/1 11/3/3 9/4/4

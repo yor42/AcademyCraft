@@ -1,5 +1,7 @@
 # Wavefront OBJ exported by MilkShape 3D
 
+mtllib windgen_fan.mtl
+usemtl texture
 v 0.190446 0.222197 0.005043
 v -0.021686 0.310065 0.005043
 v -0.233818 0.222197 0.005043

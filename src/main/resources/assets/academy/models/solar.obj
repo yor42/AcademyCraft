@@ -1,5 +1,6 @@
 # Wavefront OBJ exported by MilkShape 3D
-
+mtllib solar.mtl
+usemtl texture
 v -0.153799 17.716396 33.337749
 v -0.153799 17.716396 -33.337749
 v -14.371498 17.716396 -33.337749
