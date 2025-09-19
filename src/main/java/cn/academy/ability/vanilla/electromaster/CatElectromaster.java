@@ -1,6 +1,6 @@
 package cn.academy.ability.vanilla.electromaster;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.ability.Category;
 import cn.academy.ability.Skill;
 import cn.academy.ability.vanilla.VanillaCategories;
@@ -127,7 +127,7 @@ public class CatElectromaster extends Category {
             "sticky_piston",
             "piston"
         };
-        String[] cfgNBlocks = Main.config.getStringList("normalMetalBlocks", "ability", defaultNBlocks,
+        String[] cfgNBlocks = AcademyCraft.config.getStringList("normalMetalBlocks", "ability", defaultNBlocks,
                 "Supported Normal Metal Blocks of Electro Master. The block name and ore dictionary name can be used.");
         for (String block : cfgNBlocks) {
             if(Block.getBlockFromName(block) != null) {
@@ -137,7 +137,7 @@ public class CatElectromaster extends Category {
                     normalMetalBlocks.add(Block.getBlockFromItem(is.getItem()));
                 }
             } else {
-                Main.log.error("The block " + block + "is not found!");
+                AcademyCraft.log.error("The block " + block + "is not found!");
             }
         }
 
@@ -146,7 +146,7 @@ public class CatElectromaster extends Category {
             "hopper",
             "iron_ore"
         };
-        String[] cfgWBlocks = Main.config.getStringList("weakMetalBlocks", "ability", defaultWBlocks,
+        String[] cfgWBlocks = AcademyCraft.config.getStringList("weakMetalBlocks", "ability", defaultWBlocks,
              "Supported Weak Metal Blocks of Electro Master. The block name and ore dictionary name can be used.");
         for (String block : cfgWBlocks) {
             if(Block.getBlockFromName(block) != null) {
@@ -156,7 +156,7 @@ public class CatElectromaster extends Category {
                     weakMetalBlocks.add(Block.getBlockFromItem(is.getItem()));
                 }
             } else {
-                Main.log.error("The block " + block + "is not found!");
+                AcademyCraft.log.error("The block " + block + "is not found!");
             }
         }
 
@@ -171,7 +171,7 @@ public class CatElectromaster extends Category {
             "academy:EntityMagHook",
             "villager_golem"
         };
-        String[] cfgEntities = Main.config.getStringList(
+        String[] cfgEntities = AcademyCraft.config.getStringList(
             "metalEntities",
             "ability",
             defaultEntities,

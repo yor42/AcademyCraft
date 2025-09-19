@@ -1,6 +1,6 @@
 package cn.academy.terminal.app.settings;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.lambdalib2.cgui.CGuiScreen;
 import cn.lambdalib2.cgui.Widget;
 import cn.lambdalib2.cgui.WidgetContainer;
@@ -65,7 +65,7 @@ public class SettingsUI extends CGuiScreen {
 
     @Override
     public void onGuiClosed() {
-        Main.config.save();
+        AcademyCraft.config.save();
         super.onGuiClosed();
     }
 

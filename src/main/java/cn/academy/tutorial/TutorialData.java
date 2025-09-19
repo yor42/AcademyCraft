@@ -1,7 +1,7 @@
 package cn.academy.tutorial;
 
 import cn.academy.ACItems;
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.event.TutorialActivatedEvent;
 import cn.lambdalib2.datapart.DataPart;
 import cn.lambdalib2.datapart.EntityData;
@@ -134,7 +134,7 @@ public class TutorialData extends DataPart<EntityPlayer> {
     }
 
     private static boolean canAcquireTutorial() {
-        return Main.config.getBoolean("giveCloudTerminal", "generic", true,
+        return AcademyCraft.config.getBoolean("giveCloudTerminal", "generic", true,
                 "Whether the player will be given MisakaCloud Terminal on first spawn.");
     }
 

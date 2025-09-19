@@ -2,12 +2,11 @@ package cn.academy.support.gtceu;
 
 import cn.academy.ACBlocks;
 import cn.academy.ACItems;
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.support.EnergyBlockHelper;
 import cn.lambdalib2.registry.RegistryCallback;
 import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.util.SideUtils;
-import ic2.api.item.IC2Items;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -66,7 +65,7 @@ public class GTEUSupport {
         GameRegistry.addShapedRecipe(new ResourceLocation("academy","gteu_output_input"), null,
                 new ItemStack(gteuOutput),"X",'X',new ItemStack(gteuInput));
 
-        Main.log.info("GTCEU API Support has been loaded.");
+        AcademyCraft.log.info("GTCEU API Support has been loaded.");
     }
 
 

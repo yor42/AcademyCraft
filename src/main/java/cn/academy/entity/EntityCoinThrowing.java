@@ -1,7 +1,7 @@
 package cn.academy.entity;
 
 import cn.academy.ACItems;
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.event.ConfigModifyEvent;
 import cn.academy.item.ItemCoin;
 import cn.lambdalib2.registry.StateEventCallback;
@@ -196,14 +196,14 @@ public class EntityCoinThrowing extends EntityAdvanced
 
         @StateEventCallback
         private static void init(FMLInitializationEvent event) {
-            PLAY_HEADS_OR_TAILS = Main.config.getBoolean("headsOrTails",
+            PLAY_HEADS_OR_TAILS = AcademyCraft.config.getBoolean("headsOrTails",
                 "generic", false, "Show heads or tails after throwing a coin.");
             MinecraftForge.EVENT_BUS.register(instance);
         }
 
         @SubscribeEvent
         public void onConfigModified(ConfigModifyEvent e) {
-            PLAY_HEADS_OR_TAILS = Main.config.getBoolean("headsOrTails",
+            PLAY_HEADS_OR_TAILS = AcademyCraft.config.getBoolean("headsOrTails",
                 "generic", false, "Show heads or tails after throwing a coin.");
         }
     }

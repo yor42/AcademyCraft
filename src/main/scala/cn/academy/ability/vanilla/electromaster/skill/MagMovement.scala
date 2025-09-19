@@ -1,6 +1,6 @@
 package cn.academy.ability.vanilla.electromaster.skill
 
-import cn.academy.Main
+import cn.academy.AcademyCraft
 import cn.academy.ability.Skill
 import cn.academy.ability.context.{ClientContext, ClientRuntime, Context, RegClientContext}
 import cn.academy.client.render.util.{ACRenderingHelper, ArcPatterns}

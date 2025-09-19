@@ -1,6 +1,6 @@
 package cn.academy.item;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.Resources;
 import cn.academy.client.render.item.BakedModelForTEISR;
 import cn.academy.client.render.item.TEISRModel;
@@ -38,7 +38,7 @@ public class ItemMagHook extends Item {
     private ModelResourceLocation _modelLocation;
 
     public ItemMagHook() {
-        setCreativeTab(Main.cct);
+        setCreativeTab(AcademyCraft.cct);
         MinecraftForge.EVENT_BUS.register(this);
     }
 

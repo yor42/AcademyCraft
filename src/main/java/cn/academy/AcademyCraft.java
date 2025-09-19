@@ -11,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -30,8 +29,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map.Entry;
 
-import static cn.academy.Main.MODID;
-import static cn.academy.Main.NAME;
+import static cn.academy.AcademyCraft.MODID;
+import static cn.academy.AcademyCraft.NAME;
 
 /**
  * Academy Craft Mod Main Class
@@ -39,12 +38,12 @@ import static cn.academy.Main.NAME;
  * @author acaly, WeathFolD, KS
  *
  */
-@Mod(modid = MODID, name = NAME, version = Main.VERSION, dependencies = "required-after:"+Tags.LAMBDALIB_MOD_ID+"@"+Tags.LAMBDA_LIB_VERSION)
-@RegistryMod(rootPackage = Tags.ROOT_PACKAGE, resourceDomain = Main.MODID)
-public class Main {
+@Mod(modid = MODID, name = NAME, version = AcademyCraft.VERSION, dependencies = "required-after:"+Tags.LAMBDALIB_MOD_ID+"@"+Tags.LAMBDA_LIB_VERSION)
+@RegistryMod(rootPackage = Tags.ROOT_PACKAGE, resourceDomain = AcademyCraft.MODID)
+public class AcademyCraft {
 
     @Instance("academy-craft")
-    public static Main INSTANCE;
+    public static AcademyCraft INSTANCE;
 
     public static final String MODID = Tags.MOD_ID;
     public static final String NAME = Tags.MOD_NAME;

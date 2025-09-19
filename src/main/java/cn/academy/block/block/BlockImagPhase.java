@@ -1,7 +1,7 @@
 package cn.academy.block.block;
 
 import cn.academy.ACItems;
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.block.tileentity.TileImagPhase;
 import cn.academy.item.ItemMatterUnit;
 import net.minecraft.block.Block;
@@ -23,7 +23,7 @@ public class BlockImagPhase extends BlockFluidClassic implements ITileEntityProv
 
     public BlockImagPhase() {
         super(ACFluids.fluidImagProj, Material.WATER);
-        setCreativeTab(Main.cct);
+        setCreativeTab(AcademyCraft.cct);
 
         this.setQuantaPerBlock(3);
         

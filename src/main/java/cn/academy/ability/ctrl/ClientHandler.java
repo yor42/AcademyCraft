@@ -1,6 +1,6 @@
 package cn.academy.ability.ctrl;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.ability.context.ClientRuntime;
 import cn.academy.client.auxgui.CPBar;
 import cn.academy.client.auxgui.PresetEditUI;
@@ -58,7 +58,7 @@ public final class ClientHandler {
     }
 
     private static void updateAbilityKeys() {
-        Configuration cfg = Main.config;
+        Configuration cfg = AcademyCraft.config;
         for (int i = 0; i < getKeyCount(); ++i) {
             keyIDs[i] = cfg.getInt("ability_" + i, "keys",
                     keyIDsInit[i], -1000, 1000, "Ability control key #" + i);

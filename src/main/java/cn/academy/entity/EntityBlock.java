@@ -1,6 +1,6 @@
 package cn.academy.entity;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.lambdalib2.registry.mc.RegEntity;
 import cn.lambdalib2.s11n.network.NetworkMessage;
 import cn.lambdalib2.s11n.network.TargetPoints;
@@ -195,7 +195,7 @@ public class EntityBlock extends EntityAdvanced {
                         }
                     }
                     if (!isPlace) {
-                        Main.log.error("EntityBlock Lost: " + event.result.toString());
+                        AcademyCraft.log.error("EntityBlock Lost: " + event.result.toString());
                     }
                     setDead();
                 }
@@ -211,7 +211,7 @@ public class EntityBlock extends EntityAdvanced {
                 NetworkMessage.sendToDimension(world.provider.getDimension(), this, "sync_te",
                         tileEntity.getClass().getName(), tag);
             } catch(Exception e) {
-                Main.log.error("Error syncing te", e);
+                AcademyCraft.log.error("Error syncing te", e);
             }
         }
     }
@@ -265,7 +265,7 @@ public class EntityBlock extends EntityAdvanced {
             te.setWorld(world);
             tileEntity = te;
         } catch(Exception e) {
-            Main.log.error("Unable to sync tileEntity " + className, e);
+            AcademyCraft.log.error("Unable to sync tileEntity " + className, e);
         }
     }
 

@@ -1,6 +1,6 @@
 package cn.academy.ability.context;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.ability.Controllable;
 import cn.academy.ability.context.Context.Status;
 import cn.academy.datapart.CooldownData;
@@ -31,7 +31,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.*;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 /**
@@ -291,7 +290,7 @@ public class ClientRuntime extends DataPart<EntityPlayer> {
     }
 
     private void rebuildOverrides() {
-        Main.debug("RebuildOverrides");
+        AcademyCraft.debug("RebuildOverrides");
         CPData cpData = CPData.get(getEntity());
 
         ctrlDirty = false;

@@ -1,6 +1,6 @@
 package cn.academy.item;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.terminal.App;
 import cn.academy.terminal.AppRegistry;
 import cn.academy.terminal.TerminalData;
@@ -41,7 +41,7 @@ public class ItemApp extends Item {
         _appName = name;
 
         items.put(_appName, this);
-        setCreativeTab(Main.cct);
+        setCreativeTab(AcademyCraft.cct);
 
     }
 

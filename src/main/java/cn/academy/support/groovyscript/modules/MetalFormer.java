@@ -1,6 +1,6 @@
 package cn.academy.support.groovyscript.modules;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.block.tileentity.TileMetalFormer;
 import cn.academy.crafting.MetalFormerRecipes;
 import cn.academy.support.groovyscript.AcademyCraftGroovyPlugin;
@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import java.util.Collection;
 import java.util.Iterator;
 
-@RegistryDescription(linkGenerator = Main.MODID)
+@RegistryDescription(linkGenerator = AcademyCraft.MODID)
 public class MetalFormer extends StandardListRegistry<MetalFormerRecipes.RecipeObject> {
 
     @MethodDescription(example = @Example("item('minecraft:stonebrick'), item('minecraft:stonebrick', 3)"), type = MethodDescription.Type.ADDITION)

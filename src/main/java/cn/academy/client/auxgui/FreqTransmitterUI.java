@@ -1,6 +1,6 @@
 package cn.academy.client.auxgui;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.Resources;
 import cn.academy.client.render.util.ACRenderingHelper;
 import cn.academy.energy.api.WirelessHelper;
@@ -275,7 +275,7 @@ public class FreqTransmitterUI extends AuxGui {
                     }
                 }
             } else {
-                Main.log.error("Human is dead. Mismatch.");
+                AcademyCraft.log.error("Human is dead. Mismatch.");
                 MinecraftForge.EVENT_BUS.unregister(this);
             }
             return true;

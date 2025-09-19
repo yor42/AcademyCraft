@@ -4,7 +4,7 @@ import java.io.{File, FileInputStream, IOException, InputStreamReader}
 import java.net.{URL, URLDecoder}
 import java.nio.file.{Files, StandardCopyOption}
 
-import cn.academy.{Main, Resources}
+import cn.academy.{AcademyCraft, Resources}
 import javax.imageio.ImageIO
 import cn.lambdalib2.registry.StateEventCallback
 import cn.lambdalib2.util.ResourceUtils
@@ -47,7 +47,7 @@ private object MediaManagerInit {
           Resources.res("media/readme_template.txt")),
           dest, StandardCopyOption.REPLACE_EXISTING)
       } catch {
-        case _: IOException => Main.log.error("Can't copy media readme file.")
+        case _: IOException => AcademyCraft.log.error("Can't copy media readme file.")
       }
     }
 
@@ -60,7 +60,7 @@ private object MediaManagerInit {
 
         MediaManager.register(newInternal(id, dst.toUri.toURL))
       } catch {
-        case _: IOException => Main.log.error("Can't copy media file " + id + ".")
+        case _: IOException => AcademyCraft.log.error("Can't copy media file " + id + ".")
       }
 
     // Parse external medias.
@@ -187,11 +187,11 @@ abstract class Media(val external: Boolean,
     id, source, new ResourceLocation("academy:media/cover/" + id + ".png"), length)
 
   def propExternalName(): Property = {
-    Main.config.get("media", id + "_name", id)
+    AcademyCraft.config.get("media", id + "_name", id)
   }
 
   def propExternalDesc(): Property = {
-    Main.config.get("media", id + "_desc", id)
+    AcademyCraft.config.get("media", id + "_desc", id)
   }
 
   def name: String

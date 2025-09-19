@@ -1,6 +1,6 @@
 package cn.academy.client.auxgui;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.Resources;
 import cn.academy.ability.Category;
 import cn.academy.ability.context.ClientRuntime;
@@ -165,7 +165,7 @@ public class CPBar extends Widget {
             this.shaderOverloaded = new ShaderOverloaded();
             shaderLoaded = true;
         } catch(Exception e) {
-            Main.log.error("Errow while loading CPBar shader", e);
+            AcademyCraft.log.error("Errow while loading CPBar shader", e);
         }
         
         transform.setSize(WIDTH, HEIGHT);

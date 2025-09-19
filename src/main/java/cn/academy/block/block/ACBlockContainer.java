@@ -1,6 +1,6 @@
 package cn.academy.block.block;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.lambdalib2.registry.mc.gui.GuiHandlerBase;
 import cn.lambdalib2.util.StackUtils;
 import net.minecraft.block.BlockContainer;
@@ -30,7 +30,7 @@ public abstract class ACBlockContainer extends BlockContainer {
     public ACBlockContainer(Material mat, GuiHandlerBase _guiHandler) {
         super(mat);
         guiHandler = _guiHandler;
-        setCreativeTab(Main.cct);
+        setCreativeTab(AcademyCraft.cct);
     }
     
 //    protected IIcon ricon(IIconRegister ir, String name) {

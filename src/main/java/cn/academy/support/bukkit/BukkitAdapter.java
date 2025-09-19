@@ -1,6 +1,6 @@
 package cn.academy.support.bukkit;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.event.BlockDestroyEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -54,7 +54,7 @@ public final class BukkitAdapter {
                 event.pos.getX(), event.pos.getY(), event.pos.getZ()));
         }
         catch (Throwable e) {
-            Main.log.error("Failed to handle BlockDestroyEvent", e);
+            AcademyCraft.log.error("Failed to handle BlockDestroyEvent", e);
         }
     }
 
@@ -70,7 +70,7 @@ public final class BukkitAdapter {
             }
         }
         catch (Throwable e) {
-            Main.log.error("Failed to load BukkitAdapter", e);
+            AcademyCraft.log.error("Failed to load BukkitAdapter", e);
         }
     }
 }

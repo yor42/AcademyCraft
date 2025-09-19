@@ -1,6 +1,6 @@
 package cn.academy.worldgen;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.lambdalib2.registry.StateEventCallback;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -27,8 +27,8 @@ public class WorldGenInit {
 
     @StateEventCallback
     private static void init(FMLInitializationEvent event) {
-        GENERATE_ORES = Main.config.getBoolean("genOres", "generic", true, "Whether the ores will be generated in overworld.");
-        GENERATE_PHASE_LIQUID = Main.config.getBoolean("genPhaseLiquid", "generic", true, "Whether phase liquid will be generated in overworld.");
+        GENERATE_ORES = AcademyCraft.config.getBoolean("genOres", "generic", true, "Whether the ores will be generated in overworld.");
+        GENERATE_PHASE_LIQUID = AcademyCraft.config.getBoolean("genPhaseLiquid", "generic", true, "Whether phase liquid will be generated in overworld.");
     }
 
 }

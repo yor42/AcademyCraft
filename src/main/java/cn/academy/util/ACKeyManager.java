@@ -1,6 +1,6 @@
 package cn.academy.util;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.event.ConfigModifyEvent;
 import cn.academy.terminal.app.settings.PropertyElements;
 import cn.academy.terminal.app.settings.SettingsUI;
@@ -18,7 +18,7 @@ public class ACKeyManager extends KeyManager {
 
     @Override
     protected Configuration getConfig() {
-        return Main.config;
+        return AcademyCraft.config;
     }
 
     @SubscribeEvent

@@ -1,6 +1,6 @@
 package cn.academy.advancements;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.Resources;
 import cn.academy.advancements.triggers.ACTrigger;
 import cn.lambdalib2.registry.StateEventCallback;
@@ -97,7 +97,7 @@ public class ACAdvancements {
 
             ICriterionTrigger<ACTrigger.Instance> ach = CriteriaTriggers.get(achid);
             if ((!(ach instanceof ACTrigger))) {
-                Main.log.warn("AC Achievement '{}' does not exist", achid);
+                AcademyCraft.log.warn("AC Achievement '{}' does not exist", achid);
                 return false;
             }
             ((ACTrigger)ach).trigger((EntityPlayerMP) player);

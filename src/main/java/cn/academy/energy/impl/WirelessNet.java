@@ -1,6 +1,6 @@
 package cn.academy.energy.impl;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.energy.api.block.IWirelessMatrix;
 import cn.academy.energy.api.block.IWirelessNode;
 import cn.academy.energy.impl.VBlocks.VWMatrix;
@@ -277,8 +277,8 @@ public class WirelessNet {
     }
 
     private void debug(Object msg) {
-        if (Main.DEBUG_MODE)
-            Main.log.info("WN:" + msg);
+        if (AcademyCraft.DEBUG_MODE)
+            AcademyCraft.log.info("WN:" + msg);
     }
 
 }

@@ -1,6 +1,6 @@
 package cn.academy.block.block;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.lambdalib2.multiblock.BlockMulti;
 import cn.lambdalib2.util.StackUtils;
 import net.minecraft.block.material.Material;
@@ -17,7 +17,7 @@ public abstract class ACBlockMulti extends BlockMulti {
 
     public ACBlockMulti(Material mat) {
         super(mat);
-        setCreativeTab(Main.cct);
+        setCreativeTab(AcademyCraft.cct);
     }
 
     @Override

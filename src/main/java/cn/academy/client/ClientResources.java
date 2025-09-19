@@ -1,15 +1,13 @@
 package cn.academy.client;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.Resources;
 import cn.lambdalib2.cgui.component.TextBox;
 import cn.lambdalib2.registry.StateEventCallback;
 import cn.lambdalib2.render.font.Fonts;
 import cn.lambdalib2.render.font.IFont;
 import cn.lambdalib2.render.font.TrueTypeFont;
-import cn.lambdalib2.render.obj.ObjLegacyRender;
 import cn.lambdalib2.render.obj.ObjParser;
-import cn.lambdalib2.render.obj.ObjVBORenderer;
 import cn.lambdalib2.render.obj.ObjVaoRenderer;
 import cn.lambdalib2.util.ResourceUtils;
 import com.google.common.base.Throwables;
@@ -157,7 +155,7 @@ public class ClientResources {
         if (!fontsInit) {
             fontsInit = true;
 
-            Configuration config = Main.config;
+            Configuration config = AcademyCraft.config;
             String userSpecified = config.getString("font", "gui", "Microsoft YaHei",
                     "The font to be used. If not found in the system, default fonts will be used.");
 

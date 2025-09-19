@@ -3,7 +3,7 @@ package cn.academy.ability.client.ui
 import java.util
 import java.util.function.Consumer
 
-import cn.academy.{ACItems, Main, Resources}
+import cn.academy.{ACItems, AcademyCraft, Resources}
 import cn.academy.ability.{AbilityLocalization, Skill}
 import cn.lambdalib2.registry.StateEventCallback
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
@@ -98,7 +98,7 @@ object SkillPosEditorUI {
 
   @StateEventCallback
   def __init(ev: FMLInitializationEvent) = {
-    if (Main.DEBUG_MODE) KeyManager.dynamic.addKeyHandler("skill_tree_pos_editor", Keyboard.KEY_RMENU, new KeyHandler {
+    if (AcademyCraft.DEBUG_MODE) KeyManager.dynamic.addKeyHandler("skill_tree_pos_editor", Keyboard.KEY_RMENU, new KeyHandler {
       override def onKeyDown() = {
         Minecraft.getMinecraft.displayGuiScreen(SkillPosEditorUI())
       }

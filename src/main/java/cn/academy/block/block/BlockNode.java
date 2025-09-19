@@ -1,6 +1,6 @@
 package cn.academy.block.block;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.block.container.ContainerNode;
 import cn.academy.block.tileentity.TileNode;
 import cn.academy.energy.client.ui.GuiNode;
@@ -76,7 +76,7 @@ public class BlockNode extends ACBlockContainer {
 
     public BlockNode(NodeType _type) {
         super(Material.ROCK, guiHandler);
-        setCreativeTab(Main.cct);
+        setCreativeTab(AcademyCraft.cct);
         setHardness(2.5f);
         setHarvestLevel("pickaxe", 1);
 

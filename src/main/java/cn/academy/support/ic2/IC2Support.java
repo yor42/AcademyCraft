@@ -2,7 +2,7 @@ package cn.academy.support.ic2;
 
 import cn.academy.ACBlocks;
 import cn.academy.ACItems;
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.support.EnergyBlockHelper;
 import cn.academy.support.EnergyItemHelper;
 import cn.academy.support.EnergyItemHelper.EnergyItemManager;
@@ -81,7 +81,7 @@ public class IC2Support {
 
         EnergyItemHelper.register(new IC2EnergyItemManager());
 
-        Main.log.info("IC2 API Support has been loaded.");
+        AcademyCraft.log.info("IC2 API Support has been loaded.");
     }
 
 

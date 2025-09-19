@@ -1,8 +1,6 @@
 package cn.academy.support.jei;
 
-import cn.academy.Main;
 import cn.academy.core.client.ui.TechUI;
-import cn.lambdalib2.cgui.CGuiScreenContainer;
 import mezz.jei.api.*;
 import mezz.jei.api.gui.IAdvancedGuiHandler;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;

@@ -1,6 +1,6 @@
 package cn.academy.client.gui;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.Resources;
 import cn.academy.client.render.util.ACRenderingHelper;
 import cn.academy.tutorial.ACTutorial;
@@ -599,7 +599,7 @@ public class GuiTutorial extends CGuiScreen {
     }
 
     private void debug(Object msg) {
-        Main.log.info("[Tut] " + msg);
+        AcademyCraft.log.info("[Tut] " + msg);
     }
 
     public class ViewRenderEvent implements GuiEvent {

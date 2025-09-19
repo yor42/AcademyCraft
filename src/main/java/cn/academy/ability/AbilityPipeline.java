@@ -1,6 +1,6 @@
 package cn.academy.ability;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.event.BlockDestroyEvent;
 import cn.lambdalib2.registry.StateEventCallback;
 import net.minecraft.entity.player.EntityPlayer;
@@ -97,7 +97,7 @@ public class AbilityPipeline {
 
     @StateEventCallback
     private static void _init(FMLInitializationEvent event) {
-        Configuration conf = Main.config;
+        Configuration conf = AcademyCraft.config;
 
         propAttackPlayer = conf.get("generic", "attackPlayer", true, "Whether the skills are effective on players.");
         propDestroyBlocks = conf.get("generic", "destroyBlocks", true, "Whether the skills will destroy blocks in the world.");

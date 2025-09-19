@@ -1,6 +1,6 @@
 package cn.academy.tutorial.client
 
-import cn.academy.Main
+import cn.academy.AcademyCraft
 import cn.academy.tutorial.TutorialData
 import cn.academy.util.LocalHelper
 import cn.lambdalib2.input.KeyManager
@@ -22,7 +22,7 @@ class ACMarkdownRenderer extends GLMarkdownRenderer {
 
     if (name == "key") {
       val keyid = attr("id")
-      val cfg = Main.config
+      val cfg = AcademyCraft.config
       if (cfg.hasKey("keys", keyid)) {
         render(KeyManager.getKeyName(cfg.get("keys", keyid, -1).getInt))
       } else {

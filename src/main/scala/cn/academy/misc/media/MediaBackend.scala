@@ -1,6 +1,6 @@
 package cn.academy.misc.media
 
-import cn.academy.Main
+import cn.academy.AcademyCraft
 import cn.academy.misc.media.MediaBackend.PlayInfo
 import cn.lambdalib2.datapart.{DataPart, EntityData, RegDataPart}
 import cn.lambdalib2.util.ReflectionUtils
@@ -47,7 +47,7 @@ private object MediaBackendHelper {
 
   def checkInit() = {
     if (!init) {
-      volumeProperty_ = Main.config.get("media_player", "volume", 1.0, "Media Player's volume")
+      volumeProperty_ = AcademyCraft.config.get("media_player", "volume", 1.0, "Media Player's volume")
 
       val fSndManager = ReflectionUtils.getObfField(classOf[SoundHandler], "sndManager", "field_147694_f")
       val sndMgr = fSndManager.get(Minecraft.getMinecraft.getSoundHandler)

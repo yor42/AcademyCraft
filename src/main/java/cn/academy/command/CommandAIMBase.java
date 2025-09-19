@@ -1,6 +1,6 @@
 package cn.academy.command;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.ability.Category;
 import cn.academy.ability.CategoryManager;
 import cn.academy.ability.Skill;
@@ -51,7 +51,7 @@ public abstract class CommandAIMBase extends ACCommand {
             try {
                 player = getCommandSenderAsPlayer(commandSender);
             } catch (PlayerNotFoundException e) {
-                Main.log.warn("Attempt to use command \"aim\" in the console.");
+                AcademyCraft.log.warn("Attempt to use command \"aim\" in the console.");
                 return;
             }
 

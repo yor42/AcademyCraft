@@ -1,6 +1,6 @@
 package cn.academy.energy.impl;
 
-import cn.academy.Main;
+import cn.academy.AcademyCraft;
 import cn.academy.energy.api.block.*;
 import cn.academy.energy.impl.VBlocks.*;
 import cn.lambdalib2.util.IBlockSelector;
@@ -306,7 +306,7 @@ public class WiWorldData extends WorldSavedData {
     }
     
     private void debug(Object msg) {
-        Main.log.info("WiWorldData: " + msg);
+        AcademyCraft.log.info("WiWorldData: " + msg);
     }
 
 }
